@@ -6,6 +6,10 @@ h1,
   font-size: 3.09375rem;
   letter-spacing: -0.05em;
 }
+a{
+  text-decoration: none;
+  color: #000000;
+}
 .ct-header {
      background-color: #f3f3f3;
   width: 100%;
@@ -13,9 +17,9 @@ h1,
   border-bottom: 1px solid #ebebeb;
 }
 .container-fluid {
-  
   margin: 0px px;
   padding: 0px px 0px 55px;
+  
 }
 .ct-header__logo-nav {
   display: flex;
@@ -128,17 +132,14 @@ h1,
   background-color: transparent;
   cursor: pointer;
   width: 90px;
+  color: #fff;
+  text-align: center;
 }
 
-.loginButton a,
-.registerButton a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 14px;
-}
 .loginButton:hover,
 .registerButton:hover {
-  background-color: #b89d4f;
+  background-color: #ffff;
+  color: #000000;
 }
 #sub-menu_artworks {
   display: grid;

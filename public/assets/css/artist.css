@@ -1,6 +1,20 @@
 .artist-page{
      max-height: 1700px;
 }
+.listArtist-page{
+  padding: 0 70px;
+  height: 100vh;
+  
+}
+.top-page h3{
+  margin-top: 50px;
+     font-size: 27px;
+     text-transform: uppercase;
+}
+a{
+  text-decoration: none;
+  color: #000000;
+}
 .title-artist_page {
   display: inline-block;
   font-family: "Playfair Display", serif;
@@ -69,6 +83,7 @@
 }
 .card-art_home,
 .card-artist {
+
   width: 210px;
   height: 260px;
   padding-left: 150px;
@@ -123,7 +138,8 @@
   justify-content: center;
 }
 .button-follow:hover {
-  color: #b89d4f;
+  background-color: #000000;
+  color: #ffff;
   border: 1px solid #b89d4f;
 }
 .multiple-items2 {
@@ -180,6 +196,7 @@
      display: grid;
      grid-template-columns: repeat(4, 1fr);
      column-gap: 20px;
+     row-gap: 100px;
 }
 .section-content_artist .card-artist{
      padding-left: 0px;

@@ -3,7 +3,9 @@
      font-family: "Playfair Display", serif;
 
    }
-   
+   a{
+    text-decoration: none;
+  }
    .auction-steps {
      display: grid;
      grid-template-columns: repeat(4, 1fr);
@@ -114,7 +116,6 @@
     padding-left: 25px;
     padding-right: 25px;
     background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
     width: 50%;
     display: inline-flex;
     -webkit-box-align: center;
@@ -123,11 +124,14 @@
     justify-content: center;
     margin-top: 40px;
     margin-left: 10rem;
+    color: #ffff;
    }
+   
    .next-offer:hover{
       background-color: #ffff;
       color: #000;
    }
+   
    .offer-order{
      height:25rem ;
      margin-top: 9rem;
