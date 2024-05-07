@@ -11,6 +11,8 @@ import Offer from "./components/pages/Offer";
 import Shipping from "./components/pages/Shipping";
 import Payment from "./components/pages/Payment";
 import Review from "./components/pages/Review";
+import AboutUs from "./components/pages/AboutUs";
+import ViewingRooms from "./components/pages/ViewingRooms";
 function App() {
   return (
     <div>
@@ -26,7 +28,9 @@ function App() {
             <Route path="/shipping" element={<Shipping/>}/>
             <Route path="/payment" element={<Payment/>}/>
             <Route path="/review" element={<Review/>}/>
-
+            <Route path="/about" element={<AboutUs/>}/>
+            <Route path="/viewingroom" element={<ViewingRooms/>}/>
+            
           </Routes>
       </BrowserRouter>
       <Footer/>
