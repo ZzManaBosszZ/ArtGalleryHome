@@ -11,32 +11,32 @@ function Footer() {
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"
               >
-                <a href="component/pages/Artworks">Artworks</a>
+                <a href="/artwork">Artworks</a>
               </li>
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"
               >
-                <a href="component/pages/Artists">Artists</a>
+                <a href="/artists">Artists</a>
               </li>
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-299"
               >
-                <a href="component/pages/ViewingRooms">ViewingRooms</a>
+                <a href="/viewingroom">ViewingRooms</a>
               </li>
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"
               >
-                <a href="visit-us/index.html">Events</a>
+                <a href="/event">Events</a>
               </li>
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"
               >
-                <a href="component/pages/AboutUs">About Us</a>
+                <a href="/about">About Us</a>
               </li>
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-112"
               >
-                <a href="component/pages/ContactUs">Contact Us</a>
+                <a href="/contact">Contact Us</a>
               </li>
             </ul>
             <a href="#top" className="ct-smooth-scroll" id="ct-scroll-top"

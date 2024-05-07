@@ -136,9 +136,9 @@ function Shipping() {
                 </div>
               )}
             </div>
-            <button className="next-offer">
-              <a href="/payment">Continue</a>
-            </button>
+            
+              <a href="/payment" className="next-offer">Continue</a>
+            
           </div>
           
 

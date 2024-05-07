@@ -95,50 +95,52 @@ function Home() {
             <div  className="card-art_home">
               <a>
                 <img src="assets/images/arts/art1.jpeg" alt="Image 1" />
-                <h2 className="name-art_carousel">Gordian Knot Wood</h2>
-                <span className="price-art_carousel">$35,200</span>
+                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                <h2 className="exhibition">Perfomer, 2024</h2>
+                <span className="price-art_carousel">$10,000-$35,000</span>
               </a>
-              <a className="button_add-product">Add to cart</a>
+              <a className="button_add-product">Purchase</a>
             </div>
             <div  className="card-art_home">
               <a>
                 <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                <h2 className="name-art_carousel">Gordian Knot Wood</h2>
-                <span className="price-art_carousel">$35,200</span>
+                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                <h2 className="exhibition">Perfomer, 2024</h2>
+                <span className="price-art_carousel">$10,000-$35,000</span>
               </a>
-              <a className="button_add-product">Add to cart</a>
+              <a className="button_add-product">Purchase</a>
             </div>
             <div  className="card-art_home">
               <a>
                 <img src="assets/images/arts/art3.jpeg" alt="Image 1" />
-                <h2 className="name-art_carousel">Gordian Knot Wood</h2>
-                <span className="price-art_carousel">$35,200</span>
-              </a>
-              <a className="button_add-product">Add to cart</a>
+                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                <h2 className="exhibition">Perfomer, 2024</h2>
+                <span className="price-art_carousel">$10,000-$35,000</span>              </a>
+              <a className="button_add-product">Purchase</a>
             </div>
             <div  className="card-art_home">
               <a>
                 <img src="assets/images/arts/art4.jpeg" alt="Image 1" />
-                <h2 className="name-art_carousel">Gordian Knot Wood</h2>
-                <span className="price-art_carousel">$35,200</span>
-              </a>
-              <a className="button_add-product">Add to cart</a>
+                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                <h2 className="exhibition">Perfomer, 2024</h2>
+                <span className="price-art_carousel">$10,000-$35,000</span>              </a>
+              <a className="button_add-product">Purchase</a>
             </div>
             <div  className="card-art_home">
               <a>
                 <img src="assets/images/arts/art5.jpeg" alt="Image 1" />
-                <h2 className="name-art_carousel">Gordian Knot Wood</h2>
-                <span className="price-art_carousel">$35,200</span>
-              </a>
-              <a className="button_add-product">Add to cart</a>
+                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                <h2 className="exhibition">Perfomer, 2024</h2>
+                <span className="price-art_carousel">$10,000-$35,000</span>              </a>
+              <a className="button_add-product">Purchase</a>
             </div>
             <div  className="card-art_home">
               <a>
                 <img src="assets/images/arts/art6.jpeg" alt="Image 1" />
-                <h2 className="name-art_carousel">Gordian Knot Wood</h2>
-                <span className="price-art_carousel">$35,200</span>
-              </a>
-              <a className="button_add-product">Add to cart</a>
+                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                <h2 className="exhibition">Perfomer, 2024</h2>
+                <span className="price-art_carousel">$10,000-$35,000</span>              </a>
+              <a className="button_add-product">Purchase</a>
             </div>
             
           </Slider>

@@ -178,9 +178,9 @@ function Payment() {
                 </div>
               )}
             </div>
-            <button className="next-offer">
-              <a href="/review">Continue</a>
-            </button>
+            
+              <a href="/review" className="next-offer">Continue</a>
+            
           </div>
 
           <div className="offer-order">

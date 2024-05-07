@@ -29,7 +29,7 @@ function Review() {
             <div className="the-offer">
               <div className="title-section">
                 <h1>Your offer</h1>
-                <a href="/offer"> Change</a>
+                <a> Change</a>
               </div>
               <div className="price-offer">
                 <div>$12,500</div>
@@ -43,7 +43,7 @@ function Review() {
             <div className="the-pickUp">
               <div className="title-section">
                 <h1>Pick up (New York, NY, US)</h1>
-                <a href="/shipping"> Change</a>
+                <a> Change</a>
               </div>
               <p>
                 After your order is confirmed, a specialist will contact you to
@@ -53,7 +53,7 @@ function Review() {
             <div className="payment-method">
               <div className="title-section">
                 <h1>Payment method</h1>
-                <a href="/payment"> Change</a>
+                <a> Change</a>
               </div>
               <div className="payment">
                 <h1>Wire transfer</h1>
@@ -96,9 +96,9 @@ function Review() {
             </div>
           </div>
         </div>
-        <button className="next-offer">
-              <a>Submit</a>
-            </button>
+        
+              <a className="next-offer">Completed</a>
+            
       </div>
     </div>
   );

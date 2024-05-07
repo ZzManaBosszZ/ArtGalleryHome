@@ -128,9 +128,9 @@ function Offer() {
                 </p>
               </div>
             </div>
-            <button className="next-offer">
-              <a href="/shipping">Continue</a>
-            </button>
+           
+              <a href="/shipping" className="next-offer">Continue</a>
+            
           </div>
           <div className="offer-order">
             <div className="info-art">

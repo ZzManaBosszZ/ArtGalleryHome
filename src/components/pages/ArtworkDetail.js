@@ -131,7 +131,7 @@ function ArtworkDetail() {
               <h1 className="price">$5,000</h1>
             </div>
             <div className="button_purchase-sec">
-              <a href="/shipping" id="purchase-button">Purchase</a>
+              {/* <a href="/shipping" id="purchase-button">Purchase</a> */}
               <a href="/offer" id="offer-button"> Make An Offer</a>
             </div>
             <div className="shipping-info">

@@ -25,9 +25,8 @@ function Artists() {
       <link rel="stylesheet" href="assets/css/artist.css" />
 
       <div className="top-page">
-         
         <h1 className="title-artist_page">Our Artists</h1>
-        
+
         <div className="vertical-line"></div>
         <div className="demo-page">
           <p>
@@ -39,7 +38,7 @@ function Artists() {
       </div>
       <div className="main-content_page">
         <section className="featured-artists_carousel">
-        <div className="top-section">
+          <div className="top-section">
             <h3 className="title-section">Featured Artists</h3>
             <a className="view-more_artist">View more</a>
           </div>
@@ -56,7 +55,7 @@ function Artists() {
               slidesToScroll={3}
             >
               <div className="card-artist">
-                <a className="img-artist">
+                <a href="/artistDetail" className="img-artist">
                   <img src="assets/images/artists/artist1.webp" alt="Image 1" />
                 </a>
                 <a className="main-artist">
@@ -140,14 +139,14 @@ function Artists() {
         <section className="artists-section">
           <div className="top-section">
             <h3 className="title-section">Gutai</h3>
-            <a className="view-more_artist">View more</a>
+            <a href="/listArtist" className="view-more_artist">View more</a>
           </div>
           <div className="section-content_artist">
             <div className="card-artist">
-              <a className="img-artist">
+              <a href="/artistDetail" className="img-artist">
                 <img src="assets/images/artists/gutai.webp" alt="Image 1" />
               </a>
-              <a className="main-artist">
+              <a href="/artistDetail" className="main-artist">
                 <div className="artist-info">
                   Atsuko Tanaka
                   <br />

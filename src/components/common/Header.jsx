@@ -31,12 +31,12 @@ function Header() {
               </button>
             </form>
             <div className="login-area">
-              <button className="loginButton">
-                <a href="#">Login</a>
-              </button>
-              <button className="registerButton">
-                <a href="#">Register</a>
-              </button>
+              
+                <a className="loginButton" href="#">Login</a>
+              
+              
+                <a className="registerButton" href="#">Register</a>
+              
             </div>
           </div>
           <div className="container-fluid" style={{ paddingLeft: '55px' }}>
@@ -68,7 +68,7 @@ function Header() {
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-114"
                       id="menu-item-114"
                     >
-                      <a href="whats-on/index.html">Artworks<i class="fa-solid fa-angle-down"></i></a>
+                      <a href="artwork">Artworks<i class="fa-solid fa-angle-down"></i></a>
                       <ul className="sub-menu" id="sub-menu_artworks">
                         <div className="sub-menu_item">
                           Price
@@ -116,7 +116,7 @@ function Header() {
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-299"
                       id="menu-item-299"
                     >
-                      <a href="shop/index.html">ViewingRooms</a>
+                      <a href="/viewingroom">ViewingRooms</a>
                     </li>
                     <li
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"
@@ -129,7 +129,7 @@ function Header() {
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"
                       id="menu-item-109"
                     >
-                      <a href="about-us/index.html">About Us</a>
+                      <a href="/about">About Us</a>
                     </li>
                     <li
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-112"
