@@ -2,28 +2,12 @@ import React, { useState } from "react";
 
 function Payment() {
   const [selectedMethod, setSelectedMethod] = useState("CreditCard");
-  const [cardNumber, setCardNumber] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
-  const [cvv, setCvv] = useState("");
-  const [cardName, setCardName] = useState("");
+  
 
   const handleMethodChange = (event) => {
     setSelectedMethod(event.target.value);
   };
 
-  const handleCardNumberChange = (event) => {
-    setCardNumber(event.target.value);
-  };
-  const handleCardNameChange = (event) => {
-     setCardName(event.target.value);
-   };
-  const handleExpiryDateChange = (event) => {
-    setExpiryDate(event.target.value);
-  };
-
-  const handleCvvChange = (event) => {
-    setCvv(event.target.value);
-  };
 
   return (
     <div>
@@ -51,16 +35,41 @@ function Payment() {
           <div className="payment-content">
             <h2>Payment method</h2>
             <div className="payment-method">
+
               <div>
                 <label>
                   <input
                     type="radio"
                     name="paymentMethod"
-                    value="CreditCard"
-                    checked={selectedMethod === "CreditCard"}
+                    value="Paypal"
+                    checked={selectedMethod === "Paypal"}
                     onChange={handleMethodChange}
                   />
-                  Credit card
+                  Paypal
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="MoMo"
+                    checked={selectedMethod === "MoMo"}
+                    onChange={handleMethodChange}
+                  />
+                  MoMo
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="VnPay"
+                    checked={selectedMethod === "VnPay"}
+                    onChange={handleMethodChange}
+                  />
+                  VnPay
                 </label>
               </div>
 
@@ -79,85 +88,45 @@ function Payment() {
             </div>
             <div className="payment-detail">
               <h3>Payment detail</h3>
-              {selectedMethod === "CreditCard" && (
+             
+              {selectedMethod === "MoMo" && (
                 <div>
-                  <div>
-                    <label htmlFor="cardNumber">Card Number:</label>
-                    <input
-                      type="text"
-                      id="cardNumber"
-                      placeholder="1234 1234 1234 1234"
-                      name="cardNumber"
-                      value={cardNumber}
-                      onChange={handleCardNumberChange}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="expiryDate">Expiry Date:</label>
-                    <input
-                      type="text"
-                      id="expiryDate"
-                      placeholder="MM/YY"
-                      name="expiryDate"
-                      value={expiryDate}
-                      onChange={handleExpiryDateChange}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="cvv">CVC:</label>
-                    <input
-                      type="text"
-                      id="cvv"
-                      name="cvv"
-                      value={cvv}
-                      onChange={handleCvvChange}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="cardName">Card name</label>
-                    <input
-                      type="text"
-                      id="cardName"
-                      placeholder="Name on card"
-                      name="cardName"
-                      value={cardName}
-                      onChange={handleCardNameChange}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="country">Country</label>
-                    <input type="text" id="country" name="country" />
-                  </div>
-                  <div>
-                    <label htmlFor="streetAddress">Address line 1</label>
-                    <input
-                      type="text"
-                      id="streetAddress"
-                      name="streetAddress"
-                      placeholder="Street address"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="aptFloorSuite">Address line 2</label>
-                    <input
-                      type="text"
-                      id="aptFloorSuite"
-                      name="aptFloorSuite"
-                      placeholder="Apt, floor, suite, etc."
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="city">City</label>
-                    <input type="text" id="city" name="city" />
-                  </div>
-                  <div>
-                    <label htmlFor="state">State, province, or region</label>
-                    <input type="text" id="state" name="state" />
-                  </div>
-                  <div>
-                    <label htmlFor="postalCode">ZIP/postal code</label>
-                    <input type="text" id="postalCode" name="postalCode" />
-                  </div>
+                  <p>
+                  We will provide you with a QR code for payment.
+                  </p>
+                  <p>
+                  After payment is completed, we will send the bill to you and proceed with the next procedure
+                  </p>
+                  <p>
+                  If any problem occurs during payment, please contact us{" "}
+                    <a href="mailto:orders@artsy.net">orders@artsy.net</a>
+                  </p>
+                </div>
+              )} {selectedMethod === "VnPay" && (
+                <div>
+                  <p>
+                  We will provide you with a QR code for payment.
+                  </p>
+                  <p>
+                  After payment is completed, we will send the bill to you and proceed with the next procedure
+                  </p>
+                  <p>
+                  If any problem occurs during payment, please contact us{" "}
+                    <a href="mailto:orders@artsy.net">orders@artsy.net</a>
+                  </p>
+                </div>
+              )} {selectedMethod === "Paypal" && (
+                <div>
+                  <p>
+                  We will provide you with a QR code for payment.
+                  </p>
+                  <p>
+                  After payment is completed, we will send the bill to you and proceed with the next procedure
+                  </p>
+                  <p>
+                  If any problem occurs during payment, please contact us{" "}
+                    <a href="mailto:orders@artsy.net">orders@artsy.net</a>
+                  </p>
                 </div>
               )}
 
@@ -166,6 +135,9 @@ function Payment() {
                   <p>
                     To pay by wire transfer, complete checkout and a member of
                     the Artsy team will contact you with next steps by email.
+                  </p>
+                  <p>
+                  We will provide you with a QR code for payment.
                   </p>
                   <p>
                     Please inform your bank that you will be responsible for all
