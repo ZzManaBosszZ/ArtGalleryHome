@@ -1,7 +1,9 @@
 .ArtDetail-page{
      padding: 70px 70px;
-     font-family: "Playfair Display", serif;
      max-height:30rem ;
+}
+a{
+  text-decoration: none;
 }
 .about-artwork{
      display: grid;
@@ -98,6 +100,7 @@
      margin-left: 30px;
    }
    .info-artist .name-artist{
+    font-family: "Playfair Display", serif;
      font-size: 16px;
      font-weight: 600;
      padding-top: 7px;
@@ -151,6 +154,7 @@
      color: #8c8b8b;
    }
    .info-purchase_art .name-exhibition{
+    font-family: "Playfair Display", serif;
      font-size: 34px;
      font-weight: 500;
      margin-top: 10px;
@@ -235,15 +239,19 @@
      padding: 10px 15px;
      border-radius: 2px;
    }
-   #purchase-button
+   #offer-button
    {
      background-color: #000;
      color: #fff;
    }
-   #purchase-button:hover, #offer-button:hover{
-     background-color: #b89d4f;
-     color: #fff;
+   #offer-button:hover{
+     background-color: #fff;
+     color: #000;
    }
+   /* #purchase-button:hover {
+    background-color: #fff;
+    co
+   } */
    .other-artwork{
      margin-top: 10rem;
    }
