@@ -1,13 +1,51 @@
-import React, { useState } from "react";
-
+import { useCallback, useEffect, useState, useRef } from "react";
+import api from "../../services/api";
+import url from "../../services/url";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { getAccessToken, getDecodedToken } from "../../utils/auth";
+import PayPalButton from "../../payment/PaypalButton";
+import Swal from "sweetalert2";
 function Payment() {
-  const [selectedMethod, setSelectedMethod] = useState("CreditCard");
+  const { offerCode } = useParams();
+  const [offerDetail, setOfferDetail] = useState([]);
+  const decodedToken = getDecodedToken();
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
   
+  const createOrderData = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getAccessToken()}`,
+      },
+    };
+    try {
+      if (decodedToken) {
+        // const total = calculateTotal(movieData.selectedSeats, movieData.addFoods);
+        // const finalTotal = calculateFinalTotal(total, 0);
 
-  const handleMethodChange = (event) => {
-    setSelectedMethod(event.target.value);
+        const orderData = {
+          // showId: selectShow.id,
+          // userId: userInfo.userId,
+          // total: total,
+          // discountAmount: total - discountRate.data || 0,
+          // discountCode: formData.promotionCode || "",
+          // finalTotal: discountRate.data ? discountRate.data : finalTotal,
+          // paymentMethod: selectedPaymentMethod,
+          // tickets: movieData.selectedSeats.map((seat) => ({ seatId: seat.id })),
+          // foods: movieData.addFoods && movieData.addFoods.length > 0 ? movieData.addFoods.map((food) => ({ id: food.id, quantity: food.quantity, price: food.price })) : [],
+        };
+
+        const orderResponse = await api.post(url.BOOKING.CREATE, orderData, config);
+
+        // Use orderResponse.data.id instead of order.id
+        navigate(`/checkout/thank-you/${orderResponse.data.orderCode}`);
+        localStorage.removeItem("movie_data");
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
-
 
   return (
     <div>
@@ -32,129 +70,6 @@ function Payment() {
           </a>
         </div>
         <div className="main-payment_page">
-          <div className="payment-content">
-            <h2>Payment method</h2>
-            <div className="payment-method">
-
-              <div>
-                <label>
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value="Paypal"
-                    checked={selectedMethod === "Paypal"}
-                    onChange={handleMethodChange}
-                  />
-                  Paypal
-                </label>
-              </div>
-              <div>
-                <label>
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value="MoMo"
-                    checked={selectedMethod === "MoMo"}
-                    onChange={handleMethodChange}
-                  />
-                  MoMo
-                </label>
-              </div>
-              <div>
-                <label>
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value="VnPay"
-                    checked={selectedMethod === "VnPay"}
-                    onChange={handleMethodChange}
-                  />
-                  VnPay
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    value="WireTransfer"
-                    checked={selectedMethod === "WireTransfer"}
-                    onChange={handleMethodChange}
-                  />
-                  Wire transfer
-                </label>
-              </div>
-            </div>
-            <div className="payment-detail">
-              <h3>Payment detail</h3>
-             
-              {selectedMethod === "MoMo" && (
-                <div>
-                  <p>
-                  We will provide you with a QR code for payment.
-                  </p>
-                  <p>
-                  After payment is completed, we will send the bill to you and proceed with the next procedure
-                  </p>
-                  <p>
-                  If any problem occurs during payment, please contact us{" "}
-                    <a href="mailto:orders@artsy.net">orders@artsy.net</a>
-                  </p>
-                </div>
-              )} {selectedMethod === "VnPay" && (
-                <div>
-                  <p>
-                  We will provide you with a QR code for payment.
-                  </p>
-                  <p>
-                  After payment is completed, we will send the bill to you and proceed with the next procedure
-                  </p>
-                  <p>
-                  If any problem occurs during payment, please contact us{" "}
-                    <a href="mailto:orders@artsy.net">orders@artsy.net</a>
-                  </p>
-                </div>
-              )} {selectedMethod === "Paypal" && (
-                <div>
-                  <p>
-                  We will provide you with a QR code for payment.
-                  </p>
-                  <p>
-                  After payment is completed, we will send the bill to you and proceed with the next procedure
-                  </p>
-                  <p>
-                  If any problem occurs during payment, please contact us{" "}
-                    <a href="mailto:orders@artsy.net">orders@artsy.net</a>
-                  </p>
-                </div>
-              )}
-
-              {selectedMethod === "WireTransfer" && (
-                <div>
-                  <p>
-                    To pay by wire transfer, complete checkout and a member of
-                    the Artsy team will contact you with next steps by email.
-                  </p>
-                  <p>
-                  We will provide you with a QR code for payment.
-                  </p>
-                  <p>
-                    Please inform your bank that you will be responsible for all
-                    wire transfer fees.
-                  </p>
-                  <p>
-                    Questions? Email{" "}
-                    <a href="mailto:orders@artsy.net">orders@artsy.net</a>
-                  </p>
-                </div>
-              )}
-            </div>
-            
-              <a href="/review" className="next-offer">Continue</a>
-            
-          </div>
-
           <div className="offer-order">
             <div className="info-art">
               <img src="assets/images/artists/artist2.webp"></img>
@@ -183,6 +98,13 @@ function Payment() {
             </div>
           </div>
         </div>
+        <PayPalButton
+          amount={100}
+          // onSuccess={(details, data) => handlePaymentSuccess(details, data)}
+          // onCancel={handlePaymentCancel}
+          // onError={handlePaymentError}
+        />
+
       </div>
     </div>
   );

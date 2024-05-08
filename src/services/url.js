@@ -19,9 +19,11 @@ const url = {
 
     PAYPAL: {
         PAYMENT: "v1/Payments/PayPal",
+        DETAIL: "Offers/detailForUser"
     },
 
     GALLERY: {
         LIST: "/gallery/get-all",
     },
-};
+}; 
+export default url;
