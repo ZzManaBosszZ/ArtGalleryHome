@@ -11,7 +11,7 @@ function Payment() {
   const decodedToken = getDecodedToken();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  
+
   const createOrderData = async () => {
     const config = {
       headers: {
@@ -46,6 +46,30 @@ function Payment() {
       console.log("Error:", error);
     }
   };
+
+  const loadOffer = useCallback(async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${getAccessToken()}`,
+      },
+    };
+
+    try {
+      const offerResponse = await api.get(url.PAYPAL.DETAIL + `/${offerCode}`, config);
+      setOfferDetail(offerResponse.data);
+    } catch (error) {
+      setError(true);
+    }
+  }, [offerCode]);
+
+  useEffect(() => {
+    loadOffer();
+
+    setTimeout(() => {
+
+    }, 2000);
+  }, [loadOffer]);
 
   return (
     <div>
@@ -98,12 +122,15 @@ function Payment() {
             </div>
           </div>
         </div>
+
         <PayPalButton
           amount={100}
-          // onSuccess={(details, data) => handlePaymentSuccess(details, data)}
-          // onCancel={handlePaymentCancel}
-          // onError={handlePaymentError}
+        // onSuccess={(details, data) => handlePaymentSuccess(details, data)}
+        // onCancel={handlePaymentCancel}
+        // onError={handlePaymentError}
         />
+
+        
 
       </div>
     </div>

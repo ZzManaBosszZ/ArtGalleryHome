@@ -1,5 +1,5 @@
 const url = {
-    BASE_URL: "https://localhost:7220/api/",
+    BASE_URL: "https://localhost:7270/api/",
 
     CONTACT: {
         CREATE: "feedback/create",
@@ -18,7 +18,6 @@ const url = {
     },
 
     PAYPAL: {
-        PAYMENT: "v1/Payments/PayPal",
         DETAIL: "Offers/detailForUser"
     },
 
