@@ -32,7 +32,6 @@ function App() {
             <Route path="/review" element={<Review/>}/>
             <Route path="/about" element={<AboutUs/>}/>
             <Route path="/viewingroom" element={<ViewingRooms/>}/>
-            
           </Routes>
       </BrowserRouter>
       <Footer/>
