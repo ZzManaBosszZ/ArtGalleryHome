@@ -1,4 +1,6 @@
 import React from 'react';
+import { isLoggedIn } from '../../utils/auth';
+import { NavLink } from 'react-router-dom';
 function Header() {
   return (
     <div>
@@ -29,14 +31,20 @@ function Header() {
                 <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
-            <div className="login-area">
-              
+            {isLoggedIn() ? (
+              <li>
+                <NavLink to="/profile">Profile</NavLink>
+              </li>
+            ) : (
+              <div className="login-area">
+
                 <a className="loginButton" href="#">Login</a>
-              
-              
+
+
                 <a className="registerButton" href="#">Register</a>
-              
-            </div>
+
+              </div>
+            )}
           </div>
           <div className="container-fluid" style={{ paddingLeft: '55px' }}>
             <div className="ct-header__logo-nav" style={{ paddingTop: '30px' }}>
@@ -47,7 +55,7 @@ function Header() {
                   alt="Art Gallery "
                 />
               </a>
-              
+
               <div id="ct-main-nav">
                 <input
                   type="checkbox"
@@ -56,12 +64,12 @@ function Header() {
                 />
                 <nav
                   id="ct-main-nav__wrapper"
-                  
+
                 >
                   <ul
                     id="menu-menu"
                     className="ct-main-navigation"
-                    
+
                   >
                     <li
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-114"
