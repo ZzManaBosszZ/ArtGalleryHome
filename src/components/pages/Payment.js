@@ -124,7 +124,7 @@ function Payment() {
         </div>
 
         <PayPalButton
-          amount={100}
+          amount={100}  
         // onSuccess={(details, data) => handlePaymentSuccess(details, data)}
         // onCancel={handlePaymentCancel}
         // onError={handlePaymentError}
