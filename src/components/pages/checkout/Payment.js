@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState, useRef } from "react";
-import api from "../../services/api";
-import url from "../../services/url";
+import api from "../../../services/api";
+import url from "../../../services/url";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { getAccessToken, getDecodedToken } from "../../utils/auth";
-import PayPalButton from "../../payment/PaypalButton";
+import { getAccessToken, getDecodedToken } from "../../../utils/auth";
+import PayPalButton from "../../../payment/PaypalButton";
 import Swal from "sweetalert2";
 function Payment() {
   const { offerCode } = useParams();
