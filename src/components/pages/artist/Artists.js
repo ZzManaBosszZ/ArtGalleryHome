@@ -256,6 +256,7 @@ function Artists() {
             </div>
           </div>
         </section>
+        
         <section className="artists-section">
           <div className="top-section">
             <h3 className="title-section">Color Field Painting</h3>

@@ -1,10 +1,54 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { isLoggedIn } from "../../../utils/auth";
+import api from "../../../services/api";
+import url from "../../../services/url";
+import NotFound from "../other/NotFound";
 function Home() {
   const sliderRef1 = useRef(null);
   const sliderRef2 = useRef(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [artwork, setArtworks] = useState([]);
+  const [artist, setArtists] = useState([]);
+  // const handleOffer = () => {
+  //   if (!isLoggedIn()) {
+  //     localStorage.setItem("redirectPath", window.location.pathname);
+  //     navigate("/login");
+  //   } else {
+  //     navigate(`/artwork/${id}?`);
+  //   }
+  // };
+
+  //hien thi thong tin artwork
+  useEffect(() => {
+    const userToken = localStorage.getItem("access_token");
+    api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
+    api.get(`${url.ARTWORK.LIST}`)
+      .then((response) => {
+        setArtworks(response.data);
+      })
+      .catch((error) => {
+        // console.error("Error fetching promotion details:", error);
+      });
+  }, [id]);
+
+  //hien thi thong tin artist
+  useEffect(() => {
+    const userToken = localStorage.getItem("access_token");
+    api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
+    api.get(`${url.ARTIST.LIST}`)
+      .then((response) => {
+        setArtists(response.data);
+      })
+      .catch((error) => {
+        // console.error("Error fetching promotion details:", error);
+      });
+  }, [id]);
 
   useEffect(() => {
     if (sliderRef1.current && sliderRef2.current) {
@@ -92,60 +136,22 @@ function Home() {
             slidesToShow={4}
             slidesToScroll={3}
           >
-            <div  className="card-art_home">
-              <a>
-                <img src="assets/images/arts/art1.jpeg" alt="Image 1" />
-                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                <h2 className="exhibition">Perfomer, 2024</h2>
-                <span className="price-art_carousel">$10,000-$35,000</span>
-              </a>
-              <a className="button_add-product">Purchase</a>
-            </div>
-            <div  className="card-art_home">
-              <a>
-                <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                <h2 className="exhibition">Perfomer, 2024</h2>
-                <span className="price-art_carousel">$10,000-$35,000</span>
-              </a>
-              <a className="button_add-product">Purchase</a>
-            </div>
-            <div  className="card-art_home">
-              <a>
-                <img src="assets/images/arts/art3.jpeg" alt="Image 1" />
-                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                <h2 className="exhibition">Perfomer, 2024</h2>
-                <span className="price-art_carousel">$10,000-$35,000</span>              </a>
-              <a className="button_add-product">Purchase</a>
-            </div>
-            <div  className="card-art_home">
-              <a>
-                <img src="assets/images/arts/art4.jpeg" alt="Image 1" />
-                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                <h2 className="exhibition">Perfomer, 2024</h2>
-                <span className="price-art_carousel">$10,000-$35,000</span>              </a>
-              <a className="button_add-product">Purchase</a>
-            </div>
-            <div  className="card-art_home">
-              <a>
-                <img src="assets/images/arts/art5.jpeg" alt="Image 1" />
-                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                <h2 className="exhibition">Perfomer, 2024</h2>
-                <span className="price-art_carousel">$10,000-$35,000</span>              </a>
-              <a className="button_add-product">Purchase</a>
-            </div>
-            <div  className="card-art_home">
-              <a>
-                <img src="assets/images/arts/art6.jpeg" alt="Image 1" />
-                <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                <h2 className="exhibition">Perfomer, 2024</h2>
-                <span className="price-art_carousel">$10,000-$35,000</span>              </a>
-              <a className="button_add-product">Purchase</a>
-            </div>
-            
+            {artwork.map((item, index) => {
+              return (
+                <div className="card-art_home">
+                  <a>
+                    <img src={item.artWorkImage} alt="Image 1" />
+                    <h2 className="name-artist_carousel">{item.name}</h2>
+                    <h2 className="exhibition">{item.series}</h2>
+                    <span className="price-art_carousel">${item.price}</span>
+                  </a>
+                  <a className="button_add-product">Purchase</a>
+                </div>
+              );
+            })}
           </Slider>
         </div>
-        
+
       </div>
 
 
@@ -168,84 +174,27 @@ function Home() {
             slidesToShow={4}
             slidesToScroll={3}
           >
-            <div  className="card-artist">
+            {artist.map((item, index) => {
+              return (
+            <div className="card-artist">
               <a className="img-artist">
                 <img src="assets/images/artists/artist1.webp" alt="Image 1" />
-                
+
               </a>
               <a className="main-artist">
-                 <div className="artist-info">Atsuko Tanaka
-                  <br/><p>Japenese, 1932-1005</p>
-                 </div>
-                 <div className="button-follow">Follow</div>
+                <div className="artist-info">Atsuko Tanaka
+                  <br /><p>Japenese, 1932-1005</p>
+                </div>
+                <div className="button-follow">Follow</div>
               </a>
             </div>
-            <div  className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-                
-              </a>
-              <a className="main-artist">
-                 <div className="artist-info">Atsuko Tanaka
-                 <br/><p>Japenese, 1932-1005</p>
-                 </div>
-                 <div className="button-follow">Follow</div>
-              </a>
-            </div> 
-            <div  className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist2.webp" alt="Image 1" />
-                
-              </a>
-              <a className="main-artist">
-                 <div className="artist-info">Atsuko Tanaka
-                 <br/><p>Japenese, 1932-1005</p>
-                 </div>
-                 <div className="button-follow">Follow</div>
-              </a>
-            </div> 
-            <div  className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist3.webp" alt="Image 1" />
-                
-              </a>
-              <a className="main-artist">
-                 <div className="artist-info">Atsuko Tanaka
-                 <br/><p>Japenese, 1932-1005</p>
-                 </div>
-                 <div className="button-follow">Follow</div>
-              </a>
-            </div>
-             <div  className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist4.webp" alt="Image 1" />
-                
-              </a>
-              <a className="main-artist">
-                 <div className="artist-info">Atsuko Tanaka
-                 <br/><p>Japenese, 1932-1005</p>
-                 </div>
-                 <div className="button-follow">Follow</div>
-              </a>
-            </div> 
-            <div  className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist5.webp" alt="Image 1" />
-                
-              </a>
-              <a className="main-artist">
-                 <div className="artist-info">Atsuko Tanaka
-                 <br/><p>Japenese, 1932-1005</p>
-                 </div>
-                 <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            
+          );
+        })}
           </Slider>
         </div>
       </div>
 
-      
+
 
       <div className="Events-section_home">
         <div className="title-section_home">
@@ -290,7 +239,7 @@ function Home() {
             </div>
 
           </div>
-          
+
         </div>
       </div>
 
@@ -303,7 +252,7 @@ function Home() {
 
       </div> */}
 
-      
+
     </div>
   );
 }
