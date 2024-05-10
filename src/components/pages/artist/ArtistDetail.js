@@ -26,7 +26,6 @@ function ArtistDetail() {
     <div>
       <link rel="stylesheet" href="assets/css/artistDetail.css" />
       <link rel="stylesheet" href="assets/css/home.css" />
-
       <div className="artistDetail-page">
         <div className="content-artist">
           <div className="img-artist">
