@@ -1,27 +1,41 @@
 const url = {
-    BASE_URL: "https://localhost:7220/api/",
+    BASE_URL: "https://localhost:7270/api/",
 
-    CONTACT: {
-        CREATE: "feedback/create",
+    AUTH: {
+        REGISTER: "AUTH/register",
+        LOGIN: "AUTH/login",
+        FORGOT_PASSWORD: "AUTH/forgot-password",
+        PROFILE: "AUTH/profile",
+        UPDATE_PROFILE: "AUTH/update-profile",
+        CHANGE_PASSWORD: "AUTH/change-password",
+        RESET_PASSWORD: "AUTH/reset-password",
     },
 
     ARTIST: {
-        LIST: "shop/get-all",
-        DETAIL: "shop/detail/{}",
-        RELATEDS: "shop/relateds/{}",
-        GETBYFLOOR: "shop/get-all-by-floor/{}",
-        GETBYCATEGORY: "shop/get-all-by-category/{}",
+        LIST:"Artists",
+        DETAIL: "Artists/{}",
     },
 
     ARTWORK: {
-        LIST: "floor/get-all",
+        LIST:"ArtWorks",
+        DETAIL: "ArtWorks/{}",
+    },
+
+    OFFER: {
+        CREATE: "Offers/CreateOfferUser",
+        MY_OFFER: "Offers/get-by-user",
+        DETAIL: "Offers/detailForUser"
+    },
+
+    FAVORITE: {
+        BY_USER: "Favorites/get-by-user",
+        ADD: "Favorites/addtofavorite",
+        REMOVE: "Favorites/removefavorite",
     },
 
     PAYPAL: {
-        PAYMENT: "v1/Payments/PayPal",
+        DETAIL: "Offers/detailForUser"
     },
 
-    GALLERY: {
-        LIST: "/gallery/get-all",
-    },
-};
+}; 
+export default url;
