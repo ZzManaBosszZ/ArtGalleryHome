@@ -35,7 +35,7 @@ function Home() {
       .catch((error) => {
         // console.error("Error fetching promotion details:", error);
       });
-  }, [id]);
+  }, []);
 
   //hien thi thong tin artist
   useEffect(() => {
@@ -48,7 +48,7 @@ function Home() {
       .catch((error) => {
         // console.error("Error fetching promotion details:", error);
       });
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     if (sliderRef1.current && sliderRef2.current) {

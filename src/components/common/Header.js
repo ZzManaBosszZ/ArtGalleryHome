@@ -1,10 +1,10 @@
 import React from 'react';
 import { isLoggedIn } from '../../utils/auth';
 import { NavLink } from 'react-router-dom';
+import "../../css/header.css"
 function Header() {
   return (
     <div>
-      <link rel="stylesheet" href="assets/css/header.css" />
       <header className="ct-header">
         <div className="ct-header__wrapper">
           <div className="ct-header__toolbar">
@@ -33,15 +33,15 @@ function Header() {
             </form>
             {isLoggedIn() ? (
               <li>
-                <NavLink to="/profile">Profile</NavLink>
+                <NavLink to="/profile" style={{ color: 'white' }} >Profile</NavLink>
               </li>
             ) : (
               <div className="login-area">
 
-                <a className="loginButton" href="#">Login</a>
+                <a className="loginButton" href="/login">Login</a>
 
 
-                <a className="registerButton" href="#">Register</a>
+                <a className="registerButton" href="/login">Register</a>
 
               </div>
             )}
