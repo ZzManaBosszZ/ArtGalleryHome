@@ -4,6 +4,7 @@ import { getDecodedToken, removeAccessToken } from "../../utils/auth";
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import "../../css/header.css"
 function Header() {
+  
   const navigate = useNavigate();
   const handleLogout = () => {
     removeAccessToken();
@@ -38,7 +39,7 @@ function Header() {
               </button>
             </form>
             {isLoggedIn() ? (
-              <img class="icon-home" src="/assets/images/home/4.jpeg" alt="" />
+              <img class="icon-home"  alt="" />
             ) : (
               <div className="login-area">
 
