@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import url from "../../../services/url";
 import api from "../../../services/api";
 import Swal from "sweetalert2";
+import "../../../css/login.css"
 function LoginAndRegister() {
   const navigate = useNavigate();
   useEffect(() => {
@@ -40,12 +41,14 @@ function LoginAndRegister() {
 
   const [formData, setFormData] = useState({
     fullname: "",
+    phone:"",
     email: "",
     password: "",
   });
 
   const [formErrors, setFormErrors] = useState({
     fullname: "",
+    phone:"",
     email: "",
     password: "",
   });
@@ -88,6 +91,17 @@ function LoginAndRegister() {
       valid = false;
     }
 
+
+    if (!formData.phone) {
+      newErrors.phone = "Please enter your phone number.";
+      valid = false;
+    } else if (formData.phone.length < 10) {
+      newErrors.phone = "Phone number must be at least 10 characters.";
+      valid = false;
+    } else if (formData.phone.length > 10) {
+      newErrors.phone = "Phone number must be less than 11 characters.";
+      valid = false;
+    }
     setFormErrors(newErrors);
     return valid;
   };
@@ -181,12 +195,11 @@ function LoginAndRegister() {
   return (
 
     <div class="dip">
-      <link rel="stylesheet" href="./assets/css/login.css"></link>
       <div class="container" id="container">
         <div class="form-container sign-up">
           <form onSubmit={handleRegister}>
-            <h1>Create Account</h1>
-            <div class="social-icons">
+            <h1 style={{fontSize: '3rem'}}>Create Account</h1>
+            {/* <div class="social-icons">
               <a href="#" class="icon">
                 <i class="fa-brands fa-google-plus-g"></i>
               </a>
@@ -200,7 +213,7 @@ function LoginAndRegister() {
                 <i class="fa-brands fa-linkedin-in"></i>
               </a>
             </div>
-            <span>or use your email for regiteration</span>
+            <span>or use your email for regiteration</span> */}
             <input
               type="text"
               placeholder="Name"
@@ -223,6 +236,17 @@ function LoginAndRegister() {
             />
             {formErrors.email && (
               <p className="invalid-feedback">{formErrors.email}</p>
+            )}
+            <input
+              type="tel"
+              placeholder="Phone"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            {formErrors.phone && (
+              <p className="invalid-feedback">{formErrors.phone}</p>
             )}
             <input
               type="password"
