@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../../../css/offer.css"
 
 function Offer() {
   const [showCustomPrice, setShowCustomPrice] = useState(false);

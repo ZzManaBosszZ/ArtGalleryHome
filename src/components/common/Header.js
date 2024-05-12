@@ -1,10 +1,17 @@
 import React from 'react';
 import { isLoggedIn } from '../../utils/auth';
-import { NavLink } from 'react-router-dom';
+import { getDecodedToken, removeAccessToken } from "../../utils/auth";
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+import "../../css/header.css"
 function Header() {
+  
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    removeAccessToken();
+    navigate("/login");
+  };
   return (
     <div>
-      <link rel="stylesheet" href="assets/css/header.css" />
       <header className="ct-header">
         <div className="ct-header__wrapper">
           <div className="ct-header__toolbar">
@@ -32,16 +39,17 @@ function Header() {
               </button>
             </form>
             {isLoggedIn() ? (
-              <li>
-                <NavLink to="/profile">Profile</NavLink>
-              </li>
+              <div>
+                <img class="icon-home" src='assets/images/home/4.jpeg'  alt="" />
+              </div>
+              
             ) : (
               <div className="login-area">
 
-                <a className="loginButton" href="#">Login</a>
+                <a className="loginButton" href="/login">Login</a>
 
 
-                <a className="registerButton" href="#">Register</a>
+                <a className="registerButton" href="/login">Register</a>
 
               </div>
             )}

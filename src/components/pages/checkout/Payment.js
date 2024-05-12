@@ -5,12 +5,13 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { getAccessToken, getDecodedToken } from "../../../utils/auth";
 import PayPalButton from "../../../payment/PaypalButton";
 import Swal from "sweetalert2";
+import "../../../css/payment.css"
 function Payment() {
   const { offerCode } = useParams();
   const [offerDetail, setOfferDetail] = useState([]);
   const decodedToken = getDecodedToken();
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   const createOrderData = async () => {
     const config = {
@@ -73,7 +74,6 @@ function Payment() {
 
   return (
     <div>
-      <link rel="stylesheet" href="assets/css/payment.css" />
       <div className="Payment-page">
         <div className="auction-steps">
           <a id="offer" className="offer-section">
@@ -122,16 +122,12 @@ function Payment() {
             </div>
           </div>
         </div>
-
         <PayPalButton
           amount={100}  
         // onSuccess={(details, data) => handlePaymentSuccess(details, data)}
         // onCancel={handlePaymentCancel}
         // onError={handlePaymentError}
         />
-
-        
-
       </div>
     </div>
   );
