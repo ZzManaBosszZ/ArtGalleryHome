@@ -38,7 +38,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <Header/>
+        <Header />
         <Routes>
           {/* Auth */}
 
@@ -49,24 +49,58 @@ function App() {
           {/* Profile */}
 
           {/* <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} /> */}
+
           {/* End Profile */}
 
+          {/* Home */}
+
           <Route path="/" element={<Home />} />
+
+          {/* End Home */}
+
+          {/* Artist */}
+
           <Route path="/artists" element={<Artists />} />
           <Route path="/artist/:id" element={<ArtistDetail />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/event" element={<Event />} />
+
+          {/* End Artist */}
+
+          {/* Artwork */}
+
           <Route path="/artwork" element={<Artwork />} />
           <Route path="/artworklist" element={<ListArt />} />
           <Route path="/artwork/:id" element={<ArtworkDetail />} />
+
+          {/* End Artwork */}
+
+          {/* About Us */}
+
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/about" element={<AboutUs />} />
+
+          {/* End About Us */}
+
+          {/* Offer */}
+
           <Route path="/offer/:id" element={<Offer />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/payment/:offerCode" element={<Payment />} />
-          {/* <Route path="/review" element={<Review />} /> */}
-          <Route path="/about" element={<AboutUs />} />
+
+          {/* End Offer */}
+
+          {/* Event */}
+
+          <Route path="/event" element={<Event />} />
+
+          {/* End Event */}
+
+          {/* Viewing Room */}
+
           <Route path="/viewingroom" element={<ViewingRooms />} />
+
+          {/* End Viewing Room */}
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
   );

@@ -139,13 +139,14 @@ function Home() {
             {artwork.map((item, index) => {
               return (
                 <div className="card-art_home">
-                  <a>
+                  <Link to={`/artwork/${item.id}`}><a>
                     <img src={item.artWorkImage} alt="Image 1" />
                     <h2 className="name-artist_carousel">{item.name}</h2>
                     <h2 className="exhibition">{item.series}</h2>
                     <span className="price-art_carousel">${item.price}</span>
                   </a>
                   <a className="button_add-product">Purchase</a>
+                  </Link>
                 </div>
               );
             })}
@@ -160,7 +161,6 @@ function Home() {
         <div className="title-section_home">
           <h1>Ours Artists</h1>
           <div className="vertical-line"></div>
-
         </div>
         <div className="carousel-controls">
           <i className="fa-solid fa-angle-left" onClick={goToPrev2}></i>
@@ -176,18 +176,21 @@ function Home() {
           >
             {artist.map((item, index) => {
               return (
-            <div className="card-artist">
+            <div  className="card-artist">
+              <Link to={`/artist/${item.id}`}>
               <a className="img-artist">
-                <img src="assets/images/artists/artist1.webp" alt="Image 1" />
-
+                <img src={item.image} alt="Image 1" />
               </a>
+              </Link>
               <a className="main-artist">
-                <div className="artist-info">Atsuko Tanaka
-                  <br /><p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
+                 <div className="artist-info">{item.name}
+                  <br/><p>Japenese, 1932-1005</p>
+                 </div>
+                 <div className="button-follow">Follow</div>
               </a>
+              
             </div>
+            
           );
         })}
           </Slider>

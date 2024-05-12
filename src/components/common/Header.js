@@ -39,7 +39,10 @@ function Header() {
               </button>
             </form>
             {isLoggedIn() ? (
-              <img class="icon-home"  alt="" />
+              <div>
+                <img class="icon-home" src='assets/images/home/4.jpeg'  alt="" />
+              </div>
+              
             ) : (
               <div className="login-area">
 
