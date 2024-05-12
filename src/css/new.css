@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
+}
+body {
+  margin: 0 30px;
+  padding: 0;
+}
+.back p {
+  color: #000;
+  font-size: 15px;
+}
+.container {
+  width: 800px;
+}
+.entryarea {
+  position: relative;
+  top: 0;
+  line-height: 50px;
+}
+h2 {
+  font-weight: 500;
+}
+input {
+  position: absolute;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  padding: 0 30px;
+  line-height: 50px;
+  border-radius: 5px;
+  border: 1px solid #e1e1e1;
+  background: transparent;
+  transition: 0.1s ease;
+  z-index: 111;
+}
+.back {
+  margin-top: 20px;
+}
+.pe {
+  font-size: 1rem;
+}
+.pe a {
+  color: #000;
+}

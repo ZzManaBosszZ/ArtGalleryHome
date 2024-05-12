@@ -1,9 +1,56 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import api from "../../../services/api";
+import url from "../../../services/url";
 function Artists() {
   const sliderRef = useRef(null);
+  const [artists, setArtists] = useState([]);
+
+  useEffect(() => {
+    const userToken = localStorage.getItem("access_token");
+    api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
+    api.get(`${url.ARTIST.LIST}`)
+      .then((response) => {
+        setArtists(response.data);
+      })
+      .catch((error) => {
+        // console.error("Error fetching promotion details:", error);
+      });
+  }, []);
+
+  // Hàm để sắp xếp mảng nghệ sĩ theo thứ tự ngẫu nhiên
+  const shuffleArray = (array) => {
+    let currentIndex = array.length;
+    let temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+
+  // Lấy danh sách nghệ sĩ và sắp xếp ngẫu nhiên
+  const shuffledArtists = shuffleArray(artists);
+
+  const filterArtistsBySchoolOfArt = (soa) => {
+    return artists.filter(artist => { 
+      const schoolOfArt = artist.schoolOfArts.map(schoolOfArt => schoolOfArt.name);
+      return schoolOfArt.includes(soa);
+    });
+  };
+  const artistsWithGivenSchoolOfArt = filterArtistsBySchoolOfArt('B');
 
   useEffect(() => {
     if (sliderRef.current) {
@@ -54,84 +101,23 @@ function Artists() {
               slidesToShow={4}
               slidesToScroll={3}
             >
-              <div className="card-artist">
-                <a href="/artistDetail" className="img-artist">
-                  <img src="assets/images/artists/artist1.webp" alt="Image 1" />
-                </a>
-                <a className="main-artist">
-                  <div className="artist-info">
-                    Atsuko Tanaka
-                    <br />
-                    <p>Japenese, 1932-1005</p>
-                  </div>
-                  <div className="button-follow">Follow</div>
-                </a>
-              </div>
-              <div className="card-artist">
-                <a className="img-artist">
-                  <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-                </a>
-                <a className="main-artist">
-                  <div className="artist-info">
-                    Atsuko Tanaka
-                    <br />
-                    <p>Japenese, 1932-1005</p>
-                  </div>
-                  <div className="button-follow">Follow</div>
-                </a>
-              </div>
-              <div className="card-artist">
-                <a className="img-artist">
-                  <img src="assets/images/artists/artist2.webp" alt="Image 1" />
-                </a>
-                <a className="main-artist">
-                  <div className="artist-info">
-                    Atsuko Tanaka
-                    <br />
-                    <p>Japenese, 1932-1005</p>
-                  </div>
-                  <div className="button-follow">Follow</div>
-                </a>
-              </div>
-              <div className="card-artist">
-                <a className="img-artist">
-                  <img src="assets/images/artists/artist3.webp" alt="Image 1" />
-                </a>
-                <a className="main-artist">
-                  <div className="artist-info">
-                    Atsuko Tanaka
-                    <br />
-                    <p>Japenese, 1932-1005</p>
-                  </div>
-                  <div className="button-follow">Follow</div>
-                </a>
-              </div>
-              <div className="card-artist">
-                <a className="img-artist">
-                  <img src="assets/images/artists/artist4.webp" alt="Image 1" />
-                </a>
-                <a className="main-artist">
-                  <div className="artist-info">
-                    Atsuko Tanaka
-                    <br />
-                    <p>Japenese, 1932-1005</p>
-                  </div>
-                  <div className="button-follow">Follow</div>
-                </a>
-              </div>
-              <div className="card-artist">
-                <a className="img-artist">
-                  <img src="assets/images/artists/artist5.webp" alt="Image 1" />
-                </a>
-                <a className="main-artist">
-                  <div className="artist-info">
-                    Atsuko Tanaka
-                    <br />
-                    <p>Japenese, 1932-1005</p>
-                  </div>
-                  <div className="button-follow">Follow</div>
-                </a>
-              </div>
+              {shuffledArtists.map(artist => (
+                <div className="card-artist">
+                  <Link to={`/artist/${artist.id}`}>
+                  <a className="img-artist">
+                    <img src={artist.image} alt="Image 1" />
+                  </a>
+                  </Link>
+                  <a className="main-artist">
+                    <div className="artist-info">
+                      {artist.name}
+                      <br />
+                      <p>Japenese, 1932-1005</p>
+                    </div>
+                    <div className="button-follow">Follow</div>
+                  </a>
+                </div>
+              ))}
             </Slider>
           </div>
         </section>
@@ -142,58 +128,21 @@ function Artists() {
             <a href="/listArtist" className="view-more_artist">View more</a>
           </div>
           <div className="section-content_artist">
+          {artistsWithGivenSchoolOfArt.map(artist => (
             <div className="card-artist">
               <a href="/artistDetail" className="img-artist">
-                <img src="assets/images/artists/gutai.webp" alt="Image 1" />
+                <img src={artist.image} alt="Image 1" />
               </a>
               <a href="/artistDetail" className="main-artist">
                 <div className="artist-info">
-                  Atsuko Tanaka
+                  {artist.name}
                   <br />
-                  <p>Japenese, 1932-1005</p>
+                  <p>{artist.description}</p>
                 </div>
                 <div className="button-follow">Follow</div>
               </a>
             </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
+            ))}
           </div>
         </section>
         <section className="artists-section">
@@ -256,7 +205,7 @@ function Artists() {
             </div>
           </div>
         </section>
-        
+
         <section className="artists-section">
           <div className="top-section">
             <h3 className="title-section">Color Field Painting</h3>

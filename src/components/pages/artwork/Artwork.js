@@ -1,6 +1,57 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import api from "../../../services/api";
+import url from "../../../services/url";
 
 function Artwork() {
+
+  const [artworks, setArtworks] = useState([]);
+  useEffect(() => {
+    const userToken = localStorage.getItem("access_token");
+    api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
+    api.get(`${url.ARTWORK.LIST}`)
+      .then((response) => {
+        setArtworks(response.data);
+      })
+      .catch((error) => {
+        // console.error("Error fetching promotion details:", error);
+      });
+  }, []);
+
+  // Hàm để sắp xếp mảng nghệ sĩ theo thứ tự ngẫu nhiên
+  const shuffleArray = (array) => {
+    let currentIndex = array.length;
+    let temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+
+  // Lấy danh sách nghệ sĩ và sắp xếp ngẫu nhiên
+  const shuffledArtists = shuffleArray(artworks);
+
+  const filterArtworksBySchoolOfArt = (soa) => {
+    return artworks.filter(artwork => { 
+      const schoolOfArt = artwork.schoolOfArts.map(schoolOfArt => schoolOfArt.name);
+      return schoolOfArt.includes(soa);
+    });
+  };
+  const artworksWithGivenSchoolOfArt = filterArtworksBySchoolOfArt('A');
+
   return (
     <div>
       <div className="artwork-page">
@@ -195,42 +246,19 @@ function Artwork() {
               <a href="/listArt" className="view-more_art">View more</a>
             </div>
             <div className="content-section">
+            {artworksWithGivenSchoolOfArt.map(artwork => (
               <div className="card-art_home">
-                <a href="/artworkDetail">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
+                <Link to={`/artwork/${artwork.id}`}>
                 <a>
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
+                  <img src={artwork.artWorkImage} alt="Image 1" />
+                  <h2 className="name-artist_carousel">{artwork.name}</h2>
+                  <h2 className="exhibition">{artwork.series}</h2>
+                  <span className="price-art_carousel">${artwork.price}</span>
                 </a>
                 <a className="button_add-product">Purchase</a>
+                </Link>
               </div>
-              <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
+              ))}
             </div>
           </div>
           <div className="art-section">
