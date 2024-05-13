@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import api from "../../../services/api";
 import url from "../../../services/url";
+// import "../../../css/artist.css";
 function Artists() {
   const sliderRef = useRef(null);
   const [artists, setArtists] = useState([]);
@@ -74,7 +75,7 @@ function Artists() {
       <div className="top-page">
         <h1 className="title-artist_page">Our Artists</h1>
 
-        <div className="vertical-line"></div>
+        {/* <div className="vertical-line"></div> */}
         <div className="demo-page">
           <p>
             Explore our Artists page to discover a curated selection of talented

@@ -142,7 +142,7 @@ function Home() {
                   <Link to={`/artwork/${item.id}`}><a>
                     <img src={item.artWorkImage} alt="Image 1" />
                     <h2 className="name-artist_carousel">{item.name}</h2>
-                    <h2 id="exhibition">{item.series}</h2>
+                    <h2 id="exhibition-home">{item.series}</h2>
                     <span className="price-art_carousel">${item.price}</span>
                   </a>
                   <a className="button_add-product">Purchase</a>

@@ -1,15 +1,19 @@
 .ArtDetail-page{
-     padding: 70px 70px;
+     padding: 70px 90px;
      max-height:30rem ;
+     display: flex;
+     flex-direction: column;
 }
 a{
   text-decoration: none;
 }
 .about-artwork{
+  max-height: auto;
      display: grid;
      grid-template-columns: repeat(2, 1fr);
      column-gap: 30px;
      margin-left: 40px;
+     margin-bottom: 150px;
 }
 .info-art_section{
      width:  37rem;
@@ -262,7 +266,7 @@ a{
    }
    
    .other-artwork{
-     margin-top: 10rem;
+     margin-top: 30rem;
    }
    .list-works{
      display: grid;
