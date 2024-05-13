@@ -14,9 +14,8 @@ function ArtworkDetail() {
   const [error, setError] = useState(null);
   const [artist, setArtists] = useState([]);
   const { id } = useParams();
-  const [ArtWorkDetail, setArtWorkDetail] = useState({ artWork: [], schoolOfArts: [] });
+  const [ArtWorkDetail, setArtWorkDetail] = useState({ artists: [], artwork: [], schoolOfArts: [] });
   const artworks = ArtWorkDetail.artwork || [];
-  const schoolOfArts = ArtWorkDetail.schoolOfArts || [];
   const navigate = useNavigate();
 
   const handleOffer = () => {
@@ -180,7 +179,11 @@ function ArtworkDetail() {
           </div>
           <div className="purchase-art_section">
             <div className="info-purchase_art">
-              <h1 className="name-artist">Rachel MacFarlane</h1>
+              {ArtWorkDetail.artists.map((artist) => {
+                return (
+                  <h1 className="name-artist">{artist.name}</h1>
+                );
+              })}
               <h2 className="name-exhibition">{ArtWorkDetail.name} 2024</h2>
               <p className="masterial">Oil on canvas</p>
               <p className="size">24 × 18 in | 61 × 45.7 cm</p>
