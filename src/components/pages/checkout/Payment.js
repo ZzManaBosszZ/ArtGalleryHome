@@ -13,46 +13,11 @@ function Payment() {
   const [error, setError] = useState(null);
   const navigate = useNavigate(); 
 
-  const createOrderData = async () => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${getAccessToken()}`,
-      },
-    };
-    try {
-      if (decodedToken) {
-        // const total = calculateTotal(movieData.selectedSeats, movieData.addFoods);
-        // const finalTotal = calculateFinalTotal(total, 0);
-
-        const orderData = {
-          // showId: selectShow.id,
-          // userId: userInfo.userId,
-          // total: total,
-          // discountAmount: total - discountRate.data || 0,
-          // discountCode: formData.promotionCode || "",
-          // finalTotal: discountRate.data ? discountRate.data : finalTotal,
-          // paymentMethod: selectedPaymentMethod,
-          // tickets: movieData.selectedSeats.map((seat) => ({ seatId: seat.id })),
-          // foods: movieData.addFoods && movieData.addFoods.length > 0 ? movieData.addFoods.map((food) => ({ id: food.id, quantity: food.quantity, price: food.price })) : [],
-        };
-
-        const orderResponse = await api.post(url.BOOKING.CREATE, orderData, config);
-
-        // Use orderResponse.data.id instead of order.id
-        navigate(`/checkout/thank-you/${orderResponse.data.orderCode}`);
-        localStorage.removeItem("movie_data");
-      }
-    } catch (error) {
-      console.log("Error:", error);
-    }
-  };
-
   const loadOffer = useCallback(async () => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${getAccessToken()}`,
+        Authorization: `Bearer ${getAccessToken()}`,
       },
     };
 
@@ -105,7 +70,7 @@ function Payment() {
             <div className="info-order">
               <div className="info-order_item">
                 <div className="title-item">Your offer</div>
-                <div className="content-item">US$15,000.00</div>
+                <div className="content-item">US${offerDetail.toTal}</div>
               </div>
               <div className="info-order_item">
                 <div className="title-item">Shipping</div>
@@ -123,7 +88,7 @@ function Payment() {
           </div>
         </div>
         <PayPalButton
-          amount={100}  
+          amount={offerDetail.toTal}
         // onSuccess={(details, data) => handlePaymentSuccess(details, data)}
         // onCancel={handlePaymentCancel}
         // onError={handlePaymentError}

@@ -3,6 +3,12 @@ import React from "react";
 function Follows() {
   return (
     <div style={{ marginTop: "20px" }} class="container">
+      <link rel="stylesheet" href="assets/css/profile/follows.css" />
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      />
+
       <div
         class="menu"
         style={{
@@ -11,9 +17,12 @@ function Follows() {
           alignItems: "center",
         }}
       >
-        <div class="menu-left d-flex align-items-center" style="width: 300px; ">
+        <div
+          class="menu-left d-flex align-items-center"
+          style={{ width: "300px" }}
+        >
           <img
-            src="/art/user.png"
+            src="assets/images/profile/user.png"
             alt=""
             style={{ borderRadius: "50%", width: "100px" }}
           />
@@ -23,7 +32,7 @@ function Follows() {
           </div>
         </div>
         <div class="menu-right">
-          <a href="Edit.html">
+          <a href="/edit">
             <button class="btn-1">Settings</button>
           </a>
         </div>
@@ -43,26 +52,22 @@ function Follows() {
             >
               <ul class="navbar-nav w-100 justify-content-between">
                 <li class="nav-item">
-                  <a class="nav-link" href="Collection.html">
+                  <a class="nav-link" href="/profile">
                     My Collection
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Insights.html">
-                    Insights
+                  <a class="nav-link" href="/accountsetting">
+                    Account Settings
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Saves.html">
+                  <a class="nav-link" href="/saves">
                     Saves
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    style={{ color: "#000" }}
-                    class="nav-link"
-                    href="Follows.html"
-                  >
+                  <a style={{ color: "#000" }} class="nav-link" href="/follows">
                     Follows
                   </a>
                 </li>

@@ -14,7 +14,8 @@ function ArtworkDetail() {
   const [error, setError] = useState(null);
   const [artist, setArtists] = useState([]);
   const { id } = useParams();
-  const [ArtWorkDetail, setArtWorkDetail] = useState({ schoolOfArts: [] });
+  const [ArtWorkDetail, setArtWorkDetail] = useState({ artists: [], artwork: [], schoolOfArts: [] });
+  const artworks = ArtWorkDetail.artwork || [];
   const navigate = useNavigate();
 
   const handleOffer = () => {
@@ -140,7 +141,7 @@ function ArtworkDetail() {
                       <img src="assets/images/artists/color.webp"></img>
                     </div>
                     <div className="info-artist">
-                      <a className="name-artist">Rachel MacFarlane</a>
+                      <a className="name-artist"></a>
                       <p>Canadian, b. 1986</p>
                     </div>
                   </div>
@@ -178,7 +179,11 @@ function ArtworkDetail() {
           </div>
           <div className="purchase-art_section">
             <div className="info-purchase_art">
-              <h1 className="name-artist">Rachel MacFarlane</h1>
+              {ArtWorkDetail.artists.map((artist) => {
+                return (
+                  <h1 className="name-artist">{artist.name}</h1>
+                );
+              })}
               <h2 className="name-exhibition">{ArtWorkDetail.name} 2024</h2>
               <p className="masterial">Oil on canvas</p>
               <p className="size">24 × 18 in | 61 × 45.7 cm</p>
@@ -246,57 +251,19 @@ function ArtworkDetail() {
               slidesToShow={4}
               slidesToScroll={3}
             >
-              <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art1.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art3.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>              </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art4.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>              </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art5.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>              </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art6.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>              </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-
+              {shuffle(artworks).slice(0, 6).map((artwork, index) => {
+                return (
+                  <div className="card-art_home">
+                    <a>
+                      <img src={artwork.artWorkImage} alt="Image 1" />
+                      <h2 className="name-artist_carousel">{artwork.name}</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">{artwork.price}</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                );
+              })}
             </Slider>
           </div>
         </div>

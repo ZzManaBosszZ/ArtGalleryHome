@@ -3,12 +3,13 @@ import { isLoggedIn } from '../../utils/auth';
 import { getDecodedToken, removeAccessToken } from "../../utils/auth";
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import "../../css/header.css"
+import "../../css/dropdown.css"
 function Header() {
-  
+
   const navigate = useNavigate();
   const handleLogout = () => {
     removeAccessToken();
-    navigate("/login");
+    navigate("/");
   };
   return (
     <div>
@@ -39,10 +40,16 @@ function Header() {
               </button>
             </form>
             {isLoggedIn() ? (
-              <div>
-                <img class="icon-home" src='assets/images/home/4.jpeg'  alt="" />
+              <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-user"></i></button>
+                <div class="dropdown-content">
+                  <Link to={"/profile"}><i class="fa-regular fa-image"></i> Profile</Link>
+                  <a onClick={handleLogout}
+                  ><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a
+                  >
+                </div>
               </div>
-              
+
             ) : (
               <div className="login-area">
 

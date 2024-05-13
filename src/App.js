@@ -20,6 +20,10 @@ import Artwork from "./components/pages/artwork/Artwork.js";
 import ListArt from "./components/pages/artist/ListArtist.js";
 import LoginAndRegister from "./components/pages/auth/Login.js";
 import authMiddleware from "./context/authMiddleware.js";
+import Profile from "./components/pages/auth/profile/Profile.js";
+import Edit from "./components/pages/auth/profile/Edit.js";
+import Upload from "./components/pages/auth/profile/Upload.js";
+import New from "./components/pages/auth/profile/New.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -50,6 +54,10 @@ function App() {
           {/* Profile */}
 
           {/* <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} /> */}
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/edit" element={<Edit/>}/>
+          <Route path="/upload-artwork" element={<Upload/>}/>
+          <Route path="/upload" element={<New/>}/>
 
           {/* End Profile */}
 

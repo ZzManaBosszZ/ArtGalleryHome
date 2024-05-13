@@ -13,7 +13,6 @@ function Home() {
   const sliderRef2 = useRef(null);
   const { id } = useParams();
   const navigate = useNavigate();
-
   const [artwork, setArtworks] = useState([]);
   const [artist, setArtists] = useState([]);
   // const handleOffer = () => {

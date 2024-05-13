@@ -1,9 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "poppins", sans-serif;
-  box-sizing: border-box;
-}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -84,7 +79,7 @@ hr {
   top: 0;
   line-height: 50px;
 }
-input {
+.input-edit {
   position: absolute;
   width: 100%;
   outline: none;
@@ -106,13 +101,13 @@ input {
   background-color: #fff;
   transition: 0.2s ease;
 }
-input:focus,
-input:valid {
+.input-edit:focus,
+.input-edit:valid {
   color: black;
   border: 1.2px solid #8891eb;
 }
-input:focus + .labelline,
-input:valid + .labelline {
+.input-edit:focus + .labelline,
+.input-edit:valid + .labelline {
   color: #8891eb;
   height: 30px;
   line-height: 30px;
@@ -121,7 +116,6 @@ input:valid + .labelline {
   z-index: 1111;
 }
 .btn-1,
-.btn-1 *,
 .btn-1 :after,
 .btn-1 :before,
 .btn-1:after,
