@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { setAccessToken } from "../../../utils/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation   } from "react-router-dom";
 import url from "../../../services/url";
 import api from "../../../services/api";
 import Swal from "sweetalert2";
 import "../../../css/login.css"
+import queryString from "query-string";
 function LoginAndRegister() {
   const navigate = useNavigate();
   useEffect(() => {
@@ -52,6 +53,10 @@ function LoginAndRegister() {
     email: "",
     password: "",
   });
+
+  const parseQueryString = (query) => {
+    return queryString.parse(query);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;

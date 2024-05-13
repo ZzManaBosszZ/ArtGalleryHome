@@ -42,7 +42,8 @@ function App() {
         <Routes>
           {/* Auth */}
 
-          <Route path="/login" element={<ProtectedLoginRoute element={<LoginAndRegister />} />} />
+          <Route path="/login" element={<ProtectedLoginRoute element={<LoginAndRegister />} />}>
+          </Route>
 
           {/* End Auth */}
 
