@@ -7,6 +7,7 @@ import { isLoggedIn } from "../../../utils/auth";
 import api from "../../../services/api";
 import url from "../../../services/url";
 import NotFound from "../other/NotFound";
+import "../../../css/home.css"
 function Home() {
   const sliderRef1 = useRef(null);
   const sliderRef2 = useRef(null);
@@ -76,7 +77,6 @@ function Home() {
   };
   return (
     <div className="homepage">
-      <link rel="stylesheet" href="assets/css/home.css" />
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
