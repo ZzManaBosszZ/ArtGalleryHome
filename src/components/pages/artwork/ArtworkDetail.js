@@ -142,7 +142,7 @@ function ArtworkDetail() {
                       <img src="assets/images/artists/color.webp"></img>
                     </div>
                     <div className="info-artist">
-                      <a className="name-artist">Rachel MacFarlane</a>
+                      <a className="name-artist"></a>
                       <p>Canadian, b. 1986</p>
                     </div>
                   </div>

@@ -1,9 +1,9 @@
 import React from "react";
+import "../../../../css/profile.css"
 
 function Profile() {
   return (
     <div class="ko">
-      <link rel="stylesheet" href="assets/css/profile/profile.css" />
       <link
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -22,7 +22,7 @@ function Profile() {
             class="menu-left d-flex align-items-center"
             style={{ width: "300px" }}
           >
-            <img
+            <img className="image-profile"
               src="assets/images/profile/user.png"
               alt=""
               style={{ borderRadius: "50%", width: "100px" }}
@@ -87,7 +87,7 @@ function Profile() {
             <div class="hero-content">
               <h2>Know Your Collection Better</h2>
               <p>Manage your collection online and get free market insights.</p>
-              <a href="/new">
+              <a href="/upload">
                 <button class="cta-button">Upload Artwork</button>
               </a>
             </div>

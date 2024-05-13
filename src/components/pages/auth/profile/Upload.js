@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import "../../../../css/upload.css"
 function Upload() {
   const [checkbox1Checked, setCheckbox1Checked] = useState(false);
   const [checkbox2Checked, setCheckbox2Checked] = useState(false);
@@ -15,10 +15,9 @@ function Upload() {
     setCheckbox1Checked(false);
   };
   return (
-    <div>
-      <link rel="stylesheet" href="assets/css/profile/upload.css" />
+    <div class="container-upload">
 
-      <div style={{ marginTop: "20px" }} class="container">
+      <div style={{ marginTop: "20px" }}>
         <div
           class="menu"
           style={{
@@ -31,7 +30,7 @@ function Upload() {
             class="menu-left d-flex align-items-center"
             style={{ width: "300px" }}
           >
-            <p>
+            <p className="p-upload">
               <a style={{ color: "#000" }} href="/new">
                 Back
               </a>
@@ -39,7 +38,7 @@ function Upload() {
           </div>
           <div class="menu-right">
             <a href="#">
-              <button class="btn-1">Upload Artwork</button>
+              <button class="btn-1-upload">Upload Artwork</button>
             </a>
           </div>
         </div>
@@ -84,7 +83,7 @@ function Upload() {
             </label>
           </div>
 
-          <div class="checkbox-container">
+          <div class="checkbox-container-upload">
             <input
               type="checkbox"
               id="checkbox2"
@@ -145,12 +144,12 @@ function Upload() {
       </div>
       <p class="plo">Upload Photos</p>
       <div class="drag">
-        <h2>Drag and drop photos here</h2>
-        <p>Files supported:JPG, PNG</p>
-        <p>Total maximum size: 30MB</p>
+        <h2 className="upload">Drag and drop photos here</h2>
+        <p className="p-upload">Files supported:JPG, PNG</p>
+        <p className="p-upload">Total maximum size: 30MB</p>
         <div class="menu-right">
           <a href="#">
-            <button class="btn-1">Add Photo</button>
+            <button class="btn-1-upload">Add Photo</button>
           </a>
         </div>
       </div>

@@ -1,9 +1,8 @@
 import React from "react";
-
+import "../../../../css/edit.css"
 function Edit() {
   return (
     <div>
-      <link rel="stylesheet" href="assets/css/profile/edit.css" />
       <div
         class="menu-left d-flex align-items-center"
         style={{ width: "300px", margin: "30px 0 0 50px" }}
@@ -54,7 +53,7 @@ function Edit() {
           <div class="hhh">
             <div class="container">
               <div class="entryarea">
-                <input type="text" required />
+                <input className="input-edit" type="text" required />
                 <div class="labelline">Full Name</div>
               </div>
             </div>
@@ -62,7 +61,7 @@ function Edit() {
           <div class="hhh">
             <div class="container">
               <div class="entryarea">
-                <input type="text" required />
+                <input className="input-edit" type="text" required />
                 <div class="labelline">Birthday</div>
               </div>
             </div>
@@ -70,7 +69,7 @@ function Edit() {
           <div class="hhh">
             <div class="container">
               <div class="entryarea">
-                <input type="text" required />
+                <input className="input-edit" type="text" required />
                 <div class="labelline">AddPhone</div>
               </div>
             </div>
@@ -78,7 +77,7 @@ function Edit() {
           <div class="hhh">
             <div class="container">
               <div class="entryarea">
-                <input type="text" required />
+                <input className="input-edit" type="text" required />
                 <div class="labelline">About</div>
               </div>
             </div>

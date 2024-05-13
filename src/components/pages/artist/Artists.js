@@ -74,7 +74,7 @@ function Artists() {
       <div className="top-page">
         <h1 className="title-artist_page">Our Artists</h1>
 
-        <div className="vertical-line"></div>
+        {/* <div className="vertical-line"></div> */}
         <div className="demo-page">
           <p>
             Explore our Artists page to discover a curated selection of talented

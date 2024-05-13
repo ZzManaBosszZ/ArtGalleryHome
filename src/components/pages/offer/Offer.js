@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { getAccessToken, getDecodedToken  } from "../../../utils/auth";
 import "../../../css/offer.css"
 import api from "../../../services/api";
 import url from "../../../services/url";
@@ -8,6 +9,10 @@ function Offer() {
   const [note, setNote] = useState("");
   const { id } = useParams();
   const [ArtWorkDetail, setArtWorkDetail] = useState({ schoolOfArts: [] });
+  const [offers, setOffers] = useState({});
+  const [total, setTotal] = useState(0);
+  const [displayedPrice, setDisplayedPrice] = useState(0);
+  const decodedToken = getDecodedToken();
 
   const handleDifferentOptionChange = (event) => {
     setShowCustomPrice(event.target.value === "different");
@@ -16,18 +21,45 @@ function Offer() {
     setNote(event.target.value);
   };
 
-    //hien thi thong tin chi tiet artwork
-    useEffect(() => {
-      const userToken = localStorage.getItem("access_token");
-      api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
-      api.get(`${url.ARTWORK.DETAIL.replace("{}", id)}`)
-        .then((response) => {
-          setArtWorkDetail(response.data);
-        })
-        .catch((error) => {
-          // console.error("Error fetching promotion details:", error);
-        });
-    }, [id]);
+  //hien thi thong tin chi tiet artwork
+  useEffect(() => {
+    const userToken = localStorage.getItem("access_token");
+    api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
+    api.get(`${url.ARTWORK.DETAIL.replace("{}", id)}`)
+      .then((response) => {
+        setArtWorkDetail(response.data);
+      })
+      .catch((error) => {
+        // console.error("Error fetching promotion details:", error);
+      });
+  }, [id]);
+
+  // create order
+  const createOrderData = async () => {
+    const config = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getAccessToken()}`,
+        },
+    };
+    try {
+        if (decodedToken) {
+
+            const offerData = {
+              artWorkId: 0, // Thêm artWorkId vào dữ liệu của offer
+              total: 0 // Thêm total vào dữ liệu của offer
+            }
+            const offerResponse = await api.post(url.OFFER.CREATE, offerData, config)
+        }
+    } catch (error) {
+        console.log("Error:", error);
+    }
+};
+
+const handleCreateOffer = async (details, data) => {
+  await createOrderData();
+};
+
   return (
     <div>
       <div className="Offer-page">
@@ -44,10 +76,6 @@ function Offer() {
             <h3>Payment</h3>
             <i className="fa-solid fa-angle-right"></i>
           </a>
-          <a id="review" className="review-section">
-            <h3>Review</h3>
-            <i className="fa-solid fa-angle-right"></i>
-          </a>
         </div>
         <div className="main-offer_page">
           <div className="auction-content">
@@ -59,12 +87,11 @@ function Offer() {
                   <input
                     type="radio"
                     name="price"
-                    value="15000"
                     onChange={handleDifferentOptionChange}
                   />
                   <div className="text">
                     <br/>
-                    US$15,000.00
+                    US${ArtWorkDetail.price}
                     <br />
                     Top-end of range (high chance of acceptance)
                   </div>
@@ -74,11 +101,10 @@ function Offer() {
                   <input
                     type="radio"
                     name="price"
-                    value="12500"
                     onChange={handleDifferentOptionChange}
                   />
                   <div className="text">
-                    US$12,500.00
+                    US${ArtWorkDetail.price * 1/2}
                     <br />
                     Midpoint(good chance of acceptance)
                   </div>
@@ -88,11 +114,10 @@ function Offer() {
                   <input
                     type="radio"
                     name="price"
-                    value="10000"
                     onChange={handleDifferentOptionChange}
                   />
                   <div className="text">
-                    US$10,000.00
+                    US${ArtWorkDetail.price * 1/4}
                     <br />
                     Low-end of range(lower chance of acceptance)
                   </div>
@@ -115,7 +140,7 @@ function Offer() {
                   <div className="info-message">
                     Offers lower than the displayed price range are often
                     declined. We recommend increasing your offer to
-                    US$10,000.00.
+                    US${ArtWorkDetail.price * 1/4}.
                   </div>
                 </div>
               )}
@@ -145,7 +170,7 @@ function Offer() {
               </div>
             </div>
            
-              <a href="/shipping" className="next-offer">Continue</a>
+              <a onClick={handleCreateOffer} className="next-offer">Continue</a>
             
           </div>
           <div className="offer-order">
@@ -154,21 +179,21 @@ function Offer() {
               <div className="name-artist">Rachel MacFarlane</div>
               <div className="exhibition">Perfomer, 2024</div>
               <div className="address">New York, NY, US</div>
-              <div className="price">$10,000-$15,000</div>
+              <div className="price">${ArtWorkDetail.price}</div>
             </div>
             <div className="info-order">
               <div className="info-order_item">
                 <div className="title-item">Your offer</div>
-                <div className="content-item">US$15,000.00</div>
+                <div className="content-item">US$</div>
               </div>
-              <div className="info-order_item">
+              {/* <div className="info-order_item">
                 <div className="title-item">Shipping</div>
                 <div className="content-item">Calculated in next steps</div>
               </div>
               <div className="info-order_item">
                 <div className="title-item">Tax*</div>
                 <div className="content-item">Calculated in next steps</div>
-              </div>
+              </div> */}
               <div id="total-item" className="info-order_item">
                 <div className="title-item">Total</div>
                 <div className="content-item">Waiting for final costs</div>

@@ -60,7 +60,7 @@ function Artwork() {
         <div className="top-page">
           <h1 className="title-art_page">Our Artworks</h1>
 
-          <div className="vertical-line"></div>
+          {/* <div className="vertical-line"></div> */}
           <div className="demo-page">
             <p>
               Discover captivating artworks from around the world. Dive into a

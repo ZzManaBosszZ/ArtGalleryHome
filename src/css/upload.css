@@ -1,13 +1,12 @@
-.btn-1,
-.btn-1 *,
-.btn-1 :after,
-.btn-1 :before,
-.btn-1:after,
-.btn-1:before {
+.btn-1-upload,
+.btn-1-upload :after,
+.btn-1-upload :before,
+.btn-1-upload:after,
+.btn-1-upload:before {
   border: 0 solid;
   box-sizing: border-box;
 }
-.btn-1 {
+.btn-1-upload{
   background-color: #fff;
   background-image: none;
   color: #000;
@@ -23,7 +22,7 @@
   transition: 0.2s ease;
 }
 
-.btn-1:hover {
+.btn-1-upload:hover {
   background-color: #1023d7;
   color: #fff;
 }
@@ -46,16 +45,16 @@
   width: 345px;
   height: 50px;
 }
-.btn-1,
-.btn-1 *,
-.btn-1 :after,
-.btn-1 :before,
-.btn-1:after,
-.btn-1:before {
+.btn-1-upload,
+.btn-1-upload *,
+.btn-1-upload :after,
+.btn-1-upload :before,
+.btn-1-upload:after,
+.btn-1-upload:before {
   border: 0 solid;
   box-sizing: border-box;
 }
-.btn-1 {
+.btn-1-upload{
   background-color: #fff;
   background-image: none;
   color: #000;
@@ -71,7 +70,7 @@
   transition: 0.2s ease;
 }
 
-.btn-1:hover {
+.btn-1-upload:hover {
   background-color: #1023d7;
   color: #fff;
 }
@@ -84,17 +83,17 @@
   border: solid #f2f2f2;
   margin: 10px 0 0 30px;
 }
-h2 {
+.upload h2 {
   margin: 40px 0 0 20px;
 }
-p {
+.p-upload {
   margin: 40px 0 0 30px;
   color: #707070;
 }
 .checkbox-label {
   padding-left: 25px;
 }
-.checkbox-container {
+.checkbox-container-upload {
   margin-left: 50px;
 }
 .custom-checkbox1 {
