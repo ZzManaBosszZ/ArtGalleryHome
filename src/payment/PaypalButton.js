@@ -1,4 +1,3 @@
-
 import {
     PayPalScriptProvider,
     PayPalButtons,
@@ -46,7 +45,7 @@ const ButtonWrapper = ({ showSpinner, currency, amount }) => {
 export default function PayPalButton({amount}) {
     return (
         <div style={{ maxWidth: "750px", minHeight: "200px" }}>
-            <PayPalScriptProvider options={{ clientId: "AcbuygWaM7SU1E8AUe3KVTXiHRtez2BaV9XOFuX3bL36MlwwFxfJogjRL6q5TKOD6tQBJ1XeC5omTBXE", components: "buttons", currency: "USD" }}>
+            <PayPalScriptProvider deferLoading={true} options={{ clientId: "AcbuygWaM7SU1E8AUe3KVTXiHRtez2BaV9XOFuX3bL36MlwwFxfJogjRL6q5TKOD6tQBJ1XeC5omTBXE", components: "buttons", currency: "USD" }}>
                 <ButtonWrapper currency={'USD'} showSpinner={false} amount={amount} />
             </PayPalScriptProvider>
         </div>
