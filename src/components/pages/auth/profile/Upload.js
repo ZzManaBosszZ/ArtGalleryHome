@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+
 function Upload() {
   const [checkbox1Checked, setCheckbox1Checked] = useState(false);
   const [checkbox2Checked, setCheckbox2Checked] = useState(false);
@@ -15,6 +16,8 @@ function Upload() {
   };
   return (
     <div>
+      <link rel="stylesheet" href="assets/css/profile/upload.css" />
+
       <div style={{ marginTop: "20px" }} class="container">
         <div
           class="menu"
@@ -29,7 +32,7 @@ function Upload() {
             style={{ width: "300px" }}
           >
             <p>
-              <a style={{ color: "#000" }} href="New.html">
+              <a style={{ color: "#000" }} href="/new">
                 Back
               </a>
             </p>

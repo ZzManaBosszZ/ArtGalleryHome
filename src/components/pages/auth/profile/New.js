@@ -3,8 +3,10 @@ import React from "react";
 function New() {
   return (
     <div>
+      <link rel="stylesheet" href="assets/css/profile/new.css" />
+
       <div class="back">
-        <a href="Collection.html">
+        <a href="/profile">
           <p> Back</p>
         </a>
       </div>
@@ -25,7 +27,7 @@ function New() {
           </div>
         </div>
         <p class="pe" style={{ marginTop: "30px" }}>
-          Can't find the artist? <a href="Upload.html">Add their name</a>.
+          Can't find the artist? <a href="/upload">Add their name</a>.
         </p>
       </div>
     </div>

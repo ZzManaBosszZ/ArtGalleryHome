@@ -30,7 +30,9 @@
 .hero {
   overflow: hidden;
 }
-
+.ko {
+  margin-top: 50px;
+}
 .containers {
   display: flex;
   justify-content: center;
