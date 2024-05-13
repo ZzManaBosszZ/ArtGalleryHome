@@ -5,7 +5,6 @@ import url from "../../../services/url";
 import api from "../../../services/api";
 import Swal from "sweetalert2";
 import "../../../css/login.css"
-import queryString from "query-string";
 function LoginAndRegister() {
   const navigate = useNavigate();
   useEffect(() => {
@@ -55,7 +54,6 @@ function LoginAndRegister() {
   });
 
   const parseQueryString = (query) => {
-    return queryString.parse(query);
   };
 
   const handleChange = (e) => {
