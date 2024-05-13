@@ -10,13 +10,36 @@ function Offer() {
   const { id } = useParams();
   const [ArtWorkDetail, setArtWorkDetail] = useState({ schoolOfArts: [] });
   const [offers, setOffers] = useState({});
-  const [total, setTotal] = useState(0);
-  const [displayedPrice, setDisplayedPrice] = useState(0);
   const decodedToken = getDecodedToken();
+
+  const priceData = {
+    option1: ArtWorkDetail.price,
+    option2: ArtWorkDetail.price * 1/2,
+    option3: ArtWorkDetail.price * 1/4,
+    option4: 0,
+  };
+  const [currentPrice, setCurrentPrice] = useState(priceData.option1); 
+  const [selectedOption, setSelectedOption] = useState('option1');
+
+  
+  const handleOptionChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
+    // Lấy giá từ phần dữ liệu và cập nhật giá mới
+    const newPrice = priceData[selectedValue];
+    setCurrentPrice(newPrice);
+  };
 
   const handleDifferentOptionChange = (event) => {
     setShowCustomPrice(event.target.value === "different");
+  }
+
+  // Hàm xử lý sự kiện khi người dùng nhập giá cụ thể
+  const handleCustomPriceChange = (event) => {
+    const newPrice = parseFloat(event.target.value);
+    setCurrentPrice(newPrice);
   };
+
   const handleNoteChange = (event) => {
     setNote(event.target.value);
   };
@@ -83,11 +106,12 @@ const handleCreateOffer = async (details, data) => {
             <div className="table-offer">
               <h3>Your Offer</h3>
               <div className="list-offer">
-                <label>
+                <label value={selectedOption}>
                   <input
                     type="radio"
                     name="price"
-                    onChange={handleDifferentOptionChange}
+                    value= "option1"
+                    onChange={handleOptionChange}
                   />
                   <div className="text">
                     <br/>
@@ -97,11 +121,12 @@ const handleCreateOffer = async (details, data) => {
                   </div>
                 </label>
                 <br />
-                <label>
+                <label value={selectedOption}>
                   <input
                     type="radio"
                     name="price"
-                    onChange={handleDifferentOptionChange}
+                    value= "option2"
+                    onChange={handleOptionChange}
                   />
                   <div className="text">
                     US${ArtWorkDetail.price * 1/2}
@@ -110,11 +135,12 @@ const handleCreateOffer = async (details, data) => {
                   </div>
                 </label>
                 <br />
-                <label>
+                <label value={selectedOption}>
                   <input
                     type="radio"
                     name="price"
-                    onChange={handleDifferentOptionChange}
+                    value= "option3"
+                    onChange={handleOptionChange}
                   />
                   <div className="text">
                     US${ArtWorkDetail.price * 1/4}
@@ -135,7 +161,7 @@ const handleCreateOffer = async (details, data) => {
                   Different amount
                   {showCustomPrice && (
                 <div id="custom-price">
-                  <input type="text" id="custom-amount" />
+                  <input type="number" id="custom-amount" onChange={handleCustomPriceChange}/>
                   <br />
                   <div className="info-message">
                     Offers lower than the displayed price range are often
@@ -184,7 +210,7 @@ const handleCreateOffer = async (details, data) => {
             <div className="info-order">
               <div className="info-order_item">
                 <div className="title-item">Your offer</div>
-                <div className="content-item">US$</div>
+                <div className="content-item">US${currentPrice}</div>
               </div>
               {/* <div className="info-order_item">
                 <div className="title-item">Shipping</div>
