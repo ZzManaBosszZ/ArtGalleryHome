@@ -56,13 +56,15 @@ function Header() {
           </div>
           <div className="container-fluid" style={{ paddingLeft: '55px' }}>
             <div className="ct-header__logo-nav" style={{ paddingTop: '30px' }}>
-              <a href="/" rel="home" className="ct-logo">
+            <Link to={`/`}>
+              <a  rel="home" className="ct-logo">
                 <img
                   className="ct-logo__image"
                   src="assets/images/home/logo.png"
                   alt="Art Gallery "
                 />
               </a>
+              </Link>
 
               <div id="ct-main-nav">
                 <input
@@ -83,7 +85,8 @@ function Header() {
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-114"
                       id="menu-item-114"
                     >
-                      <a href="artwork">Artworks<i class="fa-solid fa-angle-down"></i></a>
+                      <Link to={`/artwork`}>
+                      <a >Artworks<i class="fa-solid fa-angle-down"></i></a></Link>
                       <ul className="sub-menu" id="sub-menu_artworks">
                         <div className="sub-menu_item">
                           Price
@@ -124,33 +127,37 @@ function Header() {
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"
                       id="menu-item-176"
                     >
-                      <a href="/Artists">Artists</a>
+                      <Link to={`/Artists`}>
+                      <a >Artists</a></Link>
                     </li>
 
-                    <li
+                    {/* <li
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-299"
                       id="menu-item-299"
                     >
                       <a href="/viewingroom">ViewingRooms</a>
-                    </li>
+                    </li> */}
                     <li
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"
                       id="menu-item-113"
                     >
-                      <a href="/event">Events</a>
+                      <Link to={`/event`}>
+                      <a >Events</a></Link>
                     </li>
 
                     <li
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"
                       id="menu-item-109"
                     >
-                      <a href="/about">About Us</a>
+                      <Link to={`/about`}>
+                      <a >About Us</a></Link>
                     </li>
                     <li
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-112"
                       id="menu-item-112"
                     >
-                      <a href="/contact">Contact Us</a>
+                      <Link to={`/contact`}>
+                      <a >Contact Us</a></Link>
                     </li>
                   </ul>
                 </nav>
