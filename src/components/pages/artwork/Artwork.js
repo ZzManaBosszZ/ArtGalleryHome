@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import api from "../../../services/api";
 import url from "../../../services/url";
+import "../../../css/art.css";
 
 function Artwork() {
 
@@ -55,12 +56,10 @@ function Artwork() {
   return (
     <div>
       <div className="artwork-page">
-        <link rel="stylesheet" href="assets/css/art.css" />
-
         <div className="top-page">
           <h1 className="title-art_page">Our Artworks</h1>
 
-          <div className="vertical-line"></div>
+          {/* <div className="vertical-line"></div> */}
           <div className="demo-page">
             <p>
               Discover captivating artworks from around the world. Dive into a
