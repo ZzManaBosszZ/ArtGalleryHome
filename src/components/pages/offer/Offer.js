@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../../css/offer.css"
-
+import api from "../../../services/api";
+import url from "../../../services/url";
 function Offer() {
   const [showCustomPrice, setShowCustomPrice] = useState(false);
   const [note, setNote] = useState("");
+  const { id } = useParams();
+  const [ArtWorkDetail, setArtWorkDetail] = useState({ schoolOfArts: [] });
 
   const handleDifferentOptionChange = (event) => {
     setShowCustomPrice(event.target.value === "different");
@@ -11,10 +15,21 @@ function Offer() {
   const handleNoteChange = (event) => {
     setNote(event.target.value);
   };
+
+    //hien thi thong tin chi tiet artwork
+    useEffect(() => {
+      const userToken = localStorage.getItem("access_token");
+      api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
+      api.get(`${url.ARTWORK.DETAIL.replace("{}", id)}`)
+        .then((response) => {
+          setArtWorkDetail(response.data);
+        })
+        .catch((error) => {
+          // console.error("Error fetching promotion details:", error);
+        });
+    }, [id]);
   return (
     <div>
-      <link rel="stylesheet" href="assets/css/offer.css" />
-
       <div className="Offer-page">
         <div className="auction-steps">
           <a id="offer" className="offer-section">
@@ -135,7 +150,7 @@ function Offer() {
           </div>
           <div className="offer-order">
             <div className="info-art">
-              <img src="assets/images/artists/artist2.webp"></img>
+              <img src={ArtWorkDetail.artWorkImage}></img>
               <div className="name-artist">Rachel MacFarlane</div>
               <div className="exhibition">Perfomer, 2024</div>
               <div className="address">New York, NY, US</div>
