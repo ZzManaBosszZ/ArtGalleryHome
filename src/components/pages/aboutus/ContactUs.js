@@ -1,14 +1,14 @@
 import React from "react";
-
+import "../../../css/contact.css";
 function ContactUs() {
   return (
     <div className="contact-page">
-      <link rel="stylesheet" href="assets/css/contact.css" />
+      {/* <link rel="stylesheet" href="assets/css/contact.css" /> */}
 
       <div className="top-page">
         <h1 className="title-contact_page">Contact Us</h1>
 
-        <div className="vertical-line"></div>
+        {/* <div className="vertical-line"></div> */}
         <div className="demo-page">
           <p>
             Our Contact page is the direct line to reach us. We're eager to hear

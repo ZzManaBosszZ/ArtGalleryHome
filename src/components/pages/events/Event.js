@@ -1,9 +1,9 @@
 import React from "react";
-
+import "../../../css/event.css";
 function Event() {
   return (
     <div>
-      <link rel="stylesheet" href="assets/css/event.css" />
+      {/* <link rel="stylesheet" href="assets/css/event.css" /> */}
 
       <div className="events-page">
         <div className="featured-event_section">

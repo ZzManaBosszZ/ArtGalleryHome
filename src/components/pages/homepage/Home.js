@@ -213,7 +213,7 @@ function Home() {
             <div className="content-event">
               <div className="time-event">AUGUST 18</div>
               <div className="horizontal-linetime"></div>
-              <div className="name-event">Peasant Scenes And Landscapes</div>
+              <div className="name-event" id="name-event">Peasant Scenes And Landscapes</div>
               <div className="demo-event">The exhibition is made possible by the Laura & C. Arnold Douglas Foundation.</div>
             </div>
 
@@ -222,7 +222,7 @@ function Home() {
             <div className="content-event">
               <div className="time-event">AUGUST 18</div>
               <div className="horizontal-linetime"></div>
-              <div className="name-event">Peasant Scenes And Landscapes</div>
+              <div className="name-event" id="name-event" >Peasant Scenes And Landscapes</div>
               <div className="demo-event">The exhibition is made possible by the Laura & C. Arnold Douglas Foundation.</div>
             </div>
             <div className="img-event">
@@ -237,7 +237,7 @@ function Home() {
             <div className="content-event">
               <div className="time-event">AUGUST 20 </div>
               <div className="horizontal-linetime"></div>
-              <div className="name-event">Rojo Y Negro - Latin American Art</div>
+              <div className="name-event" id="name-event">Rojo Y Negro - Latin American Art</div>
               <div className="demo-event">The exhibition is made possible by the Laura & C. Arnold Douglas Foundation.</div>
             </div>
 

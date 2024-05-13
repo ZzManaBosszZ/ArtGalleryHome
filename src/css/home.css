@@ -411,7 +411,7 @@
   margin-right: 10px;
 }
 
-.name-event {
+#name-event {
   font-size: 280%;
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
