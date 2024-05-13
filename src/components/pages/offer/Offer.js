@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAccessToken, getDecodedToken  } from "../../../utils/auth";
+import { getAccessToken, getDecodedToken } from "../../../utils/auth";
 import "../../../css/offer.css"
 import api from "../../../services/api";
 import url from "../../../services/url";
+import Swal from "sweetalert2";
 function Offer() {
   const [showCustomPrice, setShowCustomPrice] = useState(false);
   const [note, setNote] = useState("");
@@ -11,17 +12,18 @@ function Offer() {
   const [ArtWorkDetail, setArtWorkDetail] = useState({ schoolOfArts: [] });
   const [offers, setOffers] = useState({});
   const decodedToken = getDecodedToken();
+  const navigate = useNavigate();
 
   const priceData = {
     option1: ArtWorkDetail.price,
-    option2: ArtWorkDetail.price * 1/2,
-    option3: ArtWorkDetail.price * 1/4,
+    option2: ArtWorkDetail.price * 1 / 2,
+    option3: ArtWorkDetail.price * 1 / 4,
     option4: 0,
   };
-  const [currentPrice, setCurrentPrice] = useState(priceData.option1); 
+  const [currentPrice, setCurrentPrice] = useState(priceData.option1);
   const [selectedOption, setSelectedOption] = useState('option1');
 
-  
+
   const handleOptionChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedOption(selectedValue);
@@ -60,28 +62,45 @@ function Offer() {
   // create order
   const createOrderData = async () => {
     const config = {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${getAccessToken()}`,
-        },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getAccessToken()}`,
+      },
     };
     try {
-        if (decodedToken) {
-
-            const offerData = {
-              artWorkId: 0, // Thêm artWorkId vào dữ liệu của offer
-              total: 0 // Thêm total vào dữ liệu của offer
-            }
-            const offerResponse = await api.post(url.OFFER.CREATE, offerData, config)
+      if (decodedToken) {
+        const offerData = {
+          artWorkId: ArtWorkDetail.id, // Thêm artWorkId vào dữ liệu của offer
+          total: currentPrice, // Thêm total vào dữ liệu của offer
+          offerPrice: ArtWorkDetail.price
         }
+        const offerResponse = await api.post(url.OFFER.CREATE, offerData, config)
+        if (offerResponse.status === 201) {
+          Swal.fire({
+            title: " Offer success",
+            text: "You have Offer success!",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+          navigate("/offer-history");
+        }
+        else if (offerResponse.status === 400) {
+          Swal.fire({
+            title: "Offer failed",
+            text: "There have some problem!",
+            icon: "warning",
+            confirmButtonText: "OK",
+          })
+        }
+      }
     } catch (error) {
-        console.log("Error:", error);
+      console.log("Error:", error);
     }
-};
+  };
 
-const handleCreateOffer = async (details, data) => {
-  await createOrderData();
-};
+  const handleCreateOffer = async (details, data) => {
+    await createOrderData();
+  };
 
   return (
     <div>
@@ -110,11 +129,11 @@ const handleCreateOffer = async (details, data) => {
                   <input
                     type="radio"
                     name="price"
-                    value= "option1"
+                    value="option1"
                     onChange={handleOptionChange}
                   />
                   <div className="text">
-                    <br/>
+                    <br />
                     US${ArtWorkDetail.price}
                     <br />
                     Top-end of range (high chance of acceptance)
@@ -125,11 +144,11 @@ const handleCreateOffer = async (details, data) => {
                   <input
                     type="radio"
                     name="price"
-                    value= "option2"
+                    value="option2"
                     onChange={handleOptionChange}
                   />
                   <div className="text">
-                    US${ArtWorkDetail.price * 1/2}
+                    US${ArtWorkDetail.price * 1 / 2}
                     <br />
                     Midpoint(good chance of acceptance)
                   </div>
@@ -139,11 +158,11 @@ const handleCreateOffer = async (details, data) => {
                   <input
                     type="radio"
                     name="price"
-                    value= "option3"
+                    value="option3"
                     onChange={handleOptionChange}
                   />
                   <div className="text">
-                    US${ArtWorkDetail.price * 1/4}
+                    US${ArtWorkDetail.price * 1 / 4}
                     <br />
                     Low-end of range(lower chance of acceptance)
                   </div>
@@ -158,23 +177,23 @@ const handleCreateOffer = async (details, data) => {
                     onChange={handleDifferentOptionChange}
                   />
                   <div className="text">
-                  Different amount
-                  {showCustomPrice && (
-                <div id="custom-price">
-                  <input type="number" id="custom-amount" onChange={handleCustomPriceChange}/>
-                  <br />
-                  <div className="info-message">
-                    Offers lower than the displayed price range are often
-                    declined. We recommend increasing your offer to
-                    US${ArtWorkDetail.price * 1/4}.
+                    Different amount
+                    {showCustomPrice && (
+                      <div id="custom-price">
+                        <input type="number" id="custom-amount" onChange={handleCustomPriceChange} />
+                        <br />
+                        <div className="info-message">
+                          Offers lower than the displayed price range are often
+                          declined. We recommend increasing your offer to
+                          US${ArtWorkDetail.price * 1 / 4}.
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
-              )}
-                  </div>
-                  
+
                 </label>
               </div>
-             
+
               <div id="note-input">
                 <label htmlFor="note">Note (Recommend)</label>
                 <br />
@@ -187,7 +206,7 @@ const handleCreateOffer = async (details, data) => {
                 />
               </div>
               <div className="offer-binding">
-                <p style={{color:'rgb(16, 35, 215'}}>All offers are binding</p>
+                <p style={{ color: 'rgb(16, 35, 215' }}>All offers are binding</p>
                 <p>
                   All offers are binding. If your offer is accepted, payment
                   will be processed immediately. Please note that this sale is
@@ -195,9 +214,9 @@ const handleCreateOffer = async (details, data) => {
                 </p>
               </div>
             </div>
-           
-              <a onClick={handleCreateOffer} className="next-offer">Continue</a>
-            
+
+            <a onClick={handleCreateOffer} className="next-offer">Continue</a>
+
           </div>
           <div className="offer-order">
             <div className="info-art">
