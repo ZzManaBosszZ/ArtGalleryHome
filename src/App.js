@@ -25,6 +25,7 @@ import Edit from "./components/pages/auth/profile/Edit.js";
 import Upload from "./components/pages/auth/profile/Upload.js";
 import New from "./components/pages/auth/profile/New.js";
 import NotFound from "./components/pages/other/NotFound.js";
+import ThankU from "./components/pages/other/ThankU.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -110,11 +111,12 @@ function App() {
 
           {/* End Viewing Room */}
 
-          {/* 404 */}
+          {/* Other */}
 
           <Route path="/notFound" element={<NotFound />} />
+          <Route path="/thanks" element={<ThankU />} />
 
-          {/* End 404 */}
+          {/* End  */}
         </Routes>
         <Footer />
       </BrowserRouter>
