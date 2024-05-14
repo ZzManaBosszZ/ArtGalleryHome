@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import api from "../../../services/api";
 import url from "../../../services/url";
+// import "../../../css/artist.css";
 function Artists() {
   const sliderRef = useRef(null);
   const [artists, setArtists] = useState([]);
@@ -130,9 +131,9 @@ function Artists() {
           <div className="section-content_artist">
           {artistsWithGivenSchoolOfArt.map(artist => (
             <div className="card-artist">
-              <a href="/artistDetail" className="img-artist">
+              <Link to={`/artist/${artist.id}`} className="img-artist">
                 <img src={artist.image} alt="Image 1" />
-              </a>
+              </Link>
               <a href="/artistDetail" className="main-artist">
                 <div className="artist-info">
                   {artist.name}

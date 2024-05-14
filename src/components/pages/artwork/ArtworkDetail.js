@@ -179,7 +179,7 @@ function ArtworkDetail() {
           </div>
           <div className="purchase-art_section">
             <div className="info-purchase_art">
-              {ArtWorkDetail.artists.map((artist) => {
+            {ArtWorkDetail.artists.map((artist) => {
                 return (
                   <h1 className="name-artist">{artist.name}</h1>
                 );

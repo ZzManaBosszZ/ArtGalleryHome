@@ -24,7 +24,8 @@ const url = {
     OFFER: {
         CREATE: "Offers/CreateOfferUser",
         MY_OFFER: "Offers/get-by-user",
-        DETAIL: "Offers/detailForUser"
+        DETAIL: "Offers/detailForUser",
+        UPDATE_PAYMENT:"Offers/update-status-Admin/{}"
     },
 
     FAVORITE: {

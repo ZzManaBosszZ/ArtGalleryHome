@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAccessToken, getDecodedToken } from "../../../utils/auth";
-import "../../../css/offer.css"
+import "../../../css/offer.css";
 import api from "../../../services/api";
 import url from "../../../services/url";
 import Swal from "sweetalert2";
@@ -105,7 +105,7 @@ function Offer() {
   return (
     <div>
       <div className="Offer-page">
-        <div className="auction-steps">
+        <div className="auction-steps" id="auction-steps">
           <a id="offer" className="offer-section">
             <h3>Offer</h3>
             <i className="fa-solid fa-angle-right"></i>
@@ -222,7 +222,7 @@ function Offer() {
             <div className="info-art">
               <img src={ArtWorkDetail.artWorkImage}></img>
               <div className="name-artist">Rachel MacFarlane</div>
-              <div className="exhibition">Perfomer, 2024</div>
+              <div className="payment-exhibition">Perfomer, 2024</div>
               <div className="address">New York, NY, US</div>
               <div className="price">${ArtWorkDetail.price}</div>
             </div>

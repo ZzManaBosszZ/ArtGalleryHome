@@ -24,6 +24,8 @@ import Profile from "./components/pages/auth/profile/Profile.js";
 import Edit from "./components/pages/auth/profile/Edit.js";
 import Upload from "./components/pages/auth/profile/Upload.js";
 import New from "./components/pages/auth/profile/New.js";
+import ThankU from "./components/pages/other/ThankU.js";
+import NotFound from "./components/pages/other/NotFound.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -71,13 +73,14 @@ function App() {
 
           <Route path="/artists" element={<Artists />} />
           <Route path="/artist/:id" element={<ArtistDetail />} />
+          <Route path="/artist-list-filter" element={<ListArt />} />
 
           {/* End Artist */}
 
           {/* Artwork */}
 
           <Route path="/artwork" element={<Artwork />} />
-          <Route path="/artworklist" element={<ListArt />} />
+          <Route path="/artwork-list-filter" element={<ListArt />} />
           <Route path="/artwork/:id" element={<ArtworkDetail />} />
 
           {/* End Artwork */}
@@ -108,6 +111,14 @@ function App() {
           <Route path="/viewingroom" element={<ViewingRooms />} />
 
           {/* End Viewing Room */}
+
+
+          {/* Other */}
+
+          <Route path="/notFound" element={<NotFound />} />
+          <Route path="/thanks" element={<ThankU />} />
+
+          {/* End Other */}
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -39,7 +39,7 @@ a{
   transform-origin: 50% 50% 0px;
   text-align: center;
   text-align: center;
-  padding-bottom: 16px;
+  padding-bottom: 25px;
 }
 .top-page {
   text-align: center;
@@ -81,12 +81,9 @@ a{
 .content-section_home {
   position: relative;
 }
-.card-art_home,
 .card-artist {
-
   width: 210px;
   height: 260px;
-  padding-left: 150px;
 }
 .multiple-items {
   display: flex;
@@ -99,15 +96,11 @@ a{
   height: 100%;
   box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.42);
 }
-.card-artist {
-  width: 210px;
-  height: 260px;
-  padding-left: 150px;
-}
+
 .main-artist {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 18px;
 }
 .artist-info p {
@@ -116,6 +109,7 @@ a{
   margin-top: 0px;
 }
 .button-follow {
+  align-items: center;
   cursor: pointer;
   position: relative;
   white-space: nowrap;
@@ -127,8 +121,7 @@ a{
     background-color 0.25s ease 0s, box-shadow 0.25s ease 0s;
   height: 30px;
   border-radius: 15px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding: 15px 25px;
   background-color: transparent;
   color: rgb(0, 0, 0);
   display: inline-flex;
@@ -139,8 +132,7 @@ a{
 }
 .button-follow:hover {
   background-color: #000000;
-  color: #ffff;
-  border: 1px solid #b89d4f;
+  color: #ffff !important;
 }
 .multiple-items2 {
   display: flex;
@@ -187,7 +179,8 @@ a{
      color: #908f8f;
 }
 .artists-section{
-     margin-bottom: 40px;    
+     margin-bottom: 140px;    
+     padding-bottom: 150px;
 }
 .slick-list{
      height: 380px;

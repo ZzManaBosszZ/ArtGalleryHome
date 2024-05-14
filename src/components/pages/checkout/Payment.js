@@ -40,7 +40,7 @@ function Payment() {
   return (
     <div>
       <div className="Payment-page">
-        <div className="auction-steps">
+        <div className="auction-steps_payment">
           <a id="offer" className="offer-section">
             <h3>Offer</h3>
             <i className="fa-solid fa-angle-right"></i>
@@ -50,20 +50,17 @@ function Payment() {
             <i className="fa-solid fa-angle-right"></i>{" "}
           </a>
           <a id="payment" className="payment-section">
-            <h3>Payment</h3>
+            <h3 id="h3-payment">Payment</h3>
             <i className="fa-solid fa-angle-right"></i>
           </a>
-          <a id="review" className="review-section">
-            <h3>Review</h3>
-            <i className="fa-solid fa-angle-right"></i>
-          </a>
+          
         </div>
         <div className="main-payment_page">
-          <div className="offer-order">
+          <div className="offer-order_payment">
             <div className="info-art">
               <img src="assets/images/artists/artist2.webp"></img>
               <div className="name-artist">Rachel MacFarlane</div>
-              <div className="exhibition">Perfomer, 2024</div>
+              <div className="exhibition-payment">Perfomer, 2024</div>
               <div className="address">New York, NY, US</div>
               <div className="price">$10,000-$15,000</div>
             </div>
@@ -89,9 +86,6 @@ function Payment() {
         </div>
         <PayPalButton
           amount={offerDetail.toTal}
-        // onSuccess={(details, data) => handlePaymentSuccess(details, data)}
-        // onCancel={handlePaymentCancel}
-        // onError={handlePaymentError}
         />
       </div>
     </div>
