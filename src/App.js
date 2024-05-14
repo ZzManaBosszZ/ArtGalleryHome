@@ -26,6 +26,9 @@ import Upload from "./components/pages/auth/profile/Upload.js";
 import New from "./components/pages/auth/profile/New.js";
 import ThankU from "./components/pages/other/ThankU.js";
 import NotFound from "./components/pages/other/NotFound.js";
+import AccountSettings from "./components/pages/auth/profile/AccountSetting.js";
+import Follows from "./components/pages/auth/profile/Follows.js";
+import Saves from "./components/pages/auth/profile/Saves.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -48,18 +51,17 @@ function App() {
         <Routes>
           {/* Auth */}
 
-          <Route path="/login" element={<ProtectedLoginRoute element={<LoginAndRegister />} />}>
-          </Route>
-
+          <Route path="/login" element={<ProtectedLoginRoute element={<LoginAndRegister />} />} />
           {/* End Auth */}
 
           {/* Profile */}
-
-          {/* <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} /> */}
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/edit" element={<Edit/>}/>
-          <Route path="/upload-artwork" element={<Upload/>}/>
-          <Route path="/upload" element={<New/>}/>
+          <Route path="/setting" element={<ProtectedRoute element={<AccountSettings />} />}></Route>
+          <Route path="/artist-follow" element={<ProtectedRoute element={<Follows />} />} />
+          <Route path="/artwork-saves" element={<ProtectedRoute element={<Saves />} />} />
+          <Route path="/edit-profile" element={<ProtectedRoute element={<Edit />} />} />
+          <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+          <Route path="/upload-artwork" element={<Upload />} />
+          <Route path="/upload" element={<New />} />
 
           {/* End Profile */}
 
