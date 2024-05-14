@@ -241,7 +241,7 @@ function Offer() {
               </div> */}
               <div id="total-item" className="info-order_item">
                 <div className="title-item">Total</div>
-                <div className="content-item">Waiting for final costs</div>
+                <div className="content-item">US${currentPrice}</div>
               </div>
             </div>
           </div>
