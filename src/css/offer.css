@@ -1,15 +1,17 @@
-.Offer-page {
-     padding: 40px 70px;
-     font-family: "Playfair Display", serif;
 
+.Offer-page {
+     padding: 100px 70px 40px;
+     font-family: "Playfair Display", serif;
+     height: 100px;
    }
    a{
     text-decoration: none;
   }
-   .auction-steps {
+   #auction-steps {
      display: grid;
-     grid-template-columns: repeat(4, 1fr);
-     column-gap: 30px;
+     grid-template-columns: repeat(3, 1fr);
+     column-gap: 50px;
+     
    }
 .auction-steps a {
      display: flex;
@@ -20,18 +22,23 @@
       padding-bottom: 10px;   
    }
    #offer{
-     color: #000;
+     color: #2a2929 ;
      border-bottom: 1px solid #000;  
      
    }
-   .auction-steps h3 {
+   #offer h3{
+    color: #424141;
+   }
+   #shipping h3, #payment h3 {
      margin: 0;
      font-size: 20px;
      font-weight: 600;
+     color: #cecbcb;
    }
       .auction-content {
      flex: 3;
-     padding: 20px;
+     padding: 50px;
+     margin-top: 40px;
    }
    .auction-content h2{
      font-size: 28px;
@@ -46,7 +53,9 @@
      margin-top: 20px;
    }
    .table-offer h3{
-     font-size: 15px;
+     font-size: 14px;
+     margin-bottom: 20px;
+     color: #989797;
    }
    .list-offer{
      border: 1px solid #ccc;
@@ -62,6 +71,10 @@
    
    .text{
      padding-left: 25px;
+     text-decoration: none;
+     font-weight: 500;
+     line-height: 26px;
+     letter-spacing: .75px;
    }
    #different-option{
      padding-left: 25px;
@@ -84,7 +97,7 @@
      font-size: 14px;
    }
    #note-input{
-     margin-top: 40px;
+     margin-top: 60px;
    }
    #note-input input{
      margin-top: 20px;
@@ -95,9 +108,10 @@
    }
    .offer-binding{
      margin-top: 40px;
-     padding: 10px 12px;
+     padding: 20px 22px;
      background-color: #e6e7f5;
-     font-size: 14px;
+     font-size: 15px;
+     line-height: 22px;
    }
    .offer-binding p{
      margin: 3px;
@@ -153,9 +167,10 @@
      font-size: 15px;
      font-weight: 500;
    }
-   .exhibition{
-     font-size: 16px;
-     font-weight: 600;
+   .payment-exhibition{
+     font-size: 25px;
+     font-weight: 500;
+     margin: 10px 0px 6px;
    }
    .address{
      font-size: 14px;
@@ -174,6 +189,13 @@
    }
    #total-item{
      color: #000;
-     font-size: 16px;
-     font-weight: 600;
+     font-size: 17px;
+     font-weight: 500;
+   }
+   #auction-steps #payment,
+   #auction-steps #shipping{
+    border-bottom: 1px solid #cecbcb;
+   }
+   #payment i, #shipping i{
+    color: #cecbcb;
    }

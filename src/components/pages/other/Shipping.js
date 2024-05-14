@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../../../css/shipping.css";
 function Shipping() {
   const [deliveryMethod, setDeliveryMethod] = useState("shipping");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -17,7 +17,7 @@ function Shipping() {
       <link rel="stylesheet" href="assets/css/shipping.css" />
 
       <div className="Shipping-page">
-        <div className="auction-steps">
+        <div className="auction-steps_shipping" id="auction-steps_shipping">
           <a id="offer" className="offer-section">
             <h3>Offer</h3>
             <i className="fa-solid fa-angle-right"></i>
@@ -30,10 +30,7 @@ function Shipping() {
             <h3>Payment</h3>
             <i className="fa-solid fa-angle-right"></i>
           </a>
-          <a id="review" className="review-section">
-            <h3>Review</h3>
-            <i className="fa-solid fa-angle-right"></i>
-          </a>
+          
         </div>
         <div className="main-shipping_page">
           <div className="shipping-content">

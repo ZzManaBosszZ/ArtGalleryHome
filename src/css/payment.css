@@ -1,19 +1,21 @@
 .Payment-page{
-     padding: 40px 70px;
+     padding: 100px 70px;
      font-family: "Playfair Display", serif;
+     max-height: 10vh;
 }
 .main-payment_page{
-     margin-top: 45px;
+     /* margin-left: 300px;     */
+    margin-top: 45px;
      display: grid;
      grid-template-columns: 60% 35% ;
      column-gap: 50px; 
 }
-.auction-steps {
+.auction-steps_payment {
      display: grid;
-     grid-template-columns: repeat(4, 1fr);
-     column-gap: 30px;
+     grid-template-columns: repeat(3, 1fr);
+     column-gap: 50px;
    }
-.auction-steps a {
+   .auction-steps_payment a {
      display: flex;
      justify-content: space-between;
      text-decoration: none;
@@ -27,10 +29,21 @@
      border-bottom: 1px solid #000;  
      
    }
-   .auction-steps h3 {
+   .auction-steps_payment h3 {
      margin: 0;
      font-size: 20px;
      font-weight: 600;
+   }
+   #h3-payment{
+    color: #343434;
+   }
+   /* .auction-steps_payment  #offer, .auction-steps_payment #shipping{
+      border-bottom: ;
+   } */
+   .auction-steps_payment  #offer h3, .auction-steps_payment #shipping h3,
+   .auction-steps_payment  #offer i, .auction-steps_payment #shipping i
+   {
+    color: #c8c6c6;
    }
       .auction-content {
      flex: 3;
@@ -45,9 +58,11 @@
      grid-template-columns: 60% 35% ;
      column-gap: 50px;
    }
-   .offer-order{
-     height:25rem ;
+   .offer-order_payment{
+     
+ height:35rem ;
      margin-top: 5rem;
+     margin-bottom: 20px;
      padding: 40px;
      border: 1px solid #e6e7f5;
      width: auto;
@@ -66,9 +81,10 @@
      font-size: 15px;
      font-weight: 500;
    }
-   .exhibition{
-     font-size: 16px;
-     font-weight: 600;
+   .exhibition-payment{
+     font-size: 22px;
+     font-weight: 500;
+     padding-left: 0;
    }
    .address{
      font-size: 14px;
