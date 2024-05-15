@@ -27,3 +27,63 @@
   background-color: #1023d7;
   color: #fff;
 }
+
+.noment {
+  width: 100%;
+  margin: auto;
+  padding: 20px 0;
+}
+.headen {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.headen .imgfollow {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  border: 2px solid #000;
+}
+.headen .hatflo {
+  margin: 0;
+  font-size: 18px;
+  color: #000;
+}
+.headen .peflo {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+.headen .butfolo {
+  margin-left: auto;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.headen .butfolo:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.image-row {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.image-scroll-container {
+  display: inline-flex;
+}
+
+.scroll-image {
+  margin-right: 10px;
+  width: 20%;
+  height: 20%;
+}
