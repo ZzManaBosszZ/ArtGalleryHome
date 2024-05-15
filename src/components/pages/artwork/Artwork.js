@@ -248,7 +248,7 @@ function Artwork() {
             {artworksWithGivenSchoolOfArt.map(artwork => (
               <div className="card-art_home">
                 <Link to={`/artwork/${artwork.id}`}>
-                <a>
+                <a className="mnbvc">
                   <img src={artwork.artWorkImage} alt="Image 1" />
                   <h2 className="name-artist_carousel">{artwork.name}</h2>
                   <h2 className="exhibition">{artwork.series}</h2>
@@ -267,7 +267,7 @@ function Artwork() {
             </div>
             <div className="content-section">
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -276,7 +276,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -285,7 +285,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -294,7 +294,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -311,7 +311,7 @@ function Artwork() {
             </div>
             <div className="content-section">
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -320,7 +320,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -329,7 +329,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -338,7 +338,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -355,7 +355,7 @@ function Artwork() {
             </div>
             <div className="content-section">
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -364,7 +364,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -373,7 +373,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -382,7 +382,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -399,7 +399,7 @@ function Artwork() {
             </div>
             <div className="content-section">
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -408,7 +408,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -417,7 +417,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -426,7 +426,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -443,7 +443,16 @@ function Artwork() {
             </div>
             <div className="content-section">
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
+                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                  <h2 className="exhibition">Perfomer, 2024</h2>
+                  <span className="price-art_carousel">$10,000-$35,000</span>
+                </a>
+                <a className="button_add-product">Purchase</a>
+              </div>
+              <div className="card-art_home">
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -461,16 +470,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -487,7 +487,7 @@ function Artwork() {
             </div>
             <div className="content-section">
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -496,7 +496,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -505,7 +505,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
@@ -514,7 +514,7 @@ function Artwork() {
                 <a className="button_add-product">Purchase</a>
               </div>
               <div className="card-art_home">
-                <a>
+                <a className="mnbvc">
                   <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
                   <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>

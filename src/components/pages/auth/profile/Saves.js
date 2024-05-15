@@ -1,13 +1,11 @@
 import React from "react";
+import "../../../../css/bootstrap.css"
 
 function Saves() {
   return (
     <div style={{ marginTop: "20px" }} class="container">
       <link rel="stylesheet" href="assets/css/profile/saves.css" />
-      <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      />
+
 
       <div
         class="menu"

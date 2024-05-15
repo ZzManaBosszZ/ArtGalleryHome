@@ -1,0 +1,95 @@
+.card {
+  margin: 60px 0 0 300px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 900px;
+  padding: 16px;
+}
+
+.card-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+}
+
+.product-image {
+  width: 100px;
+  height: auto;
+  margin-right: 16px;
+}
+
+.product-details {
+  flex: 1;
+}
+.nmbj {
+  margin-bottom: 15px;
+}
+.product-details h3 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+
+.product-details p {
+  color: #555;
+  font-size: 14px;
+}
+
+.card-footer {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.btn {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  border: 1px solid #000;
+  color: #000;
+  background-color: #fff;
+}
+
+#profile-navigation {
+  color: #000;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#profile-navigation .ghye {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#profile-navigation .hjpk {
+  display: inline-block;
+  margin: 0 60px;
+}
+
+#profile-navigation .lkm {
+  color: #000;
+  text-decoration: none;
+  transition: 0.2s;
+}
+#profile-navigation .tip {
+  color: #707070;
+}
+#profile-navigation .tip:hover {
+  color: #081bc3;
+}
