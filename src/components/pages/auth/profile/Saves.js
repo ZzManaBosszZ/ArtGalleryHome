@@ -3,6 +3,12 @@ import React from "react";
 function Saves() {
   return (
     <div style={{ marginTop: "20px" }} class="container">
+      <link rel="stylesheet" href="assets/css/profile/saves.css" />
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      />
+
       <div
         class="menu"
         style={{
@@ -16,7 +22,7 @@ function Saves() {
           style={{ width: "300px" }}
         >
           <img
-            src="/art/user.png"
+            src="assets/images/profile/user.png"
             alt=""
             style={{ borderRadius: "50%", width: "100px" }}
           />
@@ -26,7 +32,7 @@ function Saves() {
           </div>
         </div>
         <div class="menu-right">
-          <a href="Edit.html">
+          <a href="/edit">
             <button class="btn-1">Settings</button>
           </a>
         </div>
@@ -46,26 +52,22 @@ function Saves() {
             >
               <ul class="navbar-nav w-100 justify-content-between">
                 <li class="nav-item">
-                  <a class="nav-link" href="Collection.html">
+                  <a class="nav-link" href="/profile">
                     My Collection
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Insights.html">
-                    Insights
+                  <a class="nav-link" href="/accountsetting">
+                    Account Settings
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    style={{ color: "#000" }}
-                    class="nav-link"
-                    href="Saves.html"
-                  >
+                  <a style={{ color: "#000" }} class="nav-link" href="/saves">
                     Saves
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Follows.html">
+                  <a class="nav-link" href="/follows">
                     Follows
                   </a>
                 </li>

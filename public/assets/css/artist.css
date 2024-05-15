@@ -1,5 +1,5 @@
 .artist-page{
-     max-height: 1700px;
+     max-height: 350vh;
 }
 .listArtist-page{
   padding: 0 70px;
@@ -81,12 +81,10 @@ a{
 .content-section_home {
   position: relative;
 }
-.card-art_home,
-.card-artist {
+.card-art_home {
 
   width: 210px;
   height: 260px;
-  padding-left: 150px;
 }
 .multiple-items {
   display: flex;
@@ -102,7 +100,6 @@ a{
 .card-artist {
   width: 210px;
   height: 260px;
-  padding-left: 150px;
 }
 .main-artist {
   display: flex;
@@ -187,7 +184,7 @@ a{
      color: #908f8f;
 }
 .artists-section{
-     margin-bottom: 40px;    
+     margin-bottom: 120px;    
 }
 .slick-list{
      height: 380px;

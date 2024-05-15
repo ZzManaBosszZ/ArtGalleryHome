@@ -20,6 +20,15 @@ import Artwork from "./components/pages/artwork/Artwork.js";
 import ListArt from "./components/pages/artist/ListArtist.js";
 import LoginAndRegister from "./components/pages/auth/Login.js";
 import authMiddleware from "./context/authMiddleware.js";
+import Profile from "./components/pages/auth/profile/Profile.js";
+import Edit from "./components/pages/auth/profile/Edit.js";
+import Upload from "./components/pages/auth/profile/Upload.js";
+import New from "./components/pages/auth/profile/New.js";
+import ThankU from "./components/pages/other/ThankU.js";
+import NotFound from "./components/pages/other/NotFound.js";
+import AccountSettings from "./components/pages/auth/profile/AccountSetting.js";
+import Follows from "./components/pages/auth/profile/Follows.js";
+import Saves from "./components/pages/auth/profile/Saves.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -42,14 +51,18 @@ function App() {
         <Routes>
           {/* Auth */}
 
-          <Route path="/login" element={<ProtectedLoginRoute element={<LoginAndRegister />} />}>
-          </Route>
-
+          <Route path="/login" element={<ProtectedLoginRoute element={<LoginAndRegister />} />} />
           {/* End Auth */}
 
           {/* Profile */}
-
-          {/* <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} /> */}
+          <Route path="/setting" element={<ProtectedRoute element={<AccountSettings />} />}></Route>
+          <Route path="/artist-follow" element={<ProtectedRoute element={<Follows />} />} />
+          <Route path="/artwork-saves" element={<ProtectedRoute element={<Saves />} />} />
+          <Route path="/edit-profile" element={<ProtectedRoute element={<Edit />} />} />
+          <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+          <Route path="/offer-history" element={<ProtectedRoute element={<Profile />} />} />
+          <Route path="/upload-artwork" element={<Upload />} />
+          <Route path="/upload" element={<New />} />
 
           {/* End Profile */}
 
@@ -63,13 +76,14 @@ function App() {
 
           <Route path="/artists" element={<Artists />} />
           <Route path="/artist/:id" element={<ArtistDetail />} />
+          <Route path="/artist-list-filter" element={<ListArt />} />
 
           {/* End Artist */}
 
           {/* Artwork */}
 
           <Route path="/artwork" element={<Artwork />} />
-          <Route path="/artworklist" element={<ListArt />} />
+          <Route path="/artwork-list-filter" element={<ListArt />} />
           <Route path="/artwork/:id" element={<ArtworkDetail />} />
 
           {/* End Artwork */}
@@ -100,6 +114,14 @@ function App() {
           <Route path="/viewingroom" element={<ViewingRooms />} />
 
           {/* End Viewing Room */}
+
+
+          {/* Other */}
+
+          <Route path="/notFound" element={<NotFound />} />
+          <Route path="/thanks" element={<ThankU />} />
+
+          {/* End Other */}
         </Routes>
         <Footer />
       </BrowserRouter>

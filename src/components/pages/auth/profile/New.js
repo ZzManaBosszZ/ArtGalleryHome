@@ -1,19 +1,19 @@
 import React from "react";
-
+import "../../../../css/new.css"
 function New() {
   return (
     <div>
       <div class="back">
-        <a href="Collection.html">
+        <a href="/profile">
           <p> Back</p>
         </a>
       </div>
       <hr style={{ marginTop: "30px" }} />
       <div class="select">
-        <h2 style={{ marginTop: "30px" }}>Select an Artist</h2>
+        <h2 className="h2-new" style={{ marginTop: "30px" }}>Select an Artist</h2>
         <div style={{ marginTop: "30px" }} class="container">
           <div class="entryarea">
-            <input
+            <input className="input-new"
               style={{ width: "150%" }}
               type="text"
               placeholder="Search for artist on Artist"
@@ -25,7 +25,7 @@ function New() {
           </div>
         </div>
         <p class="pe" style={{ marginTop: "30px" }}>
-          Can't find the artist? <a href="Upload.html">Add their name</a>.
+          Can't find the artist? <a href="/upload-artwork">Add their name</a>.
         </p>
       </div>
     </div>

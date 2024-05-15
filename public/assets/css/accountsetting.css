@@ -1,3 +1,17 @@
+.input-row {
+  margin: 50px 0 0 30px;
+  display: flex;
+}
+
+.input-row input {
+  margin-right: 10px;
+}
+
+.ttt {
+  width: 700px;
+  height: 50px;
+  transition: 0.2s;
+}
 .btn-1,
 .btn-1 *,
 .btn-1 :after,

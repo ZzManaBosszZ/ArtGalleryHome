@@ -26,7 +26,7 @@
      transform-origin: 50% 50% 0px;
      text-align: center;
      text-align: center;
-     padding-bottom: 16px;
+     padding-bottom: 25px;
    }
    .top-page {
      text-align: center;
@@ -65,6 +65,7 @@
    
    .main-content_contact {
      margin-left: 70px;
+     max-width: 400px;
    }
    
    .form-group {
@@ -101,6 +102,7 @@
      width: 400px;
    }
    .time-event {
+    max-width: 400px;
      font-family: Arial, sans-serif;
      font-size: 16px;
      line-height: 1;

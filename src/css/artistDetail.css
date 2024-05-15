@@ -1,5 +1,6 @@
 .artistDetail-page{
      padding: 100px 70px;
+     max-height: 90vh;
 }
 .content-artist{
      display: grid;
@@ -12,10 +13,11 @@
      width: 100%;
      height: 100%;
      border-radius: 2px;
-     box-shadow: 1.25rem 1.375rem 4.75rem 0 rgba(0,0,0,.42)!important;
+     /* box-shadow: 1.25rem 1.375rem 4.75rem 0 rgba(0,0,0,.42)!important; */
 
 }
-.name-artist{
+#name-artist{
+     color: black;
      font-size: 30px;
      font-family: "Playfair Display", serif;
      margin-bottom: 10px;
