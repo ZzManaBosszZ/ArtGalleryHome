@@ -30,6 +30,7 @@ import AccountSettings from "./components/pages/auth/profile/AccountSetting.js";
 import Follows from "./components/pages/auth/profile/Follows.js";
 import Saves from "./components/pages/auth/profile/Saves.js";
 import EventDetail from "./components/pages/events/EventDetail.js";
+import OrderHistory from "./components/pages/auth/profile/OrderHistory.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -61,7 +62,7 @@ function App() {
           <Route path="/artwork-saves" element={<ProtectedRoute element={<Saves />} />} />
           <Route path="/edit-profile" element={<ProtectedRoute element={<Edit />} />} />
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
-          <Route path="/offer-history" element={<ProtectedRoute element={<Profile />} />} />
+          <Route path="/offer-history" element={<ProtectedRoute element={<OrderHistory />} />} />
           <Route path="/upload-artwork" element={<Upload />} />
           <Route path="/upload" element={<New />} />
 

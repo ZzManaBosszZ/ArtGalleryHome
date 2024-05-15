@@ -88,13 +88,13 @@ function ArtworkDetail() {
           <div className="info-art_section">
             <div className="img-art_sec">
               <div className="img-art">
-                <img src={ArtWorkDetail.artWorkImage}></img>
+                <img className="anhgb" src={ArtWorkDetail.artWorkImage}></img>
               </div>
               <div className="otherServices">
-                <button>
+                <button className="bonhai">
                   <i class="fa-regular fa-heart"></i>Save
                 </button>
-                <button>
+                <button className="bonhai">
                   <i class="fa-solid fa-arrow-up-from-bracket"></i>Share
                 </button>
               </div>
@@ -108,29 +108,29 @@ function ArtworkDetail() {
               </div>
               <div className="content-tab_art">
                 <div id="AboutWork" class="tabcontent">
-                  <dl>
-                    <dt>Materials</dt>
-                    <dd>{ArtWorkDetail.materials}</dd>
+                  <dl className="ecutre">
+                    <dt className="fosan">Materials</dt>
+                    <dd className="gozila">{ArtWorkDetail.materials}</dd>
                   </dl>
-                  <dl>
-                    <dt>Size</dt>
-                    <dd>{ArtWorkDetail.size}</dd>
+                  <dl className="ecutre">
+                    <dt className="fosan">Size</dt>
+                    <dd className="gozila">{ArtWorkDetail.size}</dd>
                   </dl>
-                  <dl>
-                    <dt>Rarity</dt>
-                    <dd>{ArtWorkDetail.rarity}</dd>
+                  <dl className="ecutre">
+                    <dt className="fosan">Rarity</dt>
+                    <dd className="gozila">{ArtWorkDetail.rarity}</dd>
                   </dl>
-                  <dl>
-                    <dt>Medium</dt>
-                    <dd>{ArtWorkDetail.medium}</dd>
+                  <dl className="ecutre">
+                    <dt className="fosan">Medium</dt>
+                    <dd className="gozila">{ArtWorkDetail.medium}</dd>
                   </dl>
-                  <dl>
-                    <dt>Signature</dt>
-                    <dd>{ArtWorkDetail.signature}</dd>
+                  <dl className="ecutre">
+                    <dt className="fosan">Signature</dt>
+                    <dd className="gozila">{ArtWorkDetail.signature}</dd>
                   </dl>
-                  <dl>
-                    <dt>Frame</dt>
-                    <dd>{ArtWorkDetail.frame}</dd>
+                  <dl className="ecutre">
+                    <dt className="fosan">Frame</dt>
+                    <dd className="gozila">{ArtWorkDetail.frame}</dd>
                   </dl>
                 </div>
               </div>
@@ -140,7 +140,7 @@ function ArtworkDetail() {
                     <div className="img-arttist">
                       {ArtWorkDetail.artists.map((artists) => {
                         return (
-                          <img src={artists.image}></img>
+                          <img className="anhgbc" src={artists.image}></img>
                         );
                       })}
                     </div>
@@ -151,11 +151,11 @@ function ArtworkDetail() {
                             <h1 className="name-artist">{artist.name}</h1>
                           );
                         })}</a>
-                      <p>Canadian, b. 1986</p>
+                      <p className="fdsghj">Canadian, b. 1986</p>
                     </div>
                   </div>
                   <div className="button-follow">
-                    <a> Follow</a>
+                    <a className="mlb"> Follow</a>
                   </div>
                 </div>
                 <div className="exhibition-section">
@@ -163,23 +163,23 @@ function ArtworkDetail() {
                     Selected exhibitions
                   </h3>
                   <div className="content_exhibition">
-                    <dl>
-                      <dt>2024</dt>
-                      <dd>
+                    <dl className="ecutre">
+                      <dt className="fosan">2024</dt>
+                      <dd className="gozila">
                         Rachel MacFarlane: Coming Events Cast Their Light Before
                         Them, Hollis Taggart
                       </dd>
-                    </dl>
-                    <dl>
-                      <dt>2023</dt>
-                      <dd>
+                    </dl >
+                    <dl className="ecutre">
+                      <dt className="fosan">2023</dt>
+                      <dd className="gozila">
                         Of the Past and Present: Estates and Contemporary
                         Artists at Hollis Taggart, Hollis Taggart
                       </dd>
                     </dl>
-                    <dl>
-                      <dt>2022</dt>
-                      <dd>Dimensions, Hollis Taggart</dd>
+                    <dl className="ecutre">
+                      <dt className="fosan">2022</dt>
+                      <dd className="gozila">Dimensions, Hollis Taggart</dd>
                     </dl>
                   </div>
                 </div>
@@ -200,19 +200,19 @@ function ArtworkDetail() {
               <h1 className="price">${ArtWorkDetail.price}</h1>
             </div>
             <div className="button_purchase-sec">
-              <a onClick={handleOffer} id="offer-button"> Make An Offer</a>
+              <a className="mlb" onClick={handleOffer} id="offer-button"> Make An Offer</a>
             </div>
             <div className="shipping-info">
               <h4>Shipping and Taxes</h4>
-              <p>Taxes may apply at checkout. </p>
+              <p className="pehatnb">Taxes may apply at checkout. </p>
               <br />
-              <p>Ships from New York, NY, US</p>
+              <p className="pehatnb">Ships from New York, NY, US</p>
               <br />
-              <p>Shipping: Calculated in checkout</p>
+              <p className="pehatnb">Shipping: Calculated in checkout</p>
             </div>
             <div className="other-artist">
               <div className="title_other-artist">
-                <h3>Related artists</h3>
+                <h3 className="hatbana">Related artists</h3>
                 <a className="viewmore">ViewMore</a>
               </div>
               <div className="info-other_artist">
@@ -222,15 +222,15 @@ function ArtworkDetail() {
                       <div className="artist-section">
                         <div className="about-artist">
                           <div className="img-arttist">
-                            <img src={item.image}></img>
+                            <img className="anhgbc" src={item.image}></img>
                           </div>
                           <div className="info-artist">
                             <a className="name-artist">{item.name}</a>
-                            <p>Canadian, b. 1986</p>
+                            <p className="fdsghj">Canadian, b. 1986</p>
                           </div>
                         </div>
                         <div className="button-follow">
-                          <a> Follow</a>
+                          <a className="mlb"> Follow</a>
                         </div>
                       </div>
                     );
@@ -245,8 +245,8 @@ function ArtworkDetail() {
         <div className="other-artwork">
           {/* other works by artist */}
           <div className="title_other-artwork">
-            <h2 >Other works by Rachel MacFarlane</h2>
-            <a>View All</a>
+            <h2 className="hathainm">Other works by Rachel MacFarlane</h2>
+            <a className="mlb">View All</a>
           </div>
           <div className="carousel-controls">
             <i className="fa-solid fa-angle-left" onClick={goToPrev1}></i>
@@ -263,8 +263,8 @@ function ArtworkDetail() {
               {shuffle(artworks).slice(0, 6).map((artwork, index) => {
                 return (
                   <div className="card-art_home">
-                    <a>
-                      <img src={artwork.artWorkImage} alt="Image 1" />
+                    <a className="mlb">
+                      <img className="anhgb" src={artwork.artWorkImage} alt="Image 1" />
                       <h2 className="name-artist_carousel">{artwork.name}</h2>
                       <h2 className="exhibition">Perfomer, 2024</h2>
                       <span className="price-art_carousel">{artwork.price}</span>

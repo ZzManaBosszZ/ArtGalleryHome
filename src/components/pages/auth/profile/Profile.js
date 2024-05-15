@@ -1,13 +1,10 @@
 import React from "react";
 import "../../../../css/profile.css"
-
+import "../../../../css/bootstrap.css"
 function Profile() {
   return (
     <div class="ko">
-      <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      />
+
 
       <div style={{ marginTop: "20px" }} class="container">
         <div
@@ -22,14 +19,17 @@ function Profile() {
             class="menu-left d-flex align-items-center"
             style={{ width: "300px" }}
           >
-            <img className="image-profile"
+            <img
+              className="igh"
               src="assets/images/profile/user.png"
               alt=""
               style={{ borderRadius: "50%", width: "100px" }}
             />
             <div class="menu-left-right ml-3">
               <h3>Hieu</h3>
-              <p style={{ color: "#707070" }}>Member since 2024</p>
+              <p className="poi" style={{ color: "#707070" }}>
+                Member since 2024
+              </p>
             </div>
           </div>
           <div class="menu-right">
@@ -39,8 +39,8 @@ function Profile() {
           </div>
         </div>
         <div class="menu-bottom">
-          <p>hieudeptrai</p>
-          <p style={{ color: "#707070" }}>
+          <p className="poi">hieudeptrai</p>
+          <p className="poi" style={{ color: "#707070" }}>
             <i class="fa-solid fa-location-dot"></i> VietNam
           </p>
         </div>
@@ -85,14 +85,20 @@ function Profile() {
         <section class="hero">
           <div class="containers">
             <div class="hero-content">
-              <h2>Know Your Collection Better</h2>
-              <p>Manage your collection online and get free market insights.</p>
-              <a href="/upload">
-                <button class="cta-button">Upload Artwork</button>
+              <h2 className="cto">Do you want to become our artist to get many benefits?</h2>
+              <p className="poi">
+              Click below to update artist details.
+              </p>
+              <a href="/new">
+                <button class="cta-button">Become Artist</button>
               </a>
             </div>
             <div class="hero-image">
-              <img src="assets/images/profile/1321760.jpg" alt="" />
+              <img
+                className="igh"
+                src="assets/images/profile/1321760.jpg"
+                alt=""
+              />
             </div>
           </div>
         </section>

@@ -65,7 +65,7 @@ a{
   font-variation-settings: "slnt" 0;
   letter-spacing: 1.2px;
 }
-.menu-item a:hover{
+.menu-item  a:hover{
      color: #6e6d6d;
 }
 .fa-angle-down {

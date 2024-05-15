@@ -1,18 +1,14 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "poppins", sans-serif;
-  box-sizing: border-box;
-}
 body {
   margin: 0 30px;
   padding: 0;
 }
-.back p {
+.back .dlk {
+  margin-left: 10px;
   color: #000;
   font-size: 15px;
 }
 .container {
+  margin-left: 10px;
   width: 800px;
 }
 .entryarea {
@@ -20,10 +16,11 @@ body {
   top: 0;
   line-height: 50px;
 }
-h2 {
+.npc {
+  margin-left: 10px;
   font-weight: 500;
 }
-input {
+.asd {
   position: absolute;
   width: 100%;
   outline: none;
@@ -37,11 +34,16 @@ input {
   z-index: 111;
 }
 .back {
+  margin-left: 10px;
   margin-top: 20px;
 }
 .pe {
+  margin-left: 10px;
+  color: #000;
+  font-size: 15px;
+  margin-left: 10px;
   font-size: 1rem;
 }
-.pe a {
+.pe .aaqw {
   color: #000;
 }
