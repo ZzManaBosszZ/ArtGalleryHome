@@ -29,6 +29,7 @@ import NotFound from "./components/pages/other/NotFound.js";
 import AccountSettings from "./components/pages/auth/profile/AccountSetting.js";
 import Follows from "./components/pages/auth/profile/Follows.js";
 import Saves from "./components/pages/auth/profile/Saves.js";
+import EventDetail from "./components/pages/events/EventDetail.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -106,7 +107,7 @@ function App() {
           {/* Event */}
 
           <Route path="/event" element={<Event />} />
-
+          <Route path="/eventDetail" element={<EventDetail />} />
           {/* End Event */}
 
           {/* Viewing Room */}
