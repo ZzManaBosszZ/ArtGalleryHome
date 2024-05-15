@@ -12,7 +12,6 @@ import ArtworkDetail from "./components/pages/artwork/ArtworkDetail.js";
 import Offer from "./components/pages/offer/Offer.js";
 import Shipping from "./components/pages/other/Shipping.js";
 import Payment from "./components/pages/checkout/Payment.js";
-import Review from "./components/pages/other/Review.js";
 import AboutUs from "./components/pages/aboutus/AboutUs.js";
 import ViewingRooms from "./components/pages/viewingroom/ViewingRooms.js";
 import ArtistDetail from "./components/pages/artist/ArtistDetail.js";
@@ -23,7 +22,7 @@ import authMiddleware from "./context/authMiddleware.js";
 import Profile from "./components/pages/auth/profile/Profile.js";
 import Edit from "./components/pages/auth/profile/Edit.js";
 import Upload from "./components/pages/auth/profile/Upload.js";
-import New from "./components/pages/auth/profile/New.js";
+// import New from "./components/pages/auth/profile/New.js";
 import ThankU from "./components/pages/other/ThankU.js";
 import NotFound from "./components/pages/other/NotFound.js";
 import AccountSettings from "./components/pages/auth/profile/AccountSetting.js";
@@ -64,7 +63,7 @@ function App() {
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
           <Route path="/offer-history" element={<ProtectedRoute element={<OrderHistory />} />} />
           <Route path="/upload-artwork" element={<Upload />} />
-          <Route path="/upload" element={<New />} />
+          {/* <Route path="/upload" element={<New />} /> */}
 
           {/* End Profile */}
 

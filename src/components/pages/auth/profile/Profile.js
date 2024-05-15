@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../../css/profile.css"
 import "../../../../css/bootstrap.css"
+import { Link } from "react-router-dom";
 function Profile() {
   return (
     <div class="ko">
@@ -33,9 +34,11 @@ function Profile() {
             </div>
           </div>
           <div class="menu-right">
-            <a href="/edit">
+            <Link to={`/edit-profile`}>
+            <a>
               <button class="btn-1">Settings</button>
             </a>
+            </Link>
           </div>
         </div>
         <div class="menu-bottom">
@@ -62,19 +65,25 @@ function Profile() {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/accountsetting">
+                  <Link to={`/setting`}>
+                    <a class="nav-link">
                       Account Settings
                     </a>
+                    </Link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/saves">
+                  <Link to={`/artwork-saves`}>
+                    <a class="nav-link">
                       Saves
                     </a>
+                    </Link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/follows">
+                  <Link to={`/artist-follow`}>
+                    <a class="nav-link">
                       Follows
                     </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -89,9 +98,11 @@ function Profile() {
               <p className="poi">
               Click below to update artist details.
               </p>
-              <a href="/new">
+              <Link to={`/artwork-saves`}>
+              <a>
                 <button class="cta-button">Become Artist</button>
               </a>
+              </Link>
             </div>
             <div class="hero-image">
               <img

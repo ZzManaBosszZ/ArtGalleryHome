@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Edit() {
   return (
     <div className="formedit">
@@ -18,15 +18,19 @@ function Edit() {
       <hr className="hrdev" style={{ marginTop: "20px" }} />
       <nav style={{ marginTop: "50px" }} id="profile-navigation">
         <ul className="ghye">
-          <li className="hjpk">
-            <a className="lkm" href="/edit">
+        <li className="hjpk">
+          <Link to={`/edit-profile`}>
+            <a className="lkm">
               Edit Profile
             </a>
+            </Link>
           </li>
           <li className="hjpk">
-            <a class="tip" href="/orderhistory">
-              Order History
+            <Link to={`/offer-history`}>
+            <a className="lkm">
+              Offer History
             </a>
+            </Link>
           </li>
         </ul>
       </nav>

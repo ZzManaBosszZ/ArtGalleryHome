@@ -1,5 +1,6 @@
 import React from "react";
 import "../../../../css/orderhistory.css"
+import { Link } from "react-router-dom";
 function OrderHistory() {
   return (
     <div class="oderdetaill">
@@ -19,14 +20,18 @@ function OrderHistory() {
       <nav style={{ marginTop: "50px" }} id="profile-navigation">
         <ul className="ghye">
           <li className="hjpk">
-            <a class="tip" href="/edit">
+          <Link to={`/edit-profile`}>
+            <a className="lkm">
               Edit Profile
             </a>
+            </Link>
           </li>
           <li className="hjpk">
-            <a className="lkm" href="/orderhistory">
-              Order History
+            <Link to={`/offer-history`}>
+            <a className="lkm">
+              Offer History
             </a>
+            </Link>
           </li>
         </ul>
       </nav>
