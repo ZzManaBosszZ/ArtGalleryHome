@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -138,12 +138,12 @@ function ArtistDetail() {
               {artistDetail.artWork.map((artwork) => {
                 return (
               <div className="card-art_home">
-                <a>
+                <Link to={`/artwork/${artwork.id}`}>
                   <img src={artwork.artWorkImage} alt="Image 1" />
                   <h2 className="name-artist_carousel">{artwork.name}</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
                   <span className="price-art_carousel">${artwork.price}</span>
-                </a>
+                </Link>
                 <a className="button_add-product">Purchase</a>
               </div>
              );
