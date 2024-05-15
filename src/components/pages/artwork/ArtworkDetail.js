@@ -138,10 +138,19 @@ function ArtworkDetail() {
                 <div className="artist-section">
                   <div className="about-artist">
                     <div className="img-arttist">
-                      <img src="assets/images/artists/color.webp"></img>
+                      {ArtWorkDetail.artists.map((artists) => {
+                        return (
+                          <img src={artists.image}></img>
+                        );
+                      })}
                     </div>
                     <div className="info-artist">
-                      <a className="name-artist"></a>
+                      <a className="name-artist">
+                        {ArtWorkDetail.artists.map((artist) => {
+                          return (
+                            <h1 className="name-artist">{artist.name}</h1>
+                          );
+                        })}</a>
                       <p>Canadian, b. 1986</p>
                     </div>
                   </div>
@@ -179,7 +188,7 @@ function ArtworkDetail() {
           </div>
           <div className="purchase-art_section">
             <div className="info-purchase_art">
-            {ArtWorkDetail.artists.map((artist) => {
+              {ArtWorkDetail.artists.map((artist) => {
                 return (
                   <h1 className="name-artist">{artist.name}</h1>
                 );

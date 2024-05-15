@@ -6,8 +6,9 @@ import {
 import { useEffect } from "react";
 import api from "../services/api";
 import url from "../services/url";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getAccessToken } from "../utils/auth";
+import Swal from "sweetalert2";
 // This value is from the props in the UI
 const style = { "layout": "vertical" };
 
@@ -16,6 +17,7 @@ const style = { "layout": "vertical" };
 const ButtonWrapper = ({ showSpinner, currency, amount }) => {
     const [{ isPending, options }, dispatch] = usePayPalScriptReducer();
     const { offerCode } = useParams();
+    const navigate = useNavigate();
 
     const config = {
         headers: {
@@ -37,6 +39,21 @@ const ButtonWrapper = ({ showSpinner, currency, amount }) => {
             const updateStatusResponse = await api.put(`https://localhost:7270/api/Offers/update-status-Admin/${offerCode}`, {action}, 
                 config
             );
+            if (updateStatusResponse === 204) {
+                // console.log(response.data);
+                Swal.fire({
+                    text: "Offer has payment",
+                    icon: "success",
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "Done",
+                    timer: 2000
+                })}
+            // .then(() => {
+            //         dispatch(navigate('/offer-history'));
+            //     });
+                setTimeout(() => {
+                    navigate(`/thanks`); //chuyển đến trang offer-list
+                }, 1000);
             console.log(updateStatusResponse);
             // Xử lý phản hồi nếu cần
         } catch (error) {

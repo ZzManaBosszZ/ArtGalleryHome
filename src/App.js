@@ -60,6 +60,7 @@ function App() {
           <Route path="/artwork-saves" element={<ProtectedRoute element={<Saves />} />} />
           <Route path="/edit-profile" element={<ProtectedRoute element={<Edit />} />} />
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+          <Route path="/offer-history" element={<ProtectedRoute element={<Profile />} />} />
           <Route path="/upload-artwork" element={<Upload />} />
           <Route path="/upload" element={<New />} />
 

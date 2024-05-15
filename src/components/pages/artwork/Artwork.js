@@ -51,7 +51,7 @@ function Artwork() {
       return schoolOfArt.includes(soa);
     });
   };
-  const artworksWithGivenSchoolOfArt = filterArtworksBySchoolOfArt('B');
+  const artworksWithGivenSchoolOfArt = filterArtworksBySchoolOfArt('a');
 
   return (
     <div>

@@ -58,11 +58,11 @@ function Payment() {
         <div className="main-payment_page">
           <div className="offer-order_payment">
             <div className="info-art">
-              <img src="assets/images/artists/artist2.webp"></img>
-              <div className="name-artist">Rachel MacFarlane</div>
+              <img src={offerDetail.artWorkImages}></img>
+              <div className="name-artist">{offerDetail.artWorkNames}</div>
               <div className="exhibition-payment">Perfomer, 2024</div>
               <div className="address">New York, NY, US</div>
-              <div className="price">$10,000-$15,000</div>
+              <div className="price">${offerDetail.offerPrice}</div>
             </div>
             <div className="info-order">
               <div className="info-order_item">
