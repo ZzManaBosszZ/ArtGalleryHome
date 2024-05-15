@@ -26,6 +26,7 @@ import Upload from "./components/pages/auth/profile/Upload.js";
 import New from "./components/pages/auth/profile/New.js";
 import NotFound from "./components/pages/other/NotFound.js";
 import ThankU from "./components/pages/other/ThankU.js";
+import EventDetail from "./components/pages/events/EventDetail.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -102,6 +103,7 @@ function App() {
           {/* Event */}
 
           <Route path="/event" element={<Event />} />
+          <Route path="/eventDetail" element={<EventDetail />} />
 
           {/* End Event */}
 
