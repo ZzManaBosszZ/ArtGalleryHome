@@ -57,10 +57,10 @@ function OrderHistory() {
             </div>
           </div>
           <div class="card-footer">
-            <button class="btn">Payment</button>
-            <button class="btn">View your item</button>
-            <button class="btn">Track package</button>
-            <button class="btn">...</button>
+            <button class="card-footer-btn">Payment</button>
+            <button class="card-footer-btn">View your item</button>
+            <button class="card-footer-btn">Track package</button>
+            <button class="card-footer-btn">...</button>
           </div>
         </div>
         <hr></hr>
@@ -81,10 +81,10 @@ function OrderHistory() {
             </div>
           </div>
           <div class="card-footer">
-            <button class="btn">Payment</button>
-            <button class="btn">View your item</button>
-            <button class="btn">Track package</button>
-            <button class="btn">...</button>
+            <button class="card-footer-btn">Payment</button>
+            <button class="card-footer-btn">View your item</button>
+            <button class="card-footer-btn">Track package</button>
+            <button class="card-footer-btn">...</button>
           </div>
         </div>
         <hr></hr>
@@ -105,10 +105,10 @@ function OrderHistory() {
             </div>
           </div>
           <div class="card-footer">
-            <button class="btn">Payment</button>
-            <button class="btn">View your item</button>
-            <button class="btn">Track package</button>
-            <button class="btn">...</button>
+            <button class="card-footer-btn">Payment</button>
+            <button class="card-footer-btn">View your item</button>
+            <button class="card-footer-btn">Track package</button>
+            <button class="card-footer-btn">...</button>
           </div>
         </div>
       </div>

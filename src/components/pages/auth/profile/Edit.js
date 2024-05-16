@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../../../css/edit.css";
 function Edit() {
   return (
-    <div className="formedit">
-      <link rel="stylesheet" href="assets/css/profile/edit.css" />
+    <div className="formedit-page">
+      {/* <link rel="stylesheet" href="assets/css/profile/edit.css" /> */}
       <div
         class="menu-left d-flex align-items-center"
         style={{ width: "300px", margin: "30px 0 0 50px" }}
@@ -18,18 +19,14 @@ function Edit() {
       <hr className="hrdev" style={{ marginTop: "20px" }} />
       <nav style={{ marginTop: "50px" }} id="profile-navigation">
         <ul className="ghye">
-        <li className="hjpk">
-          <Link to={`/edit-profile`}>
-            <a className="lkm">
-              Edit Profile
-            </a>
+          <li className="hjpk">
+            <Link to={`/edit-profile`}>
+              <a className="lkm">Edit Profile</a>
             </Link>
           </li>
           <li className="hjpk">
             <Link to={`/offer-history`}>
-            <a className="lkm">
-              Offer History
-            </a>
+              <a className="lkm">Offer History</a>
             </Link>
           </li>
         </ul>
@@ -52,49 +49,51 @@ function Edit() {
               <p style={{ marginLeft: "50px" }}>Choose an Image</p>
             </a>
           </div>
-          <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
-                <input className="inedit" type="text" required />
-                <div class="labelline">Full Name</div>
+          <div className="list-input_info">
+            <div class="hhh">
+              <div class="container">
+                <div class="entryarea">
+                  <input className="inedit" type="text" required />
+                  <div class="labelline">Full Name</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
-                <input className="inedit" type="text" required />
-                <div class="labelline">Birthday</div>
+            <div class="hhh">
+              <div class="container">
+                <div class="entryarea">
+                  <input className="inedit" type="text" required />
+                  <div class="labelline">Birthday</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
-                <input className="inedit" type="text" required />
-                <div class="labelline">AddPhone</div>
+            <div class="hhh">
+              <div class="container">
+                <div class="entryarea">
+                  <input className="inedit" type="text" required />
+                  <div class="labelline">AddPhone</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
-                <input className="inedit" type="text" required />
-                <div class="labelline">Address</div>
+            <div class="hhh">
+              <div class="container">
+                <div class="entryarea">
+                  <input className="inedit" type="text" required />
+                  <div class="labelline">Address</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
-                <input className="inedit" type="text" required />
-                <div class="labelline">About</div>
+            <div class="hhh">
+              <div class="container">
+                <div class="entryarea">
+                  <input className="inedit" type="text" required />
+                  <div class="labelline">About</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <button type="submit" class="btn-1">
+      <button type="submit" class="button-save_editPage">
         Save
       </button>
     </div>

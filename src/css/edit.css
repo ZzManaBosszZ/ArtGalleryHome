@@ -1,7 +1,10 @@
-.formedit {
+.formedit-page {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 10px 90px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 #profile-navigation {
@@ -9,19 +12,24 @@
   padding: 10px;
   text-align: center;
   margin-top: 20px;
+  
 }
 
 #profile-navigation .ghye {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 #profile-navigation .hjpk {
   display: inline-block;
   margin: 0 60px;
 }
-
+#profile-navigation .hjpk a:hover{
+  color: #777777;
+}
 #profile-navigation .lkm {
   color: #000;
   text-decoration: none;
@@ -56,17 +64,25 @@
   line-height: 50px;
 }
 .inedit {
+  height: 50px;
   position: absolute;
   width: 100%;
   outline: none;
   font-size: 1.2em;
-  padding: 0 30px;
+  padding: 0 20px;
   line-height: 50px;
   border-radius: 5px;
   border: 1px solid #e1e1e1;
   background: transparent;
   transition: 0.1s ease;
   z-index: 111;
+}
+.list-input_info{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .labelline {
   position: absolute;
@@ -91,50 +107,12 @@
   transform: translate(-15px, -16px) scale(0.88);
   z-index: 1111;
 }
-.btn-1,
-.btn-1 *,
-.btn-1 :after,
-.btn-1 :before,
-.btn-1:after,
-.btn-1:before {
-  border: 0 solid;
-  box-sizing: border-box;
+.button-save_editPage{
+  margin-top: 40px;
+  width: 10%;
+  margin-left: 30%;
 }
-.btn-1 {
-  margin: 40px 0 0 40px;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: button;
-  background-color: #000;
-  background-image: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 100%;
-  font-weight: 9 0;
-  line-height: 1.5;
-  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
-  padding: 0;
-}
-.btn-1:disabled {
-  cursor: default;
-}
-.btn-1:-moz-focusring {
-  outline: auto;
-}
-.btn-1 svg {
-  display: block;
-  vertical-align: middle;
-}
-.btn-1 [hidden] {
-  display: none;
-}
-.btn-1 {
-  border-radius: 99rem;
-  border-width: 2px;
-  padding: 0.8rem 3rem;
-}
-.btn-1:hover {
-  color: #999;
-}
+
 .aaa {
   font-size: 13px;
   text-decoration: none;

@@ -22,10 +22,14 @@ import authMiddleware from "./context/authMiddleware.js";
 import Profile from "./components/pages/auth/profile/Profile.js";
 import Edit from "./components/pages/auth/profile/Edit.js";
 import Upload from "./components/pages/auth/profile/Upload.js";
-import New from "./components/pages/auth/profile/New.js";
-import NotFound from "./components/pages/other/NotFound.js";
+// import New from "./components/pages/auth/profile/New.js";
 import ThankU from "./components/pages/other/ThankU.js";
+import NotFound from "./components/pages/other/NotFound.js";
+import AccountSettings from "./components/pages/auth/profile/AccountSetting.js";
+import Follows from "./components/pages/auth/profile/Follows.js";
+import Saves from "./components/pages/auth/profile/Saves.js";
 import EventDetail from "./components/pages/events/EventDetail.js";
+import OrderHistory from "./components/pages/auth/profile/OrderHistory.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -112,12 +116,13 @@ function App() {
 
           {/* End Viewing Room */}
 
+
           {/* Other */}
 
           <Route path="/notFound" element={<NotFound />} />
           <Route path="/thanks" element={<ThankU />} />
 
-          {/* End  */}
+          {/* End Other */}
         </Routes>
         <Footer />
       </BrowserRouter>

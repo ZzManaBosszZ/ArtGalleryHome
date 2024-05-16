@@ -32,22 +32,25 @@
   margin-bottom: 15px;
 }
 .product-details h3 {
-  font-size: 16px;
-  margin: 0 0 8px;
+  font-size: 18px;
+  margin: 0 0 12px;
 }
 
 .product-details p {
   color: #555;
   font-size: 14px;
+  line-height: 22px;
 }
 
 .card-footer {
   display: flex;
+  justify-content: space-between;
   gap: 8px;
   margin-top: 16px;
+  padding: 1rem 5rem !important;
 }
 
-.btn {
+.card-footer-btn {
   background-color: #000;
   color: white;
   border: none;
@@ -56,6 +59,8 @@
   cursor: pointer;
   font-size: 14px;
   transition: 0.2s;
+  width: 130px;
+  height: 45px;
 }
 
 .btn:hover {

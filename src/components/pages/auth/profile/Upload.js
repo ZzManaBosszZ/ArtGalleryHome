@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import "../../../../css/upload.css";
 
 function Upload() {
   return (
     <div>
-      <link rel="stylesheet" href="assets/css/profile/upload.css" />
-
-      <div style={{ marginTop: "20px" }} class="container">
+      {/* <link rel="stylesheet" href="assets/css/profile/upload.css" /> */}
+<div className="upload-page">
+      <div  class="container-upload_page">
         <div
           class="menu"
           style={{
@@ -33,7 +34,7 @@ function Upload() {
         </div>
       </div>
       <hr />
-      <div class="form">
+      <div class="form-add_art">
         <h2>Add Artwork Details </h2>
         <div class="input-row">
           <input class="ttt" type="text" placeholder="Artist" />
@@ -89,10 +90,11 @@ function Upload() {
         <p class="peeee">Total maximum size: 30MB</p>
         <div class="menu-right">
           <a href="#">
-            <button class="btn-1">Add Photo</button>
+            <button class="menu-right-button">Add Photo</button>
           </a>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -1,7 +1,10 @@
 .homepage {
   max-height: auto;
 }
-
+*a{
+  text-decoration: none;
+  color: #000000;
+}
 /* Header Hero SS */
 .Header-hero {
   display: flex;

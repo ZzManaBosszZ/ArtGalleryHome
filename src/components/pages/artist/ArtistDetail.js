@@ -4,6 +4,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../../css/artistDetail.css";
+import api from "../../../services/api";
+import url from "../../../services/url";
+import { getAccessToken } from "../../../utils/auth";
+import Swal from "sweetalert2";
 function ArtistDetail() {
   const sliderRef1 = useRef(null);
   const [artists, setArtists] = useState([])
@@ -107,7 +111,7 @@ function ArtistDetail() {
             <img src={artistDetail.image} alt="Image 1" />
           </div>
           <div className="info-artist">
-            <h2 className="name-artist" id="name-artist">Atsuko Tanaka</h2>
+            <h2 className="name-artist" id="name-artist">{artistDetail.name}</h2>
             <p className="more-info"> Japenese, 1932-1005</p>
             <div className="follow-section">
               <a onClick={() => handleAddFollow(artistDetail.id)} className="button-follow">Follow</a>
