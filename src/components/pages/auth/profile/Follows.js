@@ -1,9 +1,66 @@
-import React from "react";
-import "../../../../css/bootstrap.css"
+import { useState, useMemo, useEffect, useCallback } from "react";
+import { getAccessToken } from "../../../../utils/auth";
+import { Link } from "react-router-dom";
+import api from "../../../../services/api"
+import url from "../../../../services/url"
+import Swal from "sweetalert2";
+// import "../../../../css/bootstrap.css";
 function Follows() {
+
+
+  const [follow, setFollow] = useState([]);
+
+  const userToken = getAccessToken();
+
+  const config = useMemo(() => {
+    return {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`,
+      },
+    };
+  }, [userToken]);
+
+  // Get follow by user
+  const loadFollow = useCallback(async () => {
+    try {
+      const followResponse = await api.get(url.FOLLOW.BY_USER, config);
+      setFollow(followResponse.data);
+    } catch (error) { }
+  }, [config]);
+
+  useEffect(() => {
+    loadFollow();
+  }, [loadFollow]);
+
+  // Remove follow
+  const handleRemoveFollowItem = async (artistId) => {
+    try {
+      const isConfirmed = await Swal.fire({
+        title: "Are you sure?",
+        text: "You want to remove it from your favorites list?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "I'm sure",
+      });
+
+      if (isConfirmed.isConfirmed) {
+        const removeResponse = await api.delete(url.FOLLOW.REMOVE + `?id=${artistId}`, config);
+        if (removeResponse.status === 200) {
+          loadFollow();
+        }
+      }
+
+      setTimeout(() => {
+      }, 2000);
+    } catch (error) { }
+  };
+
   return (
     <div style={{ marginTop: "20px" }} class="container">
-      <link rel="stylesheet" href="assets/css/profile/follows.css" />
+      <link rel="stylesheet" href="assets/css/follows.css" />
 
       <div
         class="menu"
@@ -18,6 +75,7 @@ function Follows() {
           style={{ width: "300px" }}
         >
           <img
+            className="imgfollow"
             src="assets/images/profile/user.png"
             alt=""
             style={{ borderRadius: "50%", width: "100px" }}
@@ -47,32 +105,134 @@ function Follows() {
               id="navbarSupportedContent"
             >
               <ul class="navbar-nav w-100 justify-content-between">
-                <li class="nav-item">
-                  <a class="nav-link" href="/profile">
-                    My Collection
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/accountsetting">
-                    Account Settings
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/saves">
-                    Saves
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a style={{ color: "#000" }} class="nav-link" href="/follows">
-                    Follows
-                  </a>
-                </li>
-              </ul>
+                  <li class="nav-item">
+                    <a
+                      style={{ color: "#000" }}
+                      class="nav-link"
+                      href="/profile"
+                    >
+                      My Collection
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/artwork-saves`}>
+                    <a class="nav-link">
+                      Saves
+                    </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/artist-follow`}>
+                    <a class="nav-link">
+                      Follows
+                    </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/setting`}>
+                    <a class="nav-link">
+                      Password Setting
+                    </a>
+                    </Link>
+                  </li>
+                </ul>
             </div>
           </div>
         </nav>
-        <hr />
       </div>
+      {follow.length > 0 ? (
+            follow.map((item, index) => (
+      <div class="noment">
+        <div class="headen">
+          <img
+            className="imgfollow"
+            src={item.artistImage}
+            alt="Artist Profile Picture"
+          />
+          <div>
+            <h1 className="hatflo">{item.artistName}</h1>
+            <p className="peflo">Norwegian, b. 1981</p>
+          </div>
+          <button onClick={() => handleRemoveFollowItem(item.id)} className="butfolo">Unfollow</button>
+        </div>
+        <div className="image-row">
+          <div className="image-scroll-container">
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 1"
+              className="scroll-image"
+            />
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 2"
+              className="scroll-image"
+            />
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 3"
+              className="scroll-image"
+            />
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 4"
+              className="scroll-image"
+            />
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 5"
+              className="scroll-image"
+            />
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 5"
+              className="scroll-image"
+            />{" "}
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 5"
+              className="scroll-image"
+            />{" "}
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 5"
+              className="scroll-image"
+            />{" "}
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 5"
+              className="scroll-image"
+            />{" "}
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 5"
+              className="scroll-image"
+            />{" "}
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 5"
+              className="scroll-image"
+            />{" "}
+            <img
+              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+              alt="Image 5"
+              className="scroll-image"
+            />
+          </div>
+        </div>
+      </div>
+      ))
+    )
+      : (
+        <div className="favorite-not">
+          <img src="./assets/images/home/404.png" alt="Not Found" style={{ width: "100%" }} />
+          <p>You don't have any Artist in your favorites list yet.</p>
+          <a class="custom-button back-button" href="/artist">
+            <i class="far fa-reply"></i> Follow them now
+          </a>
+        </div>
+      )
+    }
+
     </div>
   );
 }

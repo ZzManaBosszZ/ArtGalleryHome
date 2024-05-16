@@ -1,13 +1,10 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import "../../../../css/bootstrap.css"
 function AccountSettings() {
   return (
     <div class="ko">
       <link rel="stylesheet" href="assets/css/profile/accountsetting.css" />
-      <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      />
 
       <div style={{ marginTop: "20px" }} class="container">
         <div
@@ -33,14 +30,16 @@ function AccountSettings() {
             </div>
           </div>
           <div class="menu-right">
-            <a href="/edit">
+            <Link to={`/edit-profile`}>
+            <a>
               <button class="btn-1">Settings</button>
             </a>
+            </Link>
           </div>
         </div>
         <div class="menu-bottom">
-          <p>hieudeptrai</p>
-          <p style={{ color: "#707070" }}>
+          <p className="poi">hieudeptrai</p>
+          <p className="poi" style={{ color: "#707070" }}>
             <i class="fa-solid fa-location-dot"></i> VietNam
           </p>
         </div>
@@ -51,33 +50,36 @@ function AccountSettings() {
                 class="collapse navbar-collapse nav-fill"
                 id="navbarSupportedContent"
               >
-                <ul class="navbar-nav w-100 justify-content-between">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/profile">
-                      {" "}
-                      My Collection{" "}
-                    </a>
-                  </li>
+               <ul class="navbar-nav w-100 justify-content-between">
                   <li class="nav-item">
                     <a
                       style={{ color: "#000" }}
                       class="nav-link"
-                      href="/accountsetting"
+                      href="/profile"
                     >
-                      Account Settings
+                      My Collection
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/saves">
-                      {" "}
-                      Saves{" "}
+                  <Link to={`/artwork-saves`}>
+                    <a class="nav-link">
+                      Saves
                     </a>
+                    </Link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/follows">
-                      {" "}
-                      Follows{" "}
+                  <Link to={`/artist-follow`}>
+                    <a class="nav-link">
+                      Follows
                     </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/setting`}>
+                    <a class="nav-link">
+                      Password Setting
+                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

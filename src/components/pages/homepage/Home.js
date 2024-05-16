@@ -8,6 +8,9 @@ import api from "../../../services/api";
 import url from "../../../services/url";
 import NotFound from "../other/NotFound";
 import "../../../css/home.css"
+import { getAccessToken} from "../../../utils/auth";
+import Swal from "sweetalert2";
+
 function Home() {
   const sliderRef1 = useRef(null);
   const sliderRef2 = useRef(null);
@@ -15,14 +18,52 @@ function Home() {
   const navigate = useNavigate();
   const [artwork, setArtworks] = useState([]);
   const [artist, setArtists] = useState([]);
-  // const handleOffer = () => {
-  //   if (!isLoggedIn()) {
-  //     localStorage.setItem("redirectPath", window.location.pathname);
-  //     navigate("/login");
-  //   } else {
-  //     navigate(`/artwork/${id}?`);
-  //   }
-  // };
+  const userToken = getAccessToken();
+
+  const config = {
+      headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+      },
+  };
+
+  // Add to Follow
+  const handleAddFollow = async (artistId) => {
+    try {
+        const response = await api.post(url.FOLLOW.ADD, { artistId }, config);
+
+        // setTimeout(() => {
+        // }, 2000);
+
+        if (response.status === 201) {
+            setTimeout(() => {
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Added Artist to follow list successfully.",
+                    icon: "success",
+                });
+            }, 2000);
+        }
+    } catch (error) {
+        if (error.response && error.response.status === 400) {
+          
+            Swal.fire({
+                title: "Oops...",
+                text: "The Artist is already in your follows list.",
+                icon: "warning",
+            });
+        } else if (error.response && error.response.status === 401) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please log in to add Artist to your follows list!",
+                footer: '<a href="/login">Log in now?</a>',
+            });
+        } else {
+            console.error("Error adding to favorites", error);
+        }
+    }
+};
 
   //hien thi thong tin artwork
   useEffect(() => {
@@ -185,7 +226,7 @@ function Home() {
                  <div className="artist-info">{item.name}
                   <br/><p>Japenese, 1932-1005</p>
                  </div>
-                 <div className="button-follow">Follow</div>
+                 <div onClick={() => handleAddFollow(item.id)} className="button-follow">Follow</div>
               </a>
               
             </div>

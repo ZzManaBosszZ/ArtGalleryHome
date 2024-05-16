@@ -1,11 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../../css/artistDetail.css";
 import api from "../../../services/api";
 import url from "../../../services/url";
+import { getAccessToken } from "../../../utils/auth";
+import Swal from "sweetalert2";
 function ArtistDetail() {
   const sliderRef1 = useRef(null);
   const [artists, setArtists] = useState([])
@@ -53,8 +55,53 @@ function ArtistDetail() {
       });
   }, [id]);
 
+  // Config token
+  const userToken = getAccessToken();
 
+  const config = {
+      headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+      },
+  };
 
+    // Add to Follow
+    const handleAddFollow = async (artistId) => {
+      try {
+          const response = await api.post(url.FOLLOW.ADD, { artistId }, config);
+
+          // setTimeout(() => {
+          // }, 2000);
+
+          if (response.status === 201) {
+              setTimeout(() => {
+                  Swal.fire({
+                      title: "Good job!",
+                      text: "Added Artist to follow list successfully.",
+                      icon: "success",
+                  });
+              }, 2000);
+          }
+      } catch (error) {
+          if (error.response && error.response.status === 400) {
+            
+              Swal.fire({
+                  title: "Oops...",
+                  text: "The Artist is already in your follows list.",
+                  icon: "warning",
+              });
+          } else if (error.response && error.response.status === 401) {
+              Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Please log in to add Artist to your follows list!",
+                  footer: '<a href="/login">Log in now?</a>',
+              });
+          } else {
+              console.error("Error adding to favorites", error);
+          }
+      }
+  };
 
   return (
     <div>
@@ -67,7 +114,7 @@ function ArtistDetail() {
             <h2 className="name-artist" id="name-artist">{artistDetail.name}</h2>
             <p className="more-info"> Japenese, 1932-1005</p>
             <div className="follow-section">
-              <a className="button-follow">Follow</a>
+              <a onClick={() => handleAddFollow(artistDetail.id)} className="button-follow">Follow</a>
               <span className="followers">1.5k Followers</span>
             </div>
             <div className="artist-style">
@@ -138,12 +185,12 @@ function ArtistDetail() {
               {artistDetail.artWork.map((artwork) => {
                 return (
               <div className="card-art_home">
-                <a>
+                <Link to={`/artwork/${artwork.id}`}>
                   <img src={artwork.artWorkImage} alt="Image 1" />
                   <h2 className="name-artist_carousel">{artwork.name}</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
                   <span className="price-art_carousel">${artwork.price}</span>
-                </a>
+                </Link>
                 <a className="button_add-product">Purchase</a>
               </div>
              );

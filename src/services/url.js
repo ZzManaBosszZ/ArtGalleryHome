@@ -34,6 +34,12 @@ const url = {
         REMOVE: "Favorites/removefavorite",
     },
 
+    FOLLOW: {
+        BY_USER: "Follows/get-by-user-follow",
+        ADD: "Follows/addtofollow",
+        REMOVE: "Follows/removefollow",
+    },
+
     PAYPAL: {
         DETAIL: "Offers/detailForUser"
     },

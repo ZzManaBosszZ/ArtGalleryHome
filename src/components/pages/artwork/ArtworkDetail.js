@@ -1,13 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { isLoggedIn } from '../../../utils/auth';
-import { getDecodedToken, removeAccessToken } from "../../../utils/auth";
+import { getDecodedToken, removeAccessToken, getAccessToken } from "../../../utils/auth";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../../css/artDetail.css"
 import api from "../../../services/api";
 import url from "../../../services/url";
+import Swal from "sweetalert2";
 function ArtworkDetail() {
   const sliderRef1 = useRef(null);
   const [userRole, setUserRole] = useState(null);
@@ -25,6 +26,53 @@ function ArtworkDetail() {
     } else {
       navigate(`/offer/${id}`);
     }
+  };
+
+  // Config token
+  const userToken = getAccessToken();
+
+  const config = {
+      headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+      },
+  };
+
+    // Add to Favorite
+    const handleAddFavorite = async (artworkId) => {
+      try {
+          const favoriteRequest = await api.post(url.FAVORITE.ADD, { artworkId }, config);
+
+          setTimeout(() => {
+          }, 2000);
+
+          if (favoriteRequest.status === 201) {
+              setTimeout(() => {
+                  Swal.fire({
+                      title: "Good job!",
+                      text: "Added Artwork to favorites list successfully.",
+                      icon: "success",
+                  });
+              }, 2000);
+          }
+      } catch (error) {
+          if (error.response && error.response.status === 400) {
+              Swal.fire({
+                  title: "Oops...",
+                  text: "The Artwork is already in your favorites list.",
+                  icon: "warning",
+              });
+          } else if (error.response && error.response.status === 401) {
+              Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Please log in to add Artwork to your favorites list!",
+                  footer: '<a href="/login">Log in now?</a>',
+              });
+          } else {
+              console.error("Error adding to favorites", error);
+          }
+      }
   };
 
   //hien thi thong tin chi tiet artwork
@@ -91,7 +139,7 @@ function ArtworkDetail() {
                 <img className="anhgb" src={ArtWorkDetail.artWorkImage}></img>
               </div>
               <div className="otherServices">
-                <button className="bonhai">
+                <button className="bonhai"  onClick={() => handleAddFavorite(ArtWorkDetail.id)}>
                   <i class="fa-regular fa-heart"></i>Save
                 </button>
                 <button className="bonhai">
