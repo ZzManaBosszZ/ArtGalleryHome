@@ -9,10 +9,12 @@ function Edit() {
         style={{ width: "300px", margin: "30px 0 0 50px" }}
       >
         <p>
-          <a class="aaa" style={{ color: "#000" }} href="/profile">
+          <Link to={`/profile`}>
+          <a class="aaa" style={{ color: "#000" }}>
             {" "}
             Collector Profile
           </a>
+          </Link>
         </p>
       </div>
       <hr className="hrdev" style={{ marginTop: "20px" }} />
@@ -53,42 +55,42 @@ function Edit() {
             </a>
           </div>
           <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
+            <div class="containernbm">
+              <div class="entryareaer">
                 <input className="inedit" type="text" required />
-                <div class="labelline">Full Name</div>
+                <div class="labellineer">Full Name</div>
               </div>
             </div>
           </div>
           <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
+            <div class="containernbm">
+              <div class="entryareaer">
                 <input className="inedit" type="text" required />
-                <div class="labelline">Birthday</div>
+                <div class="labellineer">Birthday</div>
               </div>
             </div>
           </div>
           <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
+            <div class="containernbm">
+              <div class="entryareaer">
                 <input className="inedit" type="text" required />
-                <div class="labelline">AddPhone</div>
+                <div class="labellineer">AddPhone</div>
               </div>
             </div>
           </div>
           <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
+            <div class="containernbm">
+              <div class="entryareaer">
                 <input className="inedit" type="text" required />
-                <div class="labelline">Address</div>
+                <div class="labellineer">Address</div>
               </div>
             </div>
           </div>
           <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
+            <div class="containernbm">
+              <div class="entryareaer">
                 <input className="inedit" type="text" required />
-                <div class="labelline">About</div>
+                <div class="labellineer">About</div>
               </div>
             </div>
           </div>

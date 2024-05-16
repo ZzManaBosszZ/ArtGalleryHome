@@ -5,7 +5,7 @@ function Footer() {
     <div>
       <link rel="stylesheet" href="assets/css/footer.css" />
       <footer className="ct-footer" >
-        <div className="container-fluid">
+        <div className="container-fluids">
           <nav id="footer-navigation">
             <ul id="menu-menu-1" className="menu">
               <li

@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../../css/artDetail.css"
+import "../../../css/home.css"
 import api from "../../../services/api";
 import url from "../../../services/url";
 import Swal from "sweetalert2";

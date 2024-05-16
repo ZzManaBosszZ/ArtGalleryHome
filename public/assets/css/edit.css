@@ -47,17 +47,17 @@
   margin-left: 50px;
   align-items: center;
 }
-.container {
+.containernbm {
   width: 800px;
 }
-.entryarea {
+.entryareaer {
   position: relative;
   top: 0;
   line-height: 50px;
 }
-.inedit {
+.entryareaer input{
   position: absolute;
-  width: 100%;
+  width: 50%;
   outline: none;
   font-size: 1.2em;
   padding: 0 30px;
@@ -68,7 +68,7 @@
   transition: 0.1s ease;
   z-index: 111;
 }
-.labelline {
+.labellineer {
   position: absolute;
   font-size: 16px;
   color: #707070;

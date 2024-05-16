@@ -10,6 +10,7 @@ import NotFound from "../other/NotFound";
 import "../../../css/home.css"
 import { getAccessToken} from "../../../utils/auth";
 import Swal from "sweetalert2";
+import { Height } from "@mui/icons-material";
 
 function Home() {
   const sliderRef1 = useRef(null);
@@ -213,10 +214,11 @@ function Home() {
             infinite={true}
             slidesToShow={4}
             slidesToScroll={3}
+            style={{height: "350px"}}
           >
             {artist.map((item, index) => {
               return (
-            <div  className="card-artist">
+            <div className="card-artist">
               <Link to={`/artist/${item.id}`}>
               <a className="img-artist">
                 <img src={item.image} alt="Image 1" />
