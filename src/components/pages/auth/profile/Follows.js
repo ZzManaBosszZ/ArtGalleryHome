@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import api from "../../../../services/api"
 import url from "../../../../services/url"
 import Swal from "sweetalert2";
-import "../../../../css/bootstrap.css";
+// import "../../../../css/bootstrap.css";
 function Follows() {
 
 
@@ -105,31 +105,37 @@ function Follows() {
               id="navbarSupportedContent"
             >
               <ul class="navbar-nav w-100 justify-content-between">
-                <li class="nav-item">
-                  <a class="nav-link" href="/profile">
-                    My Collection
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/setting">
-                    Account Settings
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/artwork-saves">
-                    Saves
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    style={{ color: "#000" }}
-                    class="nav-link"
-                    href="/artist-follow"
-                  >
-                    Follows
-                  </a>
-                </li>
-              </ul>
+                  <li class="nav-item">
+                    <a
+                      style={{ color: "#000" }}
+                      class="nav-link"
+                      href="/profile"
+                    >
+                      My Collection
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/artwork-saves`}>
+                    <a class="nav-link">
+                      Saves
+                    </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/artist-follow`}>
+                    <a class="nav-link">
+                      Follows
+                    </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/setting`}>
+                    <a class="nav-link">
+                      Password Setting
+                    </a>
+                    </Link>
+                  </li>
+                </ul>
             </div>
           </div>
         </nav>
@@ -140,14 +146,14 @@ function Follows() {
         <div class="headen">
           <img
             className="imgfollow"
-            src="artist-profile.jpg"
+            src={item.artistImage}
             alt="Artist Profile Picture"
           />
           <div>
-            <h1 className="hatflo">Lene Kilde</h1>
+            <h1 className="hatflo">{item.artistName}</h1>
             <p className="peflo">Norwegian, b. 1981</p>
           </div>
-          <button className="butfolo">Unfollow</button>
+          <button onClick={() => handleRemoveFollowItem(item.id)} className="butfolo">Unfollow</button>
         </div>
         <div className="image-row">
           <div className="image-scroll-container">

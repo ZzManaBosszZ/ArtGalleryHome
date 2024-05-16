@@ -1,14 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "../../../../css/bootstrap.css"
 function AccountSettings() {
   return (
     <div class="ko">
       <link rel="stylesheet" href="assets/css/profile/accountsetting.css" />
-      <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      />
 
       <div style={{ marginTop: "20px" }} class="container">
         <div
@@ -54,7 +50,7 @@ function AccountSettings() {
                 class="collapse navbar-collapse nav-fill"
                 id="navbarSupportedContent"
               >
-                <ul class="navbar-nav w-100 justify-content-between">
+               <ul class="navbar-nav w-100 justify-content-between">
                   <li class="nav-item">
                     <a
                       style={{ color: "#000" }}
@@ -63,13 +59,6 @@ function AccountSettings() {
                     >
                       My Collection
                     </a>
-                  </li>
-                  <li class="nav-item">
-                  <Link to={`/setting`}>
-                    <a class="nav-link">
-                      Account Settings
-                    </a>
-                    </Link>
                   </li>
                   <li class="nav-item">
                   <Link to={`/artwork-saves`}>
@@ -82,6 +71,13 @@ function AccountSettings() {
                   <Link to={`/artist-follow`}>
                     <a class="nav-link">
                       Follows
+                    </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/setting`}>
+                    <a class="nav-link">
+                      Password Setting
                     </a>
                     </Link>
                   </li>

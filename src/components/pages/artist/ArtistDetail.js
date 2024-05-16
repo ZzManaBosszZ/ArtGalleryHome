@@ -65,15 +65,15 @@ function ArtistDetail() {
       },
   };
 
-    // Add to Favorite
+    // Add to Follow
     const handleAddFollow = async (artistId) => {
       try {
-          const favoriteRequest = await api.post(url.FOLLOW.ADD, { artistId }, config);
+          const response = await api.post(url.FOLLOW.ADD, { artistId }, config);
 
-          setTimeout(() => {
-          }, 2000);
+          // setTimeout(() => {
+          // }, 2000);
 
-          if (favoriteRequest.status === 201) {
+          if (response.status === 201) {
               setTimeout(() => {
                   Swal.fire({
                       title: "Good job!",
@@ -84,6 +84,7 @@ function ArtistDetail() {
           }
       } catch (error) {
           if (error.response && error.response.status === 400) {
+            
               Swal.fire({
                   title: "Oops...",
                   text: "The Artist is already in your follows list.",
@@ -101,10 +102,6 @@ function ArtistDetail() {
           }
       }
   };
-
-
-
-
 
   return (
     <div>

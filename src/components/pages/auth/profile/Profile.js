@@ -6,6 +6,28 @@ import { Link } from "react-router-dom";
 import api from "../../../../services/api"
 import url from "../../../../services/url"
 function Profile() {
+
+  const [info, setInfo] = useState("");
+  const loadProfile = async () => {
+    const userToken = getAccessToken();
+
+    try {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${userToken}`,
+            },
+        };
+
+        const profileResponse = await api.get(url.AUTH.PROFILE, config);
+        setInfo(profileResponse.data);
+    } catch (error) {}
+};
+
+useEffect(() => {
+    loadProfile();
+}, []);
+
   return (
     <div class="ko">
       <div style={{ marginTop: "20px" }} class="container">
@@ -23,12 +45,12 @@ function Profile() {
           >
             <img
               className="igh"
-              src="assets/images/profile/user.png"
+              src="./assets/images/home/4.jpeg"
               alt=""
               style={{ borderRadius: "50%", width: "100px" }}
             />
             <div class="menu-left-right ml-3">
-              <h3>Hieu</h3>
+              <h3>{info.fullname}</h3>
               <p className="poi" style={{ color: "#707070" }}>
                 Member since 2024
               </p>
@@ -43,7 +65,7 @@ function Profile() {
           </div>
         </div>
         <div class="menu-bottom">
-          <p className="poi">hieudeptrai</p>
+          <p className="poi">{info.fullname}</p>
           <p className="poi" style={{ color: "#707070" }}>
             <i class="fa-solid fa-location-dot"></i> VietNam
           </p>
@@ -66,13 +88,6 @@ function Profile() {
                     </a>
                   </li>
                   <li class="nav-item">
-                  <Link to={`/setting`}>
-                    <a class="nav-link">
-                      Account Settings
-                    </a>
-                    </Link>
-                  </li>
-                  <li class="nav-item">
                   <Link to={`/artwork-saves`}>
                     <a class="nav-link">
                       Saves
@@ -83,6 +98,13 @@ function Profile() {
                   <Link to={`/artist-follow`}>
                     <a class="nav-link">
                       Follows
+                    </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/setting`}>
+                    <a class="nav-link">
+                      Password Setting
                     </a>
                     </Link>
                   </li>
@@ -108,7 +130,7 @@ function Profile() {
             <div class="hero-image">
               <img
                 className="igh"
-                src="assets/images/profile/1321760.jpg"
+                src="./assets/images/home/4.jpeg"
                 alt=""
               />
             </div>

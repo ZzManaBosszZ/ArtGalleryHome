@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useCallback } from "react";
-import "../../../../css/bootstrap.css";
+// import "../../../../css/bootstrap.css";
 import { getAccessToken } from "../../../../utils/auth";
 import { Link } from "react-router-dom";
 import api from "../../../../services/api"
@@ -111,55 +111,63 @@ function Saves() {
           </div>
         </div>
         <div class="menu-right">
-          <a href="/edit">
-            <button class="btn-1">Settings</button>
-          </a>
-        </div>
-      </div>
-      <div class="menu-bottom">
-        <p>hieudeptrai</p>
-        <p style={{ color: "#707070" }}>
-          <i class="fa-solid fa-location-dot"></i> VietNam
-        </p>
-      </div>
-      <div class="navbar">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
-          <div class="container-fluid">
-            <div
-              class="collapse navbar-collapse nav-fill"
-              id="navbarSupportedContent"
-            >
-              <ul class="navbar-nav w-100 justify-content-between">
-                <li class="nav-item">
-                  <a class="nav-link" href="/profile">
-                    My Collection
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/accountsetting">
-                    Account Settings
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    style={{ color: "#000" }}
-                    class="nav-link"
-                    href="/artist-saves"
-                  >
-                    Saves
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/artist-follow">
-                    Follows
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <Link to={`/edit-profile`}>
+            <a>
+              <button class="btn-1">Settings</button>
+            </a>
+            </Link>
           </div>
-        </nav>
-        <hr />
-      </div>
+        </div>
+        <div class="menu-bottom">
+          <p className="poi">hieudeptrai</p>
+          <p className="poi" style={{ color: "#707070" }}>
+            <i class="fa-solid fa-location-dot"></i> VietNam
+          </p>
+        </div>
+        <div class="navbar">
+          <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <div class="container-fluid">
+              <div
+                class="collapse navbar-collapse nav-fill"
+                id="navbarSupportedContent"
+              >
+                <ul class="navbar-nav w-100 justify-content-between">
+                  <li class="nav-item">
+                    <a
+                      style={{ color: "#000" }}
+                      class="nav-link"
+                      href="/profile"
+                    >
+                      My Collection
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/artwork-saves`}>
+                    <a class="nav-link">
+                      Saves
+                    </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/artist-follow`}>
+                    <a class="nav-link">
+                      Follows
+                    </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/setting`}>
+                    <a class="nav-link">
+                      Password Setting
+                    </a>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <hr />
+        </div>
 
       <div class="container">
         <h1>Save Arwork</h1>
