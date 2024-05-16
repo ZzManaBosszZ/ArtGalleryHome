@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
+import { getAccessToken } from "../../../utils/auth";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import api from "../../../services/api";
@@ -9,6 +10,14 @@ import url from "../../../services/url";
 function Artists() {
   const sliderRef = useRef(null);
   const [artists, setArtists] = useState([]);
+  const userToken = getAccessToken();
+
+  const config = {
+      headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+      },
+  };
 
   useEffect(() => {
     const userToken = localStorage.getItem("access_token");
@@ -51,7 +60,46 @@ function Artists() {
       return schoolOfArt.includes(soa);
     });
   };
-  const artistsWithGivenSchoolOfArt = filterArtistsBySchoolOfArt('B');
+  const artistsWithGivenSchoolOfArt = filterArtistsBySchoolOfArt('c');
+
+
+  // Add to Follow
+  const handleAddFollow = async (artistId) => {
+    try {
+        const response = await api.post(url.FOLLOW.ADD, { artistId }, config);
+
+        // setTimeout(() => {
+        // }, 2000);
+
+        if (response.status === 201) {
+            setTimeout(() => {
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Added Artist to follow list successfully.",
+                    icon: "success",
+                });
+            }, 2000);
+        }
+    } catch (error) {
+        if (error.response && error.response.status === 400) {
+          
+            Swal.fire({
+                title: "Oops...",
+                text: "The Artist is already in your follows list.",
+                icon: "warning",
+            });
+        } else if (error.response && error.response.status === 401) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please log in to add Artist to your follows list!",
+                footer: '<a href="/login">Log in now?</a>',
+            });
+        } else {
+            console.error("Error adding to favorites", error);
+        }
+    }
+};
 
   useEffect(() => {
     if (sliderRef.current) {
@@ -88,7 +136,7 @@ function Artists() {
         <section className="featured-artists_carousel">
           <div className="top-section">
             <h3 className="title-section">Featured Artists</h3>
-            <a className="view-more_artist">View more</a>
+            <Link to={`/`}><a className="view-more_artist">View more</a></Link>
           </div>
           <div className="carousel-controls">
             <i className="fa-solid fa-angle-left" onClick={goToPrev}></i>
@@ -115,7 +163,7 @@ function Artists() {
                       <br />
                       <p>Japenese, 1932-1005</p>
                     </div>
-                    <div className="button-follow">Follow</div>
+                    <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div>
                   </a>
                 </div>
               ))}
@@ -126,21 +174,21 @@ function Artists() {
         <section className="artists-section">
           <div className="top-section">
             <h3 className="title-section">Gutai</h3>
-            <a href="/listArtist" className="view-more_artist">View more</a>
+            <a href="/artwork-list-filter" className="view-more_artist">View more</a>
           </div>
           <div className="section-content_artist">
           {artistsWithGivenSchoolOfArt.map(artist => (
             <div className="card-artist">
-              <a href="/artistDetail" className="img-artist">
+              <Link to={`/artist/${artist.id}`} className="img-artist">
                 <img src={artist.image} alt="Image 1" />
-              </a>
+              </Link>
               <a href="/artistDetail" className="main-artist">
                 <div className="artist-info">
                   {artist.name}
                   <br />
                   <p>{artist.description}</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div>
               </a>
             </div>
             ))}
@@ -162,7 +210,7 @@ function Artists() {
                   <br />
                   <p>Japenese, 1932-1005</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
               </a>
             </div>
             <div className="card-artist">
@@ -175,7 +223,7 @@ function Artists() {
                   <br />
                   <p>Japenese, 1932-1005</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
               </a>
             </div>
             <div className="card-artist">
@@ -188,7 +236,7 @@ function Artists() {
                   <br />
                   <p>Japenese, 1932-1005</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
               </a>
             </div>
             <div className="card-artist">
@@ -201,7 +249,7 @@ function Artists() {
                   <br />
                   <p>Japenese, 1932-1005</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
               </a>
             </div>
           </div>
@@ -223,7 +271,7 @@ function Artists() {
                   <br />
                   <p>Japenese, 1932-1005</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
               </a>
             </div>
             <div className="card-artist">
@@ -283,7 +331,7 @@ function Artists() {
                   <br />
                   <p>Japenese, 1932-1005</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
               </a>
             </div>
             <div className="card-artist">
@@ -343,7 +391,7 @@ function Artists() {
                   <br />
                   <p>Japenese, 1932-1005</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
               </a>
             </div>
             <div className="card-artist">
@@ -403,7 +451,7 @@ function Artists() {
                   <br />
                   <p>Japenese, 1932-1005</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
               </a>
             </div>
             <div className="card-artist">
@@ -447,6 +495,8 @@ function Artists() {
             </div>
           </div>
         </section>
+        
+        
       </div>
     </div>
   );

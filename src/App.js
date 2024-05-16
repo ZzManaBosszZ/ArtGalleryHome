@@ -12,7 +12,6 @@ import ArtworkDetail from "./components/pages/artwork/ArtworkDetail.js";
 import Offer from "./components/pages/offer/Offer.js";
 import Shipping from "./components/pages/other/Shipping.js";
 import Payment from "./components/pages/checkout/Payment.js";
-import Review from "./components/pages/other/Review.js";
 import AboutUs from "./components/pages/aboutus/AboutUs.js";
 import ViewingRooms from "./components/pages/viewingroom/ViewingRooms.js";
 import ArtistDetail from "./components/pages/artist/ArtistDetail.js";
@@ -49,18 +48,18 @@ function App() {
         <Routes>
           {/* Auth */}
 
-          <Route path="/login" element={<ProtectedLoginRoute element={<LoginAndRegister />} />}>
-          </Route>
-
+          <Route path="/login" element={<ProtectedLoginRoute element={<LoginAndRegister />} />} />
           {/* End Auth */}
 
           {/* Profile */}
-
-          {/* <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} /> */}
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/edit" element={<Edit/>}/>
-          <Route path="/upload-artwork" element={<Upload/>}/>
-          <Route path="/upload" element={<New/>}/>
+          <Route path="/setting" element={<ProtectedRoute element={<AccountSettings />} />}></Route>
+          <Route path="/artist-follow" element={<ProtectedRoute element={<Follows />} />} />
+          <Route path="/artwork-saves" element={<ProtectedRoute element={<Saves />} />} />
+          <Route path="/edit-profile" element={<ProtectedRoute element={<Edit />} />} />
+          <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+          <Route path="/offer-history" element={<ProtectedRoute element={<OrderHistory />} />} />
+          <Route path="/upload-artwork" element={<Upload />} />
+          {/* <Route path="/upload" element={<New />} /> */}
 
           {/* End Profile */}
 
@@ -74,13 +73,14 @@ function App() {
 
           <Route path="/artists" element={<Artists />} />
           <Route path="/artist/:id" element={<ArtistDetail />} />
+          <Route path="/artist-list-filter" element={<ListArt />} />
 
           {/* End Artist */}
 
           {/* Artwork */}
 
           <Route path="/artwork" element={<Artwork />} />
-          <Route path="/artworklist" element={<ListArt />} />
+          <Route path="/artwork-list-filter" element={<ListArt />} />
           <Route path="/artwork/:id" element={<ArtworkDetail />} />
 
           {/* End Artwork */}
@@ -104,7 +104,6 @@ function App() {
 
           <Route path="/event" element={<Event />} />
           <Route path="/eventDetail" element={<EventDetail />} />
-
           {/* End Event */}
 
           {/* Viewing Room */}

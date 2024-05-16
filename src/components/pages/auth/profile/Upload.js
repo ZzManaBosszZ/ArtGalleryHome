@@ -1,23 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import "../../../../css/upload.css"
+
 function Upload() {
-  const [checkbox1Checked, setCheckbox1Checked] = useState(false);
-  const [checkbox2Checked, setCheckbox2Checked] = useState(false);
-
-  const handleCheckbox1Change = () => {
-    setCheckbox1Checked(!checkbox1Checked);
-    setCheckbox2Checked(false);
-  };
-
-  const handleCheckbox2Change = () => {
-    setCheckbox2Checked(!checkbox2Checked);
-    setCheckbox1Checked(false);
-  };
   return (
-    <div class="container-upload">
+    <div>
+      <link rel="stylesheet" href="assets/css/profile/upload.css" />
 
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: "20px" }} class="container">
         <div
           class="menu"
           style={{
@@ -30,7 +19,7 @@ function Upload() {
             class="menu-left d-flex align-items-center"
             style={{ width: "300px" }}
           >
-            <p className="p-upload">
+            <p class="peeee">
               <a style={{ color: "#000" }} href="/new">
                 Back
               </a>
@@ -38,7 +27,7 @@ function Upload() {
           </div>
           <div class="menu-right">
             <a href="#">
-              <button class="btn-1-upload">Upload Artwork</button>
+              <button class="btn-1">Upload Artwork</button>
             </a>
           </div>
         </div>
@@ -51,15 +40,21 @@ function Upload() {
           <input class="ttt" type="text" placeholder="Title" />
         </div>
         <div style={{ display: "flex" }} class="re">
-          <p style={{ fontSize: "small" }}>*Required</p>
-          <p style={{ fontSize: "small", marginLeft: "660px" }}>*Required</p>
+          <p class="peeee" style={{ fontSize: "small" }}>
+            *Required
+          </p>
+          <p class="peeee" style={{ fontSize: "small", marginLeft: "660px" }}>
+            *Required
+          </p>
         </div>
 
         <div class="input-row">
           <input class="ttt" type="text" placeholder="Medium" />
           <input class="ttt" type="text" placeholder="Year" />
         </div>
-        <p style={{ fontSize: "small" }}>*Required</p>
+        <p class="peeee" style={{ fontSize: "small" }}>
+          *Required
+        </p>
         <div class="input-row">
           <input class="ttt" type="text" placeholder="Metarials" />
         </div>
@@ -67,75 +62,20 @@ function Upload() {
           <input class="ttt" type="text" placeholder="Rarity" />
         </div>
         <div class="input-row">
-          <input class="nbv" type="text" placeholder="Height" />
-          <input class="nbv" type="text" placeholder="Width" />
-          <input class="nbv" type="text" placeholder="Depth" />
-          <div class="checkbox-container">
-            <input
-              type="checkbox"
-              id="checkbox1"
-              class="custom-checkbox1"
-              checked={checkbox1Checked}
-              onChange={handleCheckbox1Change}
-            />
-            <label for="checkbox1" class="checkbox-label">
-              in
-            </label>
-          </div>
-
-          <div class="checkbox-container-upload">
-            <input
-              type="checkbox"
-              id="checkbox2"
-              class="custom-checkbox1"
-              checked={checkbox1Checked}
-              onChange={handleCheckbox1Change}
-            />
-            <label for="checkbox2" class="checkbox-label">
-              cm
-            </label>
-          </div>
+          <input class="ttt" type="text" placeholder="Size" />
+          <p className="suggest">Suggest:</p>
+          <p className="suggest">4x6 inch (10x15cm)</p>
+          <p className="suggest">5x7 inch (13x18cm)</p>
+          <p className="suggest">8x10 inch (20x25cm)</p>
+          <p className="suggest">11x14 inch (28x35cm)</p>
+          <p className="suggest">16x20 inch (40x50cm)</p>
         </div>
         <div class="input-row">
-          <input class="ttt" type="text" placeholder="Price Paid" />
-          <div class="checkbox-container">
-            <input
-              type="checkbox"
-              id="checkbox3"
-              class="custom-checkbox2"
-              checked={checkbox2Checked}
-              onChange={handleCheckbox2Change}
-            />
-            <label for="checkbox3" class="checkbox-label">
-              $USD
-            </label>
-          </div>
-
-          <div class="checkbox-container">
-            <input
-              type="checkbox"
-              id="checkbox4"
-              class="custom-checkbox2"
-              checked={checkbox2Checked}
-              onChange={handleCheckbox2Change}
-            />
-            <label for="checkbox4" class="checkbox-label">
-              €EUR
-            </label>
-          </div>
-
-          <div class="checkbox-container">
-            <input
-              type="checkbox"
-              id="checkbox5"
-              class="custom-checkbox2"
-              checked={checkbox2Checked}
-              onChange={handleCheckbox2Change}
-            />
-            <label for="checkbox5" class="checkbox-label">
-              £GBP
-            </label>
-          </div>
+          <input
+            class="ttt"
+            type="text"
+            placeholder="Price Paid                                                                                                                                                                 $USD"
+          />
         </div>
         <div class="input-row">
           <input class="ttt" type="text" placeholder="Provenance" />
@@ -144,12 +84,12 @@ function Upload() {
       </div>
       <p class="plo">Upload Photos</p>
       <div class="drag">
-        <h2 className="upload">Drag and drop photos here</h2>
-        <p className="p-upload">Files supported:JPG, PNG</p>
-        <p className="p-upload">Total maximum size: 30MB</p>
+        <h2 className="draghh">Drag and drop photos here</h2>
+        <p class="peeee">Files supported:JPG, PNG</p>
+        <p class="peeee">Total maximum size: 30MB</p>
         <div class="menu-right">
           <a href="#">
-            <button class="btn-1-upload">Add Photo</button>
+            <button class="btn-1">Add Photo</button>
           </a>
         </div>
       </div>

@@ -38,7 +38,7 @@
      width: 540px;
      height: 665px;
 }
-.img-about img{
+.img-about .imgabout{
      width: 100%;
      height: 100%;
      box-shadow: 1.25rem 1.375rem 4.75rem 0 rgba(0,0,0,.42)!important;
@@ -47,8 +47,8 @@
 .content-about_section{
      margin-top: 100px;
 }
-.content-about_section p, 
-.main-staff_section p{
+.content-about_section .peoia, 
+.main-staff_section .peoia{
      font-size: 25px;
      font-weight: 500;
 
@@ -59,7 +59,7 @@
      grid-template-columns: repeat(2, 1fr);
      column-gap: 40px;
 }
-.more-info div{
+.more-info .repdip{
      margin-top: 20px;
      font-size: 18px;
      line-height: 25px;
@@ -70,7 +70,7 @@
       margin-top: 70px;
       margin-bottom: 40px;
 }
-.staff-img img{
+.staff-img .imgstaff{
      object-fit:cover;
      width: 100%;
      height: 100%;
@@ -78,11 +78,11 @@
 .staff-section{
      padding: 100px 70px 20px 70px;
 }
-.main-staff_section span{
+.main-staff_section .hdgbad{
      font-size: 16px;
      margin-top: 20px;
 }
-h3{
+.hatbabe{
      font-family: 'Poppins';
     font-weight: 300;
     text-transform: uppercase;
@@ -91,11 +91,11 @@ h3{
     line-height: 1.25;
     color:rgba(184, 157, 79, 1);
 }
-.more-info p{
+.more-info .peoan{
      line-height: 1.75;
     margin-bottom: 2rem;
     font-size: 18px;
 }
-.main-staff_section p{
+.main-staff_section .peoia{
      margin-top: 50px;
 }

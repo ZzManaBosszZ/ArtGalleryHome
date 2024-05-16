@@ -1,14 +1,35 @@
-import React from "react";
+import { useState, useMemo,useEffect, useCallback } from "react";
 import "../../../../css/profile.css"
-
+import "../../../../css/bootstrap.css"
+import { getAccessToken } from "../../../../utils/auth";
+import { Link } from "react-router-dom";
+import api from "../../../../services/api"
+import url from "../../../../services/url"
 function Profile() {
+
+  const [info, setInfo] = useState("");
+  const loadProfile = async () => {
+    const userToken = getAccessToken();
+
+    try {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${userToken}`,
+            },
+        };
+
+        const profileResponse = await api.get(url.AUTH.PROFILE, config);
+        setInfo(profileResponse.data);
+    } catch (error) {}
+};
+
+useEffect(() => {
+    loadProfile();
+}, []);
+
   return (
     <div class="ko">
-      <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      />
-
       <div style={{ marginTop: "20px" }} class="container">
         <div
           class="menu"
@@ -22,25 +43,30 @@ function Profile() {
             class="menu-left d-flex align-items-center"
             style={{ width: "300px" }}
           >
-            <img className="image-profile"
-              src="assets/images/profile/user.png"
+            <img
+              className="igh"
+              src="./assets/images/home/4.jpeg"
               alt=""
               style={{ borderRadius: "50%", width: "100px" }}
             />
             <div class="menu-left-right ml-3">
-              <h3>Hieu</h3>
-              <p style={{ color: "#707070" }}>Member since 2024</p>
+              <h3>{info.fullname}</h3>
+              <p className="poi" style={{ color: "#707070" }}>
+                Member since 2024
+              </p>
             </div>
           </div>
           <div class="menu-right">
-            <a href="/edit">
+            <Link to={`/edit-profile`}>
+            <a>
               <button class="btn-1">Settings</button>
             </a>
+            </Link>
           </div>
         </div>
         <div class="menu-bottom">
-          <p>hieudeptrai</p>
-          <p style={{ color: "#707070" }}>
+          <p className="poi">{info.fullname}</p>
+          <p className="poi" style={{ color: "#707070" }}>
             <i class="fa-solid fa-location-dot"></i> VietNam
           </p>
         </div>
@@ -62,19 +88,25 @@ function Profile() {
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/accountsetting">
-                      Account Settings
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/saves">
+                  <Link to={`/artwork-saves`}>
+                    <a class="nav-link">
                       Saves
                     </a>
+                    </Link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/follows">
+                  <Link to={`/artist-follow`}>
+                    <a class="nav-link">
                       Follows
                     </a>
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                  <Link to={`/setting`}>
+                    <a class="nav-link">
+                      Password Setting
+                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -85,14 +117,22 @@ function Profile() {
         <section class="hero">
           <div class="containers">
             <div class="hero-content">
-              <h2>Know Your Collection Better</h2>
-              <p>Manage your collection online and get free market insights.</p>
-              <a href="/upload">
-                <button class="cta-button">Upload Artwork</button>
+              <h2 className="cto">Do you want to become our artist to get many benefits?</h2>
+              <p className="poi">
+              Click below to update artist details.
+              </p>
+              <Link to={`/artwork-saves`}>
+              <a>
+                <button class="cta-button">Become Artist</button>
               </a>
+              </Link>
             </div>
             <div class="hero-image">
-              <img src="assets/images/profile/1321760.jpg" alt="" />
+              <img
+                className="igh"
+                src="./assets/images/home/4.jpeg"
+                alt=""
+              />
             </div>
           </div>
         </section>

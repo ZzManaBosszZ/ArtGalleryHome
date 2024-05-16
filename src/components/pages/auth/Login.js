@@ -198,9 +198,9 @@ function LoginAndRegister() {
   return (
 
     <div class="dip">
-      <div class="container" id="container">
+      <div class="containerst" id="container">
         <div class="form-container sign-up">
-          <form onSubmit={handleRegister}>
+          <form className="natto" onSubmit={handleRegister}>
             <h1 style={{fontSize: '3rem'}}>Create Account</h1>
             {/* <div class="social-icons">
               <a href="#" class="icon">
@@ -218,6 +218,7 @@ function LoginAndRegister() {
             </div>
             <span>or use your email for regiteration</span> */}
             <input
+            className="lkjha"
               type="text"
               placeholder="Name"
               id="fullname"
@@ -230,6 +231,7 @@ function LoginAndRegister() {
               <p className="invalid-feedback">{formErrors.fullname}</p>
             )}
             <input
+            className="lkjha"
               type="email"
               placeholder="Email"
               id="email"
@@ -241,6 +243,7 @@ function LoginAndRegister() {
               <p className="invalid-feedback">{formErrors.email}</p>
             )}
             <input
+            className="lkjha"
               type="tel"
               placeholder="Phone"
               id="phone"
@@ -252,6 +255,7 @@ function LoginAndRegister() {
               <p className="invalid-feedback">{formErrors.phone}</p>
             )}
             <input
+            className="lkjha"
               type="password"
               placeholder="Password"
               id="password"
@@ -262,12 +266,12 @@ function LoginAndRegister() {
             {formErrors.password && (
               <p className="invalid-feedback">{formErrors.password}</p>
             )}
-            <button type="submit">Sign Up</button>
+            <button className="toon" type="submit">Sign Up</button>
           </form>
         </div>
-        <div class="container" id="container">
+        <div class="containerst" id="container">
           <div class="form-container sign-in">
-            <form onSubmit={handleLogin}>
+            <form className="natto" onSubmit={handleLogin}>
               <h1>Sign In</h1>
               <div class="social-icons">
                 <a href="#" class="icon">
@@ -283,8 +287,9 @@ function LoginAndRegister() {
                   <i class="fa-brands fa-linkedin-in"></i>
                 </a>
               </div>
-              <span>or use your email password</span>
+              <span className="qir">or use your email password</span>
               <input
+              className="lkjha"
                 type="email"
                 placeholder="Email"
                 id="emaillogin"
@@ -296,6 +301,7 @@ function LoginAndRegister() {
                 <p className="invalid-feedback">{formErrors.email}</p>
               )}
               <input
+              className="lkjha"
                 type="password"
                 placeholder="Password"
                 id="passwordlogin"
@@ -306,22 +312,22 @@ function LoginAndRegister() {
               {formErrors.password && (
                 <p className="invalid-feedback">{formErrors.password}</p>
               )}
-              <a href="#">Forgot Your Password?</a>
-              <button type="submit">Sign In</button>
+              <a className="hjio" href="#">Forgot Your Password?</a>
+              <button className="toon" type="submit">Sign In</button>
             </form>
           </div>
           <div class="toggle-container">
             <div class="toggle">
               <div class="toggle-panel toggle-left">
                 <h1>Welcome Back!</h1>
-                <p>Enter your personal details to use all of site features</p>
+                <p className="ufo">Enter your personal details to use all of site features</p>
                 <button class="hidden" id="login">
                   Sign In
                 </button>
               </div>
               <div class="toggle-panel toggle-right">
                 <h1>Hello, Friend</h1>
-                <p>
+                <p className="ufo">
                   Register with your personal details to use all of site
                   features
                 </p>

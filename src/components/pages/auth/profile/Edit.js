@@ -1,8 +1,9 @@
 import React from "react";
-import "../../../../css/edit.css"
+import { Link } from "react-router-dom";
 function Edit() {
   return (
-    <div>
+    <div className="formedit">
+      <link rel="stylesheet" href="assets/css/profile/edit.css" />
       <div
         class="menu-left d-flex align-items-center"
         style={{ width: "300px", margin: "30px 0 0 50px" }}
@@ -14,25 +15,26 @@ function Edit() {
           </a>
         </p>
       </div>
-      <hr style={{ marginTop: "20px" }} />
+      <hr className="hrdev" style={{ marginTop: "20px" }} />
       <nav style={{ marginTop: "50px" }} id="profile-navigation">
-        <ul>
-          <li>
-            <a href="/edit">Edit Profile</a>
-          </li>
-          <li>
-            <a class="tip" href="#">
-              Address
+        <ul className="ghye">
+        <li className="hjpk">
+          <Link to={`/edit-profile`}>
+            <a className="lkm">
+              Edit Profile
             </a>
+            </Link>
           </li>
-          <li>
-            <a class="tip" href="#">
-              Order History
+          <li className="hjpk">
+            <Link to={`/offer-history`}>
+            <a className="lkm">
+              Offer History
             </a>
+            </Link>
           </li>
         </ul>
       </nav>
-      <hr style={{ marginTop: "10px" }} />
+      <hr className="hrdev" style={{ marginTop: "10px" }} />
       <div style={{ display: "flex" }} class="edit">
         <div class="file">
           <img
@@ -53,7 +55,7 @@ function Edit() {
           <div class="hhh">
             <div class="container">
               <div class="entryarea">
-                <input className="input-edit" type="text" required />
+                <input className="inedit" type="text" required />
                 <div class="labelline">Full Name</div>
               </div>
             </div>
@@ -61,7 +63,7 @@ function Edit() {
           <div class="hhh">
             <div class="container">
               <div class="entryarea">
-                <input className="input-edit" type="text" required />
+                <input className="inedit" type="text" required />
                 <div class="labelline">Birthday</div>
               </div>
             </div>
@@ -69,7 +71,7 @@ function Edit() {
           <div class="hhh">
             <div class="container">
               <div class="entryarea">
-                <input className="input-edit" type="text" required />
+                <input className="inedit" type="text" required />
                 <div class="labelline">AddPhone</div>
               </div>
             </div>
@@ -77,7 +79,15 @@ function Edit() {
           <div class="hhh">
             <div class="container">
               <div class="entryarea">
-                <input className="input-edit" type="text" required />
+                <input className="inedit" type="text" required />
+                <div class="labelline">Address</div>
+              </div>
+            </div>
+          </div>
+          <div class="hhh">
+            <div class="container">
+              <div class="entryarea">
+                <input className="inedit" type="text" required />
                 <div class="labelline">About</div>
               </div>
             </div>

@@ -24,13 +24,20 @@ const url = {
     OFFER: {
         CREATE: "Offers/CreateOfferUser",
         MY_OFFER: "Offers/get-by-user",
-        DETAIL: "Offers/detailForUser"
+        DETAIL: "Offers/detailForUser",
+        UPDATE_PAYMENT:"Offers/update-status-Admin/{}"
     },
 
     FAVORITE: {
         BY_USER: "Favorites/get-by-user",
         ADD: "Favorites/addtofavorite",
         REMOVE: "Favorites/removefavorite",
+    },
+
+    FOLLOW: {
+        BY_USER: "Follows/get-by-user-follow",
+        ADD: "Follows/addtofollow",
+        REMOVE: "Follows/removefollow",
     },
 
     PAYPAL: {

@@ -62,7 +62,7 @@ function Payment() {
               <div className="name-artist">Rachel MacFarlane</div>
               <div className="exhibition-payment">Perfomer, 2024</div>
               <div className="address">New York, NY, US</div>
-              <div className="price">$10,000-$15,000</div>
+              <div className="price">${offerDetail.offerPrice}</div>
             </div>
             <div className="info-order">
               <div className="info-order_item">
@@ -86,9 +86,6 @@ function Payment() {
         </div>
         <PayPalButton
           amount={offerDetail.toTal}
-        // onSuccess={(details, data) => handlePaymentSuccess(details, data)}
-        // onCancel={handlePaymentCancel}
-        // onError={handlePaymentError}
         />
       </div>
     </div>
