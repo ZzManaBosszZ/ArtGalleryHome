@@ -94,6 +94,7 @@ function OrderHistory() {
           </div>
           {offers.map(offer => (
             <div className="nmbj" key={offer.id}>
+              <p>Offer Code: #{offer.offerCode}</p>
               <div class="card-body">
                 <img
                   src={offer.artWorkImages}

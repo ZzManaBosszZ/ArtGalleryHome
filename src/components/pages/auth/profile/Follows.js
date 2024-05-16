@@ -6,7 +6,27 @@ import url from "../../../../services/url"
 import Swal from "sweetalert2";
 // import "../../../../css/bootstrap.css";
 function Follows() {
+  const [info, setInfo] = useState("");
 
+  const loadProfile = async () => {
+    const userToken = getAccessToken();
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      };
+
+      const profileResponse = await api.get(url.AUTH.PROFILE, config);
+      setInfo(profileResponse.data);
+    } catch (error) { }
+  };
+
+  useEffect(() => {
+    loadProfile();
+  }, []);
 
   const [follow, setFollow] = useState([]);
 
@@ -71,20 +91,23 @@ function Follows() {
         }}
       >
         <div
-          class="menu-left d-flex align-items-center"
-          style={{ width: "300px" }}
-        >
-          <img
-            className="imgfollow"
-            src="assets/images/profile/user.png"
-            alt=""
-            style={{ borderRadius: "50%", width: "100px" }}
-          />
-          <div class="menu-left-right ml-3">
-            <h3>Hieu</h3>
-            <p style={{ color: "#707070" }}>Member since 2024</p>
+            class="menu-left d-flex align-items-center"
+            style={{ width: "300px" }}
+          >
+            <img
+              className="igh"
+              src="./assets/images/home/4.jpeg"
+              alt=""
+              style={{ borderRadius: "50%", width: "100px" }}
+            />
+            <div class="menu-left-right ml-3">
+              <h3>{info.fullname}</h3>
+              <p className="poi" style={{ color: "#707070" }}>
+                Member since 2024
+              </p>
+            </div>
           </div>
-        </div>
+
         <div class="menu-right">
           <a href="/edit">
             <button class="btn-1">Settings</button>

@@ -121,7 +121,7 @@ useEffect(() => {
               <p className="poi">
               Click below to update artist details.
               </p>
-              <Link to={`/artwork-saves`}>
+              <Link to={`/register-artist`}>
               <a>
                 <button class="cta-button">Become Artist</button>
               </a>

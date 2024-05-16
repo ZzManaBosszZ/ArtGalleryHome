@@ -6,35 +6,26 @@ import api from "../../../../services/api"
 import url from "../../../../services/url"
 import Swal from "sweetalert2";
 function Saves() {
+  const [info, setInfo] = useState("");
+  const loadProfile = async () => {
+    const userToken = getAccessToken();
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      };
+
+      const profileResponse = await api.get(url.AUTH.PROFILE, config);
+      setInfo(profileResponse.data);
+    } catch (error) { }
+  };
+
   useEffect(() => {
-    // Lấy tất cả các icon
-    const icons = document.querySelectorAll(".icon");
-
-    // Hàm xử lý sự kiện click
-    const handleClick = function () {
-      // Lấy màu sắc hiện tại của icon
-      const currentColor = window.getComputedStyle(this).color;
-      // Đổi màu của icon: từ đen thành xám và ngược lại
-      this.style.color = currentColor === "rgb(91, 175, 223)" ? "#ccc" : "#5bafdf";
-
-      // Gọi hàm handleRemoveFavoriteItem
-      const iconId = this.getAttribute('data-artwork-id');
-      handleRemoveFavoriteItem(iconId);
-    };
-
-    // Thêm sự kiện click cho từng icon
-    icons.forEach((icon) => {
-      icon.addEventListener("click", handleClick);
-    });
-
-    // Trả lại hàm xóa sự kiện khi component unmount
-    return () => {
-      icons.forEach((icon) => {
-        icon.removeEventListener("click", handleClick);
-      });
-    };
+    loadProfile();
   }, []);
-
   const [favorite, setFavorite] = useState([]);
 
   const userToken = getAccessToken();
@@ -61,7 +52,7 @@ function Saves() {
   }, [loadFavorite]);
 
   // Remove favorite
-  const handleRemoveFavoriteItem = async (artworkId) => {
+  const handleRemoveFavoriteItem = async (artWorkId) => {
     try {
       const isConfirmed = await Swal.fire({
         title: "Are you sure?",
@@ -74,7 +65,7 @@ function Saves() {
       });
 
       if (isConfirmed.isConfirmed) {
-        const removeResponse = await api.delete(url.FAVORITE.REMOVE + `?id=${artworkId}`, config);
+        const removeResponse = await api.delete(url.FAVORITE.REMOVE + `?id=${artWorkId}`, config);
         if (removeResponse.status === 200) {
           loadFavorite();
         }
@@ -101,73 +92,76 @@ function Saves() {
           style={{ width: "300px" }}
         >
           <img
-            src="assets/images/profile/user.png"
+            className="igh"
+            src="./assets/images/home/4.jpeg"
             alt=""
             style={{ borderRadius: "50%", width: "100px" }}
           />
           <div class="menu-left-right ml-3">
-            <h3>Hieu</h3>
-            <p style={{ color: "#707070" }}>Member since 2024</p>
+            <h3>{info.fullname}</h3>
+            <p className="poi" style={{ color: "#707070" }}>
+              Member since 2024
+            </p>
           </div>
         </div>
         <div class="menu-right">
-            <Link to={`/edit-profile`}>
+          <Link to={`/edit-profile`}>
             <a>
               <button class="btn-1">Settings</button>
             </a>
-            </Link>
-          </div>
+          </Link>
         </div>
-        <div class="menu-bottom">
-          <p className="poi">hieudeptrai</p>
-          <p className="poi" style={{ color: "#707070" }}>
-            <i class="fa-solid fa-location-dot"></i> VietNam
-          </p>
-        </div>
-        <div class="navbar">
-          <nav class="navbar navbar-expand-lg navbar-light w-100">
-            <div class="container-fluid">
-              <div
-                class="collapse navbar-collapse nav-fill"
-                id="navbarSupportedContent"
-              >
-                <ul class="navbar-nav w-100 justify-content-between">
-                  <li class="nav-item">
-                    <a
-                      style={{ color: "#000" }}
-                      class="nav-link"
-                      href="/profile"
-                    >
-                      My Collection
-                    </a>
-                  </li>
-                  <li class="nav-item">
+      </div>
+      <div class="menu-bottom">
+        <p className="poi">hieudeptrai</p>
+        <p className="poi" style={{ color: "#707070" }}>
+          <i class="fa-solid fa-location-dot"></i> VietNam
+        </p>
+      </div>
+      <div class="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light w-100">
+          <div class="container-fluid">
+            <div
+              class="collapse navbar-collapse nav-fill"
+              id="navbarSupportedContent"
+            >
+              <ul class="navbar-nav w-100 justify-content-between">
+                <li class="nav-item">
+                  <a
+                    style={{ color: "#000" }}
+                    class="nav-link"
+                    href="/profile"
+                  >
+                    My Collection
+                  </a>
+                </li>
+                <li class="nav-item">
                   <Link to={`/artwork-saves`}>
                     <a class="nav-link">
                       Saves
                     </a>
-                    </Link>
-                  </li>
-                  <li class="nav-item">
+                  </Link>
+                </li>
+                <li class="nav-item">
                   <Link to={`/artist-follow`}>
                     <a class="nav-link">
                       Follows
                     </a>
-                    </Link>
-                  </li>
-                  <li class="nav-item">
+                  </Link>
+                </li>
+                <li class="nav-item">
                   <Link to={`/setting`}>
                     <a class="nav-link">
                       Password Setting
                     </a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+                  </Link>
+                </li>
+              </ul>
             </div>
-          </nav>
-          <hr />
-        </div>
+          </div>
+        </nav>
+        <hr />
+      </div>
 
       <div class="container">
         <h1>Save Arwork</h1>
@@ -175,18 +169,23 @@ function Saves() {
           {favorite.length > 0 ? (
             favorite.map((item, index) => (
               <div class="artwork">
-                <img
-                  src="assets/images/follow/download.jpg"
-                  alt="Painting Brush, 2018"
-                />
+                <Link to={`http://localhost:5000/artwork/${item.artWorkId}`}>
+                  <img
+                    src={item.artWorkImage}
+                    alt="Painting Brush, 2018"
+                  />
+                </Link>
                 <div style={{ display: "flex" }} class="artwork-details">
                   <div>
-                    <p class="artwork-title">Painting Brush, 2018</p>
+                    <p class="artwork-title">{item.artWorkName}</p>
                     <p>Villa Domus</p>
-                    <p class="artwork-price">€2,500–€5,000</p>
+                    <p class="artwork-price">$5,000</p>
                   </div>
                   <div class="icon-container">
-                    <i class="fa-solid fa-heart icon" id="icon1"></i>
+                    <button class="icon-button" onClick={() => handleRemoveFavoriteItem(item.id)}>
+                    <i class="fa-solid fa-heart icon" id={item.id}></i>
+                    </button>
+                   
                   </div>
                 </div>
               </div>

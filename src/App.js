@@ -21,7 +21,7 @@ import LoginAndRegister from "./components/pages/auth/Login.js";
 import authMiddleware from "./context/authMiddleware.js";
 import Profile from "./components/pages/auth/profile/Profile.js";
 import Edit from "./components/pages/auth/profile/Edit.js";
-import Upload from "./components/pages/auth/profile/RegisterArtist.js";
+import RegisterArtist from "./components/pages/auth/profile/RegisterArtist.js";
 // import New from "./components/pages/auth/profile/New.js";
 import ThankU from "./components/pages/other/ThankU.js";
 import NotFound from "./components/pages/other/NotFound.js";
@@ -56,13 +56,12 @@ function App() {
           {/* End Auth */}
 
           {/* Profile */}
-          <Route path="/setting" element={<ProtectedRoute element={<AccountSettings />} />}></Route>
+          <Route path="/setting" element={<ProtectedRoute element={<AccountSettings />} />}/>
           <Route path="/artist-follow" element={<ProtectedRoute element={<Follows />} />} />
           <Route path="/artwork-saves" element={<ProtectedRoute element={<Saves />} />} />
           <Route path="/edit-profile" element={<ProtectedRoute element={<Edit />} />} />
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
-          <Route path="/upload-artwork" element={<Upload />} />
-          {/* <Route path="/upload" element={<New />} /> */}
+          <Route path="/register-artist" element={<ProtectedRoute element={<RegisterArtist />} />} />
 
           {/* End Profile */}
 

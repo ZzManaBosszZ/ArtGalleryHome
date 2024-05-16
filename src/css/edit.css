@@ -1,4 +1,10 @@
-.formedit {
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
+}
+body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -11,18 +17,18 @@
   margin-top: 20px;
 }
 
-#profile-navigation .ghye {
+#profile-navigation ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-#profile-navigation .hjpk {
+#profile-navigation li {
   display: inline-block;
   margin: 0 60px;
 }
 
-#profile-navigation .lkm {
+#profile-navigation a {
   color: #000;
   text-decoration: none;
   transition: 0.2s;
@@ -34,7 +40,30 @@
   color: #081bc3;
 }
 
-.hrdev {
+#input-section {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#input-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#comment-textarea {
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+hr {
   width: 90%;
   margin-left: 70px;
   color: #f2f2f2;
@@ -91,16 +120,16 @@
   transform: translate(-15px, -16px) scale(0.88);
   z-index: 1111;
 }
-.btn-1,
-.btn-1 *,
-.btn-1 :after,
-.btn-1 :before,
-.btn-1:after,
-.btn-1:before {
+.btn-01,
+.btn-01 *,
+.btn-01 :after,
+.btn-01 :before,
+.btn-01:after,
+.btn-01:before {
   border: 0 solid;
   box-sizing: border-box;
 }
-.btn-1 {
+.btn-01 {
   margin: 40px 0 0 40px;
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: button;
@@ -114,25 +143,25 @@
   -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
   padding: 0;
 }
-.btn-1:disabled {
+.btn-01:disabled {
   cursor: default;
 }
-.btn-1:-moz-focusring {
+.btn-01:-moz-focusring {
   outline: auto;
 }
-.btn-1 svg {
+.btn-01 svg {
   display: block;
   vertical-align: middle;
 }
-.btn-1 [hidden] {
+.btn-01 [hidden] {
   display: none;
 }
-.btn-1 {
+.btn-01 {
   border-radius: 99rem;
   border-width: 2px;
   padding: 0.8rem 3rem;
 }
-.btn-1:hover {
+.btn-01:hover {
   color: #999;
 }
 .aaa {
