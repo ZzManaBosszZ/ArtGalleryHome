@@ -31,7 +31,7 @@ useEffect(() => {
 
   return (
     <div class="ko">
-      <div style={{ marginTop: "20px" }} class="container">
+      <div style={{width:"1300px", marginLeft:"130px"}} class="haho">
         <div
           class="menu"
           style={{
@@ -66,8 +66,8 @@ useEffect(() => {
           </div>
         </div>
         <div class="menu-bottom">
-          <p className="poi">{info.fullname}</p>
-          <p className="poi" style={{ color: "#707070" }}>
+          {/* <p className="poi">{info.fullname}</p> */}
+          <p className="poi" style={{ color: "#707070", margin:"20px 0 0 10px" }}>
             <i class="fa-solid fa-location-dot"></i> VietNam
           </p>
         </div>

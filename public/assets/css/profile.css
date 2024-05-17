@@ -33,7 +33,10 @@
 .ko {
   margin-top: 50px;
 }
-
+.haho{
+  padding-right: 15px;
+  padding-left: 15px;
+}
 .containers {
   display: flex;
   justify-content: center;
@@ -97,3 +100,4 @@
   height: auto;
   border-radius: 10px;
 }
+

@@ -16,7 +16,7 @@ function ArtworkDetail() {
   const [error, setError] = useState(null);
   const [artist, setArtists] = useState([]);
   const { id } = useParams();
-  const [ArtWorkDetail, setArtWorkDetail] = useState({ artists: [], artwork: [], schoolOfArts: [] });
+  const [ArtWorkDetail, setArtWorkDetail] = useState({ artists: [], schoolOfArts: [] });
   const artworks = ArtWorkDetail.artwork || [];
   const navigate = useNavigate();
 
