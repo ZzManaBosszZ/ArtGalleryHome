@@ -42,6 +42,24 @@
   color: #081bc3;
 }
 
+#input-section {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#comment-textarea {
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 .hrdev {
   width: 90%;
   margin-left: 70px;

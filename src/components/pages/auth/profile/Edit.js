@@ -2,6 +2,83 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../../../css/edit.css";
 function Edit() {
+  const [anhs, setAnhs] = useState([]);
+  const [info, setInfo] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedInfo, setEditedInfo] = useState({});
+
+  const incacanh = () =>
+    [...anhs].map((anh) => (
+      <div>
+        <img src={URL.createObjectURL(anh)} width="200px" />
+      </div>
+    ));
+
+  const handleSaveClick = async () => {
+    try {
+      const userToken = getAccessToken();
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      };
+
+      const formData = new FormData();
+
+      for (const key in editedInfo) {
+        formData.append(key, editedInfo[key]);
+      }
+
+      // Send the request
+      const isConfirmed = await Swal.fire({
+        title: "Are you sure?",
+        text: "You want to update your information?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "I'm sure",
+      });
+
+      if (isConfirmed.isConfirmed) {
+        const updateResponse = await api.put(url.AUTH.UPDATE_PROFILE, formData, config);
+
+        if (updateResponse.status === 204) {
+          console.log("Successfully updated");
+        } else {
+        }
+      }
+
+      // Update the local state with edited information
+      setInfo(editedInfo);
+      setIsEditing(false);
+    } catch (error) { }
+  };
+
+  const loadProfile = async () => {
+    const userToken = getAccessToken();
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      };
+
+      const profileResponse = await api.get(url.AUTH.PROFILE, config);
+      setInfo(profileResponse.data);
+    } catch (error) { }
+  };
+
+  useEffect(() => {
+    loadProfile();
+  }, []);
+
+  const onFileUploadHandler = (e) => {
+    setAnhs(e.target.files);
+  };
   return (
     <div className="formedit-page">
       {/* <link rel="stylesheet" href="assets/css/profile/edit.css" /> */}
@@ -12,7 +89,7 @@ function Edit() {
         <p>
           <a class="aaa" style={{ color: "#000" }} href="/profile">
             {" "}
-            Collector Profile
+            Profile
           </a>
         </p>
       </div>
@@ -33,21 +110,15 @@ function Edit() {
       </nav>
       <hr className="hrdev" style={{ marginTop: "10px" }} />
       <div style={{ display: "flex" }} class="edit">
-        <div class="file">
-          <img
-            src="assets/images/profile/user.png"
-            alt=""
-            style={{
-              borderRadius: "50%",
-              width: "100px",
-              marginTop: "20px",
-              marginLeft: "50px",
-            }}
-          />
+      <div class="file">
           <div class="menu-left-right ml-3">
-            <a style={{ color: "#707070" }} href="">
-              <p style={{ marginLeft: "50px" }}>Choose an Image</p>
-            </a>
+            <input
+              className="upimg"
+              type="file"
+              accept="image/*"
+              onChange={onFileUploadHandler}
+            />
+            <div className="image-gallery">{incacanh()}</div>
           </div>
           <div className="list-input_info">
             <div class="hhh">
@@ -90,7 +161,7 @@ function Edit() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <button type="submit" class="button-save_editPage">

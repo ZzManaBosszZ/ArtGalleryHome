@@ -182,7 +182,7 @@ function Artists() {
               <Link to={`/artist/${artist.id}`} className="img-artist">
                 <img src={artist.image} alt="Image 1" />
               </Link>
-              <a href="/artistDetail" className="main-artist">
+              <a  className="main-artist">
                 <div className="artist-info">
                   {artist.name}
                   <br />

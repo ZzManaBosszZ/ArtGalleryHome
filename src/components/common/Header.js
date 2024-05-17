@@ -167,7 +167,7 @@ function Header() {
             )}
           </div>
 
-          <div className="container-fluid" style={{ paddingLeft: "55px" }}>
+          <div className="container-fluid-head" style={{ paddingLeft: "55px" }}>
             <div className="ct-header__logo-nav" style={{ paddingTop: "30px" }}>
               <Link to="/" className="ct-logo">
                 <img

@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../../css/artDetail.css"
+import "../../../css/home.css"
 import api from "../../../services/api";
 import url from "../../../services/url";
 import Swal from "sweetalert2";
@@ -290,7 +291,7 @@ function ArtworkDetail() {
             </div>
           </div>
         </div>
-        <div className="other-artwork">
+        <div className="other-artwork_artPage">
           {/* other works by artist */}
           <div className="title_other-artwork">
             <h2 className="hathainm">Other works by Rachel MacFarlane</h2>
