@@ -10,6 +10,7 @@ function RegisterArtist() {
     biography: "",
     description: "",
     image: null,
+    image_preview: null,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -17,6 +18,7 @@ function RegisterArtist() {
     biography: "",
     description: "",
     image: null,
+    image_preview: null,
   });
 
   const navigate = useNavigate();
@@ -91,7 +93,7 @@ function RegisterArtist() {
     setFormData({
       ...formData,
       [fieldName]: fieldName === "image" ? (files.length > 0 ? files[0] : null) : null,
-      image: selectedImage,
+      image_preview: selectedImage,
     });
   };
 
@@ -196,6 +198,14 @@ function RegisterArtist() {
               {/* <div className="image-gallery">{incacanh()}</div> */}
             </div>
             {formErrors.image && <div className="text-danger">{formErrors.image}</div>}
+            <div className="col-lg-6 mb-2">
+              <div className="mb-3">
+                <label className="text-label form-label">Preview artist photo</label>
+                {formData.image_preview && (
+                  <img src={formData.image_preview} alt="Artist Preview" style={{ width: "100%", height: "300px", objectFit: "cover" }} />
+                )}
+              </div>
+            </div>
           </div>
         </div>
         <button type="submit" id="button-submit_registerPage">
