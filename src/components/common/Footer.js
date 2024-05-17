@@ -1,5 +1,7 @@
 import React from 'react'
 import "../../css/footer.css"
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+
 function Footer() {
   return (
     <div>
@@ -11,32 +13,35 @@ function Footer() {
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"
               >
-                <a href="/artwork">Artworks</a>
+                <Link to={`/artwork`}>
+                <a >Artworks</a></Link>
               </li>
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"
               >
-                <a href="/artists">Artists</a>
+                <Link to={`/artists`}><a href="/artists">Artists</a></Link>
               </li>
-              <li
+              {/* <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-299"
               >
                 <a href="/viewingroom">ViewingRooms</a>
-              </li>
+              </li> */}
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"
               >
-                <a href="/event">Events</a>
+                <Link to={`/event`}>
+                <a href="/event">Events</a></Link>
               </li>
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"
               >
-                <a href="/about">About Us</a>
+                <Link to={`/about`}>
+                <a href="/about">About Us</a></Link>
               </li>
               <li
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-112"
               >
-                <a href="/contact">Contact Us</a>
+                <Link to={`/contact`}><a href="/contact">Contact Us</a></Link>
               </li>
             </ul>
             <a href="#top" className="ct-smooth-scroll" id="ct-scroll-top"

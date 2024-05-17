@@ -24,8 +24,8 @@ function Header() {
 
     try {
       const [artistsResponse, artworksResponse] = await Promise.all([
-        fetch(`https://localhost:7270/api/Artists?search=${term}`),
-        fetch(`https://localhost:7270/api/ArtWorks?search=${term}`),
+        fetch(`http://localhost:5293/api/Artists?search=${term}`),
+        fetch(`http://localhost:5293/api/ArtWorks?search=${term}`),
       ]);
 
       if (!artistsResponse.ok || !artworksResponse.ok) {
@@ -232,7 +232,7 @@ function Header() {
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"
                       id="menu-item-176"
                     >
-                      <Link to="/artists">Artists</Link>
+                      <Link to="/Artists">Artists</Link>
                     </li>
                     <li
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"

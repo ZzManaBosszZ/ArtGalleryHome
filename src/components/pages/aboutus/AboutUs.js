@@ -2,7 +2,7 @@ import React from "react";
 import "../../../css/about.css";
 function AboutUs() {
   return (
-    <div >
+    <div>
       {/* <link rel="stylesheet" href="assets/css/about.css" /> */}
 
       <div className="About-page">
