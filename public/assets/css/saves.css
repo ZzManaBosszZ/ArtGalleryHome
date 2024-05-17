@@ -124,3 +124,16 @@ body {
   transition: color 0.1s; /* Hiệu ứng chuyển màu */
   margin-left: 100px;
 }
+
+.icon-button {
+  padding: 0; /* Loại bỏ padding */
+  border: none; /* Loại bỏ viền */
+  background: none; /* Loại bỏ nền */
+  display: inline-flex; /* Sử dụng inline-flex để căn chỉnh icon */
+  align-items: center; /* Căn giữa icon theo chiều dọc */
+  justify-content: right; /* Căn giữa icon theo chiều ngang */
+}
+
+.icon-button .icon {
+  font-size: 1em; /* Đặt kích thước icon, điều chỉnh theo ý bạn */
+}

@@ -1,7 +1,58 @@
-import React from "react";
+import { useCallback, useEffect, useState } from "react";
 import "../../../../css/orderhistory.css"
 import { Link } from "react-router-dom";
+import { getAccessToken } from "../../../../utils/auth";
+import api from "../../../../services/api";
+import url from "../../../../services/url";
+import { format } from 'date-fns';
 function OrderHistory() {
+  const [myOffer, setMyOffer] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [offersPerPage] = useState(1);
+
+  const loadOffer = useCallback(async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getAccessToken()}`,
+      },
+    };
+
+    try {
+      const offerResponse = await api.get(url.OFFER.MY_OFFER, config);
+      setMyOffer(offerResponse.data);
+    } catch (error) { }
+  }, []);
+
+  useEffect(() => {
+    loadOffer();
+  }, [loadOffer]);
+
+
+  // Group offers by creation date
+  const groupOffersByDate = () => {
+    const groupedOffers = {};
+    myOffer.forEach(offer => {
+      const date = format(new Date(offer.createdAt), 'MMMM dd, yyyy'); // Format creationDate
+      if (!groupedOffers[date]) {
+        groupedOffers[date] = [];
+      }
+      groupedOffers[date].push(offer);
+    });
+    return groupedOffers;
+  };
+
+  const groupedOffers = groupOffersByDate();
+
+
+  // Get current offers
+  const indexOfLastOffer = currentPage * offersPerPage;
+  const indexOfFirstOffer = indexOfLastOffer - offersPerPage;
+  const currentOffers = Object.entries(groupedOffers).slice(indexOfFirstOffer, indexOfLastOffer);
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
   return (
     <div class="oderdetaill">
 
@@ -12,7 +63,7 @@ function OrderHistory() {
         <p>
           <a class="aaa" style={{ color: "#000" }} href="/profile">
             {" "}
-            Collector Profile
+            Profile
           </a>
         </p>
       </div>
@@ -20,99 +71,84 @@ function OrderHistory() {
       <nav style={{ marginTop: "50px" }} id="profile-navigation">
         <ul className="ghye">
           <li className="hjpk">
-          <Link to={`/edit-profile`}>
-            <a className="lkm">
-              Edit Profile
-            </a>
+            <Link to={`/edit-profile`}>
+              <a className="lkm">
+                Edit Profile
+              </a>
             </Link>
           </li>
           <li className="hjpk">
             <Link to={`/offer-history`}>
-            <a className="lkm">
-              Offer History
-            </a>
+              <a className="lkm">
+                Offer History
+              </a>
             </Link>
           </li>
         </ul>
       </nav>
       <hr className="hrdev" style={{ marginTop: "10px" }} />
-      <div class="card">
-        <div class="card-header">
-          <p>Delivered June 8</p>
-        </div>
-        <div className="nmbj">
-          <div class="card-body">
-            <img
-              src="https://via.placeholder.com/100"
-              alt="Product Image"
-              class="product-image"
-            />
-            <div class="product-details">
-              <h3>Mose Tolliver</h3>
-              <p>
-                Mose Tolliver has become one of the most highly regarded
-                American self-taught artists and this work is historically
-                important as it was executed in 1970.
-              </p>
+      {currentOffers.map(([date, offers]) => (
+        <div class="card">
+          <div class="card-header">
+            <p>{date}</p>
+          </div>
+          {offers.map(offer => (
+            <div className="nmbj" key={offer.id}>
+              <p>Offer Code: #{offer.offerCode}</p>
+              <div class="card-body">
+                <img
+                  src={offer.artWorkImages}
+                  alt="Product Image"
+                  class="product-image"
+                />
+                <div class="product-details">
+                  <h2>{offer.artWorkNames}</h2>
+                  <p>
+                    {offer.artWorkNames} has become one of the most highly regarded
+                    American self-taught artists and this work is historically
+                    important as it was executed in 1970.
+                  </p>
+                  <h3>
+                    ${offer.offerPrice} 
+                  </h3>
+                </div>
+              </div>
+              {offer.isPaid === 1 ? (
+                <div class="card-footer">
+                  <p>Đã thanh toán</p>
+                </div>
+              ) : (
+                offer.status === 1 ? (
+                  <div class="card-footer">
+                     <Link to={`/payment/${offer.offerCode}`} className="btn">Payment</Link>
+                  </div>
+                ) : (
+                  <div class="card-footer">
+                    <p>Đang chờ admin duyệt</p>
+                  </div>
+                )
+              )}
             </div>
-          </div>
-          <div class="card-footer">
-            <button class="btn">Payment</button>
-            <button class="btn">View your item</button>
-            <button class="btn">Track package</button>
-            <button class="btn">...</button>
-          </div>
+          ))}
+          <hr></hr>
         </div>
-        <hr></hr>
-        <div className="nmbj">
-          <div class="card-body">
-            <img
-              src="https://via.placeholder.com/100"
-              alt="Product Image"
-              class="product-image"
-            />
-            <div class="product-details">
-              <h3>Mose Tolliver</h3>
-              <p>
-                Mose Tolliver has become one of the most highly regarded
-                American self-taught artists and this work is historically
-                important as it was executed in 1970.
-              </p>
-            </div>
-          </div>
-          <div class="card-footer">
-            <button class="btn">Payment</button>
-            <button class="btn">View your item</button>
-            <button class="btn">Track package</button>
-            <button class="btn">...</button>
-          </div>
-        </div>
-        <hr></hr>
-        <div className="nmbj">
-          <div class="card-body">
-            <img
-              src="https://via.placeholder.com/100"
-              alt="Product Image"
-              class="product-image"
-            />
-            <div class="product-details">
-              <h3>Mose Tolliver</h3>
-              <p>
-                Mose Tolliver has become one of the most highly regarded
-                American self-taught artists and this work is historically
-                important as it was executed in 1970.
-              </p>
-            </div>
-          </div>
-          <div class="card-footer">
-            <button class="btn">Payment</button>
-            <button class="btn">View your item</button>
-            <button class="btn">Track package</button>
-            <button class="btn">...</button>
-          </div>
-        </div>
+      ))}
+      <div className="pagination-container">
+        <nav>
+          <ul className="pagination">
+            {Object.keys(groupedOffers).length > 0 &&
+              Array.from({ length: Math.ceil(Object.keys(groupedOffers).length / offersPerPage) }).map((_, index) => (
+                <li key={index} className="page-item">
+                  <button onClick={() => paginate(index + 1)} className="page-link">
+                    {index + 1}
+                  </button>
+                </li>
+              ))}
+          </ul>
+        </nav>
       </div>
     </div>
+
   );
 }
 

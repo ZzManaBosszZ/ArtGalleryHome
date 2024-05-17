@@ -24,7 +24,7 @@ function ContactUs() {
           <img src="assets/images/home/contact.jpeg"></img>
         </div>
         <div className="main-content_contact">
-          <div className="time-event">
+          <div className="time-event-contact">
             <h3>Hours</h3>
             <p>DAYS WITH AN EVENT</p>
             <br />
@@ -62,7 +62,7 @@ function ContactUs() {
                 required
               ></textarea>
             </div>
-            <button type="submit">Submit</button>
+            <button className="butcontact" type="submit">Submit</button>
           </form>
         </div>
       </div>

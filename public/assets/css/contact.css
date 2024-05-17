@@ -84,7 +84,7 @@
      border-radius: 5px;
    }
    
-   button[type="submit"] {
+   .butcontact[type="submit"] {
      background-color: #b89d4f;
      color: #fff;
      padding: 10px 20px;
@@ -94,25 +94,25 @@
      transition: background-color 0.3s ease;
    }
    
-   button[type="submit"]:hover {
+   .butcontact[type="submit"]:hover {
      background-color: #333;
    }
    .main-content_contact{
      width: 400px;
    }
-   .time-event {
+   .time-event-contact {
      font-family: Arial, sans-serif;
      font-size: 16px;
      line-height: 1;
      margin-bottom: 30px;
-     
+     color: #b89d4f;
    }
    
-   .time-event h3 {
+   .time-event-contact h3 {
      font-size: 25px;
      font-weight: 400;
      margin-bottom: 30px;
    }
-   .time-event p{
+   .time-event-contact p{
      margin :0;
    }

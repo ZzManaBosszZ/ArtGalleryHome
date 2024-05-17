@@ -1,9 +1,3 @@
-.formedit {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
 #profile-navigation {
   color: #000;
   padding: 10px;
@@ -34,6 +28,24 @@
   color: #081bc3;
 }
 
+#input-section {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#comment-textarea {
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 .hrdev {
   width: 90%;
   margin-left: 70px;
@@ -91,16 +103,16 @@
   transform: translate(-15px, -16px) scale(0.88);
   z-index: 1111;
 }
-.btn-1,
-.btn-1 *,
-.btn-1 :after,
-.btn-1 :before,
-.btn-1:after,
-.btn-1:before {
+.button-save_editPage,
+.button-save_editPage *,
+.button-save_editPage :after,
+.button-save_editPage :before,
+.button-save_editPage:after,
+.button-save_editPage:before {
   border: 0 solid;
   box-sizing: border-box;
 }
-.btn-1 {
+.button-save_editPage {
   margin: 40px 0 0 40px;
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: button;
@@ -114,25 +126,25 @@
   -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
   padding: 0;
 }
-.btn-1:disabled {
+.button-save_editPage:disabled {
   cursor: default;
 }
-.btn-1:-moz-focusring {
+.button-save_editPage:-moz-focusring {
   outline: auto;
 }
-.btn-1 svg {
+.button-save_editPage svg {
   display: block;
   vertical-align: middle;
 }
-.btn-1 [hidden] {
+.button-save_editPage [hidden] {
   display: none;
 }
-.btn-1 {
+.button-save_editPage {
   border-radius: 99rem;
   border-width: 2px;
   padding: 0.8rem 3rem;
 }
-.btn-1:hover {
+.button-save_editPage:hover {
   color: #999;
 }
 .aaa {

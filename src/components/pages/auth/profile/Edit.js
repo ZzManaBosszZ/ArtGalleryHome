@@ -1,9 +1,93 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getAccessToken, removeAccessToken } from "../../../../utils/auth";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../../../../services/api"
+import url from "../../../../services/url"
+import Swal from "sweetalert2";
+import { format } from "date-fns";
+import "../../../../css/edit.css"
+
 function Edit() {
+  const [anhs, setAnhs] = useState([]);
+  const [info, setInfo] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedInfo, setEditedInfo] = useState({});
+
+  const incacanh = () =>
+    [...anhs].map((anh) => (
+      <div>
+        <img src={URL.createObjectURL(anh)} width="200px" />
+      </div>
+    ));
+
+  const handleSaveClick = async () => {
+    try {
+      const userToken = getAccessToken();
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      };
+
+      const formData = new FormData();
+
+      for (const key in editedInfo) {
+        formData.append(key, editedInfo[key]);
+      }
+
+      // Send the request
+      const isConfirmed = await Swal.fire({
+        title: "Are you sure?",
+        text: "You want to update your information?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "I'm sure",
+      });
+
+      if (isConfirmed.isConfirmed) {
+        const updateResponse = await api.put(url.AUTH.UPDATE_PROFILE, formData, config);
+
+        if (updateResponse.status === 204) {
+          console.log("Successfully updated");
+        } else {
+        }
+      }
+
+      // Update the local state with edited information
+      setInfo(editedInfo);
+      setIsEditing(false);
+    } catch (error) { }
+  };
+
+  const loadProfile = async () => {
+    const userToken = getAccessToken();
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      };
+
+      const profileResponse = await api.get(url.AUTH.PROFILE, config);
+      setInfo(profileResponse.data);
+    } catch (error) { }
+  };
+
+  useEffect(() => {
+    loadProfile();
+  }, []);
+
+  const onFileUploadHandler = (e) => {
+    setAnhs(e.target.files);
+  };
   return (
     <div className="formedit">
-      <link rel="stylesheet" href="assets/css/profile/edit.css" />
+      {/* <link rel="stylesheet" href="assets/css/edit.css" /> */}
       <div
         class="menu-left d-flex align-items-center"
         style={{ width: "300px", margin: "30px 0 0 50px" }}
@@ -11,90 +95,76 @@ function Edit() {
         <p>
           <a class="aaa" style={{ color: "#000" }} href="/profile">
             {" "}
-            Collector Profile
+            Profile
           </a>
         </p>
       </div>
       <hr className="hrdev" style={{ marginTop: "20px" }} />
       <nav style={{ marginTop: "50px" }} id="profile-navigation">
         <ul className="ghye">
-        <li className="hjpk">
-          <Link to={`/edit-profile`}>
-            <a className="lkm">
-              Edit Profile
-            </a>
+          <li className="hjpk">
+            <Link to={`/edit-profile`}>
+              <a className="lkm">Edit Profile</a>
             </Link>
           </li>
           <li className="hjpk">
             <Link to={`/offer-history`}>
-            <a className="lkm">
-              Offer History
-            </a>
+              <a className="lkm">Offer History</a>
             </Link>
           </li>
         </ul>
       </nav>
       <hr className="hrdev" style={{ marginTop: "10px" }} />
       <div style={{ display: "flex" }} class="edit">
-        <div class="file">
-          <img
-            src="assets/images/profile/user.png"
-            alt=""
-            style={{
-              borderRadius: "50%",
-              width: "100px",
-              marginTop: "20px",
-              marginLeft: "50px",
-            }}
-          />
+      <div class="file">
           <div class="menu-left-right ml-3">
-            <a style={{ color: "#707070" }} href="">
-              <p style={{ marginLeft: "50px" }}>Choose an Image</p>
-            </a>
+            <input
+              className="upimg"
+              type="file"
+              accept="image/*"
+              onChange={onFileUploadHandler}
+            />
+            <div className="image-gallery">{incacanh()}</div>
           </div>
+          
           <div class="hhh">
-            <div class="container">
+            <div class="containeredit">
               <div class="entryarea">
-                <input className="inedit" type="text" required />
-                <div class="labelline">Full Name</div>
+                <input className="inedit" type="text" value={editedInfo.fullname || ""}
+                  onChange={(e) => setEditedInfo({ ...editedInfo, fullname: e.target.value })} required />
+                <div class="labelline">Name</div>
               </div>
             </div>
           </div>
-          <div class="hhh">
+          {/* <div class="hhh">
             <div class="container">
               <div class="entryarea">
-                <input className="inedit" type="text" required />
+                <input className="inedit" type="date" value={format(new Date(editedInfo.birthday), "yyyy-MM-dd") || ""}
+                  onChange={(e) => setEditedInfo({ ...editedInfo, birthday: e.target.value })} required />
                 <div class="labelline">Birthday</div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div class="hhh">
-            <div class="container">
+            <div class="containeredit">
               <div class="entryarea">
-                <input className="inedit" type="text" required />
-                <div class="labelline">AddPhone</div>
+                <input className="inedit" type="tel" value={editedInfo.phone || ""}
+                  onChange={(e) => setEditedInfo({ ...editedInfo, phone: e.target.value })} required />
+                <div class="labelline">Phone</div>
               </div>
             </div>
           </div>
-          <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
-                <input className="inedit" type="text" required />
-                <div class="labelline">Address</div>
-              </div>
-            </div>
-          </div>
-          <div class="hhh">
+          {/* <div class="hhh">
             <div class="container">
               <div class="entryarea">
                 <input className="inedit" type="text" required />
                 <div class="labelline">About</div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
-      <button type="submit" class="btn-1">
+      <button type="submit" onClick={handleSaveClick} class="button-save_editPage">
         Save
       </button>
     </div>
