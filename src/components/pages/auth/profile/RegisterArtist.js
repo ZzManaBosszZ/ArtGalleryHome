@@ -5,32 +5,18 @@ import api from "../../../../services/api";
 import url from "../../../../services/url";
 import Swal from "sweetalert2";
 function RegisterArtist() {
-  const [anhs, setAnhs] = useState([]);
-  console.log(anhs);
-  const onFileUploadHandler = (e) => {
-    setAnhs(e.target.files);
-  };
-  const incacanh = () =>
-    [...anhs].map((anh) => (
-      <div>
-        <img src={URL.createObjectURL(anh)} width="200px" />
-      </div>
-    ));
-
   const [formData, setFormData] = useState({
-    fullname: "",
+    nameArtist: "",
     biography: "",
     description: "",
-    schoolOfArt: "",
-    artWorkImage: null,
+    image: null,
   });
 
   const [formErrors, setFormErrors] = useState({
-    fullname: "",
+    nameArtist: "",
     biography: "",
     description: "",
-    schoolOfArt: "",
-    artWorkImage: null,
+    image: null,
   });
 
   const navigate = useNavigate();
@@ -38,45 +24,42 @@ function RegisterArtist() {
     let valid = true;
     const newErrors = {};
 
-    if (!formData.fullname) {
-      newErrors.fullname = "Please enter your full name.";
+    if (!formData.nameArtist) {
+      newErrors.nameArtist = "Please enter your full name.";
       valid = false;
-    } else if (formData.fullname.length < 3) {
-      newErrors.fullname = "Full name must have at least 3 characters";
+    } else if (!formData.nameArtist) {
+      newErrors.nameArtist = "Full name must have at least 3 characters";
       valid = false;
     }
 
     if (!formData.biography) {
       newErrors.biography = "Please enter your biography .";
       valid = false;
-    } else if (!(formData.email)) {
+    } else if (!formData.biography) {
       newErrors.biography = "Please enter biography";
       valid = false;
     }
 
-    if (!formData.schoolOfArt) {
-      newErrors.schoolOfArt = "Please enter your School Of Art.";
-      valid = false;
-    } else if (formData.schoolOfArt.length < 3) {
-      newErrors.schoolOfArt = "School of Art invalid";
-      valid = false;
-    }
-
-
-    if (formData.artWorkImage === null) {
-      newErrors.artWorkImage = "Please choose photo";
+    if (formData.image === null) {
+      newErrors.image = "Please choose photo";
       valid = false;
     }
     setFormErrors(newErrors);
     return valid;
   };
 
-  const handleRegister = async (e) => {
+  const handleRegisterArtist = async (e) => {
     e.preventDefault();
 
-    if (validateForm()) {
+    const isFormValid = validateForm();
+
+    if (isFormValid) {
       try {
-        const registerRequest = await api.post(url.REGISTER_ARTIST.CREATE, formData);
+        const userToken = localStorage.getItem("access_token");
+        api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
+        const registerRequest = await api.post(`https://localhost:7270/api/Admin/request-artist`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
 
         if (registerRequest.status === 201) {
           Swal.fire({
@@ -101,10 +84,25 @@ function RegisterArtist() {
     }
   };
 
+  //xử lý tải file ảnh
+  const handleFileArtistChange = (e, fieldName) => {
+    const { files } = e.target;
+    const selectedImage = files.length > 0 ? URL.createObjectURL(files[0]) : null;
+    setFormData({
+      ...formData,
+      [fieldName]: fieldName === "image" ? (files.length > 0 ? files[0] : null) : null,
+      image: selectedImage,
+    });
+  };
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setFormErrors({ ...formErrors, [name]: "" });
+    const { name } = e.target;
+    if (name === "image") {
+      handleFileArtistChange(e, name);
+    } else {
+      const { value } = e.target;
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   return (
@@ -123,7 +121,7 @@ function RegisterArtist() {
       </div>
 
       <hr className="hrdev" style={{ marginTop: "20px" }} />
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleRegisterArtist}>
         <div style={{ display: "flex" }} class="edit">
           <div class="file">
             <h1 className="hatmotre">Register Artist</h1>
@@ -134,18 +132,18 @@ function RegisterArtist() {
                   <input
                     className="inedit"
                     type="text"
-                    name="fullname"
-                    id="fullname"
-                    value={formData.fullname}
+                    name="nameArtist"
+                    // id="nameArtist"
+                    value={formData.nameArtist}
                     onChange={handleChange}
                     autoFocus />
                   <div class="labelline">Artist Name</div>
                 </div>
-                {formErrors.fullname && (
-                  <p className="invalid-feedback">{formErrors.fullname}</p>
-                )}
               </div>
             </div>
+            {formErrors.nameArtist && (
+              <p className="invalid-feedback">{formErrors.nameArtist}</p>
+            )}
             <div class="hhh">
               <div class="container">
                 <div class="entryarea">
@@ -153,46 +151,51 @@ function RegisterArtist() {
                     className="inedit"
                     type="text"
                     name="biography"
-                    id="biography"
+                    // id="biography"
                     value={formData.biography}
                     onChange={handleChange}
                     autoFocus />
                   <div class="labelline">Biography</div>
                 </div>
-                {formErrors.biography && (
-                  <p className="invalid-feedback">{formErrors.biography}</p>
-                )}
+
               </div>
             </div>
+            {formErrors.biography && (
+              <p className="invalid-feedback">{formErrors.biography}</p>
+            )}
+
             <div class="hhh">
               <div class="container">
                 <div class="entryarea">
                   <input
                     className="inedit"
                     type="text"
-                    name="schoolOfArt"
-                    id="schoolOfArt"
-                    value={formData.schoolOfArt}
+                    name="description"
+                    // id="biography"
+                    value={formData.description}
                     onChange={handleChange}
                     autoFocus />
-                  <div class="labelline">School Of Art</div>
+                  <div class="labelline">Description</div>
                 </div>
-                {formErrors.schoolOfArt && (
-                  <p className="invalid-feedback">{formErrors.schoolOfArt}</p>
-                )}
+
               </div>
             </div>
+            {formErrors.description && (
+              <p className="invalid-feedback">{formErrors.description}</p>
+            )}
+
             <div class="menu-left-right ml-3" id="menu-left-right">
               <input
                 className="upimg"
                 type="file"
-                name="artWorkImage" 
+                name="image"
                 accept=".jpg, .png, .etc"
                 onChange={handleChange}
               />
-              {formErrors.artWorkImage && <div className="text-danger">{formErrors.artWorkImage}</div>}
+
               {/* <div className="image-gallery">{incacanh()}</div> */}
             </div>
+            {formErrors.image && <div className="text-danger">{formErrors.image}</div>}
           </div>
         </div>
         <button type="submit" id="button-submit_registerPage">

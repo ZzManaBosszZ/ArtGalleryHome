@@ -35,7 +35,7 @@ const url = {
     },
 
     REGISTER_ARTIST: {
-        CREATE: "/Admin/request-artist", 
+        CREATE: "Admin/request-artist", 
     },
 
     FOLLOW: {
