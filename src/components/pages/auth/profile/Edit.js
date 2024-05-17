@@ -1,6 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../../../../css/edit.css";
+import { useState, useEffect } from "react";
+import { getAccessToken, removeAccessToken } from "../../../../utils/auth";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../../../../services/api"
+import url from "../../../../services/url"
+import Swal from "sweetalert2";
+import { format } from "date-fns";
+import "../../../../css/edit.css"
+
 function Edit() {
   const [anhs, setAnhs] = useState([]);
   const [info, setInfo] = useState("");
@@ -80,8 +86,8 @@ function Edit() {
     setAnhs(e.target.files);
   };
   return (
-    <div className="formedit-page">
-      {/* <link rel="stylesheet" href="assets/css/profile/edit.css" /> */}
+    <div className="formedit-editPage">
+      {/* {/ <link rel="stylesheet" href="assets/css/edit.css" /> /} */}
       <div
         class="menu-left d-flex align-items-center"
         style={{ width: "300px", margin: "30px 0 0 50px" }}
@@ -109,8 +115,8 @@ function Edit() {
         </ul>
       </nav>
       <hr className="hrdev" style={{ marginTop: "10px" }} />
-      <div style={{ display: "flex" }} class="edit">
-      <div class="file">
+      <div style={{ display: "flex" }} class="edit-section">
+      <div class="edit-section_file">
           <div class="menu-left-right ml-3">
             <input
               className="upimg"
@@ -118,53 +124,32 @@ function Edit() {
               accept="image/*"
               onChange={onFileUploadHandler}
             />
-            <div className="image-gallery">{incacanh()}</div>
+            {/* <div className="image-gallery">{incacanh()}</div> */}
           </div>
-          <div className="list-input_info">
-            <div class="hhh">
-              <div class="container">
-                <div class="entryarea">
-                  <input className="inedit" type="text" required />
-                  <div class="labelline">Full Name</div>
-                </div>
+          
+          <div class="hhh">
+            <div class="containeredit-editPage">
+              <div class="entryarea">
+                <input className="inedit" type="text" value={editedInfo.fullname || ""}
+                  onChange={(e) => setEditedInfo({ ...editedInfo, fullname: e.target.value })} required />
+                <div class="labelline">Name</div>
               </div>
             </div>
-            <div class="hhh">
-              <div class="container">
-                <div class="entryarea">
-                  <input className="inedit" type="text" required />
-                  <div class="labelline">Birthday</div>
-                </div>
+          </div>
+          
+          <div class="hhh">
+            <div class="containeredit-editPage">
+              <div class="entryarea">
+                <input className="inedit" type="tel" value={editedInfo.phone || ""}
+                  onChange={(e) => setEditedInfo({ ...editedInfo, phone: e.target.value })} required />
+                <div class="labelline">Phone</div>
               </div>
             </div>
-            <div class="hhh">
-              <div class="container">
-                <div class="entryarea">
-                  <input className="inedit" type="text" required />
-                  <div class="labelline">AddPhone</div>
-                </div>
-              </div>
-            </div>
-            <div class="hhh">
-              <div class="container">
-                <div class="entryarea">
-                  <input className="inedit" type="text" required />
-                  <div class="labelline">Address</div>
-                </div>
-              </div>
-            </div>
-            <div class="hhh">
-              <div class="container">
-                <div class="entryarea">
-                  <input className="inedit" type="text" required />
-                  <div class="labelline">About</div>
-                </div>
-              </div>
-            </div>
-          </div> */}
+          </div>
+          
         </div>
       </div>
-      <button type="submit" class="button-save_editPage">
+      <button type="submit" onClick={handleSaveClick} class="button-save_editPage">
         Save
       </button>
     </div>

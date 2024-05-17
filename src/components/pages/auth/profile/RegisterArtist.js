@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../../../../css/registerartist.css";
 function RegisterArtist() {
   const [anhs, setAnhs] = useState([]);
   console.log(anhs);
@@ -15,7 +15,7 @@ function RegisterArtist() {
 
   return (
     <div className="formedit">
-      <link rel="stylesheet" href="assets/css/registerartist.css" />
+      {/* <link rel="stylesheet" href="assets/css/registerartist.css" /> */}
       <div
         class="menu-left d-flex align-items-center"
         style={{ width: "300px", margin: "30px 0 0 50px" }}
@@ -68,7 +68,7 @@ function RegisterArtist() {
           </div>
         </div>
       </div>
-      <button type="submit" class="btn-01">
+      <button type="submit" id="button-submit_registerPage">
         Register
       </button>
     </div>

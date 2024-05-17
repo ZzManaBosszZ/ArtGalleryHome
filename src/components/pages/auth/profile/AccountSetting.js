@@ -266,11 +266,11 @@ function AccountSettings() {
               />
               {formErrors.confirmPassword && <p className="invalid-feedback">{formErrors.confirmPassword}</p>}
             </div>
-            <div style={{ marginTop: "30px", marginLeft: "20px" }} class="button">
+            <div  class="button-edit_pass">
               <button
                 style={{ backgroundColor: "#000", color: "#fff" }}
                 type="submit"
-                class="btn-1"
+                class="button-edit_pass1"
                 value="Change Password"
               >
                 Save Changes

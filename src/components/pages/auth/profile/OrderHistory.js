@@ -129,61 +129,8 @@ function OrderHistory() {
                 )
               )}
             </div>
-          </div>
-          <div class="card-footer">
-            <button class="card-footer-btn">Payment</button>
-            <button class="card-footer-btn">View your item</button>
-            <button class="card-footer-btn">Track package</button>
-            <button class="card-footer-btn">...</button>
-          </div>
-        </div>
-        <hr></hr>
-        <div className="nmbj">
-          <div class="card-body">
-            <img
-              src="https://via.placeholder.com/100"
-              alt="Product Image"
-              class="product-image"
-            />
-            <div class="product-details">
-              <h3>Mose Tolliver</h3>
-              <p>
-                Mose Tolliver has become one of the most highly regarded
-                American self-taught artists and this work is historically
-                important as it was executed in 1970.
-              </p>
-            </div>
-          </div>
-          <div class="card-footer">
-            <button class="card-footer-btn">Payment</button>
-            <button class="card-footer-btn">View your item</button>
-            <button class="card-footer-btn">Track package</button>
-            <button class="card-footer-btn">...</button>
-          </div>
-        </div>
-        <hr></hr>
-        <div className="nmbj">
-          <div class="card-body">
-            <img
-              src="https://via.placeholder.com/100"
-              alt="Product Image"
-              class="product-image"
-            />
-            <div class="product-details">
-              <h3>Mose Tolliver</h3>
-              <p>
-                Mose Tolliver has become one of the most highly regarded
-                American self-taught artists and this work is historically
-                important as it was executed in 1970.
-              </p>
-            </div>
-          </div>
-          <div class="card-footer">
-            <button class="card-footer-btn">Payment</button>
-            <button class="card-footer-btn">View your item</button>
-            <button class="card-footer-btn">Track package</button>
-            <button class="card-footer-btn">...</button>
-          </div>
+          ))}
+          <hr></hr>
         </div>
       ))}
       <div className="pagination-container">
