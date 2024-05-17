@@ -109,7 +109,7 @@ function Follows() {
           </div>
 
         <div class="menu-right">
-          <a href="/edit">
+          <a href="/edit-profile">
             <button class="btn-1">Settings</button>
           </a>
         </div>
