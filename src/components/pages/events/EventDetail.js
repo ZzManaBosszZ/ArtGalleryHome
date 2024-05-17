@@ -64,7 +64,7 @@ function EventDetail() {
         <div className="content">
           {activePanel === "overview" && (
             <div className="panel">
-
+          
               <div className="content-eDetail">
                 <div className="countdown-time">Close In:</div>
                 <div className="about-eDetail">
@@ -181,7 +181,7 @@ function EventDetail() {
           {activePanel === "artworks" && (
             <div className="panel">
               <div className="ListArt_page">
-
+                
                 <div id="artworks-container" className="content-section">
                   <div className="card-art_home">
                     <a href="/artworkDetail">

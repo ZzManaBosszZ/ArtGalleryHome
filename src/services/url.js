@@ -1,5 +1,5 @@
 const url = {
-    BASE_URL: "https://localhost:7270/api/",
+    BASE_URL: "http://localhost:5293/api/",
 
     AUTH: {
         REGISTER: "AUTH/register",

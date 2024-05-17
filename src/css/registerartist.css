@@ -9,7 +9,9 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.formedit{
+  padding: 30px 90px;
+}
 #profile-navigation {
   color: #000;
   padding: 10px;
@@ -84,6 +86,10 @@ hr {
   top: 0;
   line-height: 50px;
 }
+.edit{
+  display: flex;
+  justify-content: center;
+}
 .inedit {
   position: absolute;
   width: 100%;
@@ -120,50 +126,7 @@ hr {
   transform: translate(-15px, -16px) scale(0.88);
   z-index: 1111;
 }
-.btn-01,
-.btn-01 *,
-.btn-01 :after,
-.btn-01 :before,
-.btn-01:after,
-.btn-01:before {
-  border: 0 solid;
-  box-sizing: border-box;
-}
-.btn-01 {
-  margin: 40px 0 0 40px;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: button;
-  background-color: #000;
-  background-image: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 100%;
-  font-weight: 9 0;
-  line-height: 1.5;
-  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
-  padding: 0;
-}
-.btn-01:disabled {
-  cursor: default;
-}
-.btn-01:-moz-focusring {
-  outline: auto;
-}
-.btn-01 svg {
-  display: block;
-  vertical-align: middle;
-}
-.btn-01 [hidden] {
-  display: none;
-}
-.btn-01 {
-  border-radius: 99rem;
-  border-width: 2px;
-  padding: 0.8rem 3rem;
-}
-.btn-01:hover {
-  color: #999;
-}
+
 .aaa {
   font-size: 13px;
   text-decoration: none;
@@ -172,7 +135,8 @@ hr {
   margin: 50px 0 0 50px;
 }
 .hatmotre {
-  margin: 10px 0 0 30px;
+  text-align: center;
+  margin: 20px 0 30px 0px;
 }
 .upimg {
   margin: 30px 0 0 50px;
@@ -182,4 +146,9 @@ hr {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+#button-submit_registerPage{
+  margin-top: 20px;
+  padding: 15px 25px ;
+  margin-left: 45% ;
 }

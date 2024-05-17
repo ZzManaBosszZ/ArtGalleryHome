@@ -86,8 +86,8 @@ function Edit() {
     setAnhs(e.target.files);
   };
   return (
-    <div className="formedit">
-      {/* <link rel="stylesheet" href="assets/css/edit.css" /> */}
+    <div className="formedit-editPage">
+      {/* {/ <link rel="stylesheet" href="assets/css/edit.css" /> /} */}
       <div
         class="menu-left d-flex align-items-center"
         style={{ width: "300px", margin: "30px 0 0 50px" }}
@@ -115,8 +115,8 @@ function Edit() {
         </ul>
       </nav>
       <hr className="hrdev" style={{ marginTop: "10px" }} />
-      <div style={{ display: "flex" }} class="edit">
-      <div class="file">
+      <div style={{ display: "flex" }} class="edit-section">
+      <div class="edit-section_file">
           <div class="menu-left-right ml-3">
             <input
               className="upimg"
@@ -124,11 +124,11 @@ function Edit() {
               accept="image/*"
               onChange={onFileUploadHandler}
             />
-            <div className="image-gallery">{incacanh()}</div>
+            {/* <div className="image-gallery">{incacanh()}</div> */}
           </div>
           
           <div class="hhh">
-            <div class="containeredit">
+            <div class="containeredit-editPage">
               <div class="entryarea">
                 <input className="inedit" type="text" value={editedInfo.fullname || ""}
                   onChange={(e) => setEditedInfo({ ...editedInfo, fullname: e.target.value })} required />
@@ -136,17 +136,9 @@ function Edit() {
               </div>
             </div>
           </div>
-          {/* <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
-                <input className="inedit" type="date" value={format(new Date(editedInfo.birthday), "yyyy-MM-dd") || ""}
-                  onChange={(e) => setEditedInfo({ ...editedInfo, birthday: e.target.value })} required />
-                <div class="labelline">Birthday</div>
-              </div>
-            </div>
-          </div> */}
+          
           <div class="hhh">
-            <div class="containeredit">
+            <div class="containeredit-editPage">
               <div class="entryarea">
                 <input className="inedit" type="tel" value={editedInfo.phone || ""}
                   onChange={(e) => setEditedInfo({ ...editedInfo, phone: e.target.value })} required />
@@ -154,14 +146,7 @@ function Edit() {
               </div>
             </div>
           </div>
-          {/* <div class="hhh">
-            <div class="container">
-              <div class="entryarea">
-                <input className="inedit" type="text" required />
-                <div class="labelline">About</div>
-              </div>
-            </div>
-          </div> */}
+          
         </div>
       </div>
       <button type="submit" onClick={handleSaveClick} class="button-save_editPage">
