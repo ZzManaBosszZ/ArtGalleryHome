@@ -54,7 +54,7 @@ function App() {
 
           <Route path="/login" element={<ProtectedLoginRoute element={<LoginAndRegister />} />} />
           {/* End Auth */}
-
+                                                                                      
           {/* Profile */}
           <Route path="/setting" element={<ProtectedRoute element={<AccountSettings />} />}/>
           <Route path="/artist-follow" element={<ProtectedRoute element={<Follows />} />} />
