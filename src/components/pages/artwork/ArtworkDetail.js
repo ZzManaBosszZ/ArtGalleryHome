@@ -291,7 +291,7 @@ function ArtworkDetail() {
             </div>
           </div>
         </div>
-        <div className="other-artwork">
+        <div className="other-artwork_artPage">
           {/* other works by artist */}
           <div className="title_other-artwork">
             <h2 className="hathainm">Other works by Rachel MacFarlane</h2>

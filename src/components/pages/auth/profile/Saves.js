@@ -132,7 +132,7 @@ function Saves() {
                     class="nav-link"
                     href="/profile"
                   >
-                    My Collection
+                    Profile
                   </a>
                 </li>
                 <li class="nav-item">

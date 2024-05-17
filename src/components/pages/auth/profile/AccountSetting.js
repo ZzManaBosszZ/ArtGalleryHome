@@ -197,7 +197,7 @@ function AccountSettings() {
                       class="nav-link"
                       href="/profile"
                     >
-                      My Collection
+                      Profile
                     </a>
                   </li>
                   <li class="nav-item">

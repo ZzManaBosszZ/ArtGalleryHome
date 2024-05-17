@@ -7,6 +7,7 @@ import api from "../../../../services/api"
 import url from "../../../../services/url"
 function Profile() {
 
+
   const [info, setInfo] = useState("");
   const loadProfile = async () => {
     const userToken = getAccessToken();
@@ -84,7 +85,7 @@ useEffect(() => {
                       class="nav-link"
                       href="/profile"
                     >
-                      My Collection
+                      Profile
                     </a>
                   </li>
                   <li class="nav-item">

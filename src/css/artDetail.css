@@ -19,13 +19,16 @@ text-decoration: none;
   display: grid;
   grid-template-rows: 95% 5%;
   margin-left: 20px;
+  width: 650px;
+  height: 400px;
+
 }
 
 .img-art .anhgb{
   width: 100%;
   height: 100%;
   box-shadow: 3px 3px 6px 0 rgba(0,0,0,.42);
-
+   object-fit: cover;
 }
 .otherServices{
   display: flex;
@@ -252,8 +255,8 @@ text-decoration: none;
  background-color: #fff;
  co
 } */
-.other-artwork{
-  margin-top: 10rem;
+.other-artwork_artPage{
+  margin-top: 25rem;
 }
 .list-works{
   display: grid;

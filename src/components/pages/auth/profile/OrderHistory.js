@@ -63,7 +63,7 @@ function OrderHistory() {
         <p>
           <a class="aaa" style={{ color: "#000" }} href="/profile">
             {" "}
-            Collector Profile
+            Profile
           </a>
         </p>
       </div>

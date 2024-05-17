@@ -5,6 +5,7 @@ import api from "../../../../services/api"
 import url from "../../../../services/url"
 import Swal from "sweetalert2";
 import { format } from "date-fns";
+import "../../../../css/edit.css"
 
 function Edit() {
   const [anhs, setAnhs] = useState([]);
@@ -86,7 +87,7 @@ function Edit() {
   };
   return (
     <div className="formedit">
-      <link rel="stylesheet" href="assets/css/edit.css" />
+      {/* <link rel="stylesheet" href="assets/css/edit.css" /> */}
       <div
         class="menu-left d-flex align-items-center"
         style={{ width: "300px", margin: "30px 0 0 50px" }}
@@ -94,7 +95,7 @@ function Edit() {
         <p>
           <a class="aaa" style={{ color: "#000" }} href="/profile">
             {" "}
-            Collector Profile
+            Profile
           </a>
         </p>
       </div>
@@ -127,7 +128,7 @@ function Edit() {
           </div>
           
           <div class="hhh">
-            <div class="container">
+            <div class="containeredit">
               <div class="entryarea">
                 <input className="inedit" type="text" value={editedInfo.fullname || ""}
                   onChange={(e) => setEditedInfo({ ...editedInfo, fullname: e.target.value })} required />
@@ -145,7 +146,7 @@ function Edit() {
             </div>
           </div> */}
           <div class="hhh">
-            <div class="container">
+            <div class="containeredit">
               <div class="entryarea">
                 <input className="inedit" type="tel" value={editedInfo.phone || ""}
                   onChange={(e) => setEditedInfo({ ...editedInfo, phone: e.target.value })} required />
@@ -163,7 +164,7 @@ function Edit() {
           </div> */}
         </div>
       </div>
-      <button type="submit" onClick={handleSaveClick} class="btn-01">
+      <button type="submit" onClick={handleSaveClick} class="button-save_editPage">
         Save
       </button>
     </div>
