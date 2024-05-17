@@ -30,8 +30,9 @@
 .hero {
   overflow: hidden;
 }
-.ko {
-  margin-top: 50px;
+    
+    .passet-page, .ko{
+  margin: 50px 130px;
 }
 .containers {
   display: flex;
@@ -115,5 +116,5 @@
   height: 3.5rem;
 }
 .button-edit_pass1{
-  margin-left: 40%;
+  margin-left: 33%;
 }

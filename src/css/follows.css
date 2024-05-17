@@ -24,14 +24,14 @@
 }
 
 .btn-1:hover {
-  background-color: #1023d7;
+  background-color: #383636;
   color: #fff;
 }
 
 .noment {
-  width: 100%;
-  margin: auto;
-  padding: 20px 0;
+  
+margin: 30px 80px; 
+ padding: 20px 0;
 }
 .headen {
   display: flex;

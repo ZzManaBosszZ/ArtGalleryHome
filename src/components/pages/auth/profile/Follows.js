@@ -5,6 +5,7 @@ import api from "../../../../services/api"
 import url from "../../../../services/url"
 import Swal from "sweetalert2";
 // import "../../../../css/bootstrap.css";
+import '../../../../css/follows.css';
 function Follows() {
   const [info, setInfo] = useState("");
 
@@ -79,18 +80,18 @@ function Follows() {
   };
 
   return (
-    <div style={{ marginTop: "20px" }} class="container">
-      <link rel="stylesheet" href="assets/css/follows.css" />
+    <div class="ko">
+      {/* <link rel="stylesheet" href="assets/css/follows.css" /> */}
 
       <div
-        class="menu"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <div
+          class="menu"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div
             class="menu-left d-flex align-items-center"
             style={{ width: "300px" }}
           >
@@ -107,27 +108,28 @@ function Follows() {
               </p>
             </div>
           </div>
-
-        <div class="menu-right">
-          <a href="/edit-profile">
-            <button class="btn-1">Settings</button>
-          </a>
+          <div class="menu-right">
+            <Link to={`/edit-profile`}>
+            <a>
+              <button class="btn-1">Settings</button>
+            </a>
+            </Link>
+          </div>
         </div>
-      </div>
-      <div class="menu-bottom">
-        <p>hieudeptrai</p>
-        <p style={{ color: "#707070" }}>
-          <i class="fa-solid fa-location-dot"></i> VietNam
-        </p>
-      </div>
-      <div class="navbar">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
-          <div class="container-fluid">
-            <div
-              class="collapse navbar-collapse nav-fill"
-              id="navbarSupportedContent"
-            >
-              <ul class="navbar-nav w-100 justify-content-between">
+        <div class="menu-bottom">
+          {/* <p className="poi">{info.fullname}</p> */}
+          <p className="poi" style={{ color: "#707070", margin:"20px 0 0 10px" }}>
+            <i class="fa-solid fa-location-dot"></i> VietNam
+          </p>
+        </div>
+        <div class="navbar">
+          <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <div class="container-fluid">
+              <div
+                class="collapse navbar-collapse nav-fill"
+                id="navbarSupportedContent"
+              >
+                <ul class="navbar-nav w-100 justify-content-between">
                   <li class="nav-item">
                     <a
                       style={{ color: "#000" }}
@@ -159,10 +161,11 @@ function Follows() {
                     </Link>
                   </li>
                 </ul>
+              </div>
             </div>
-          </div>
-        </nav>
-      </div>
+          </nav>
+          <hr />
+        </div>
       {follow.length > 0 ? (
             follow.map((item, index) => (
       <div class="noment">

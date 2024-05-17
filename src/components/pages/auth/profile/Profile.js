@@ -31,7 +31,7 @@ useEffect(() => {
 
   return (
     <div class="ko">
-      <div style={{width:"1300px", marginLeft:"130px"}} class="haho">
+      <div  class="haho">
         <div
           class="menu"
           style={{

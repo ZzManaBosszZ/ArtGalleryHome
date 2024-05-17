@@ -218,7 +218,7 @@ function LoginAndRegister() {
             </div>
             <span>or use your email for regiteration</span> */}
             <input
-            className="lkjha"
+              className="lkjha"
               type="text"
               placeholder="Name"
               id="fullname"

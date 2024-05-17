@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import api from "../../../../services/api"
 import url from "../../../../services/url"
 import Swal from "sweetalert2";
+import "../../../../css/saves.css";
 function Saves() {
   const [info, setInfo] = useState("");
   const loadProfile = async () => {
@@ -76,92 +77,92 @@ function Saves() {
     } catch (error) { }
   };
   return (
-    <div style={{ marginTop: "20px" }} class="container">
-      <link rel="stylesheet" href="assets/css/saves.css" />
+    <div  class="ko">
+      {/* <link rel="stylesheet" href="assets/css/saves.css" /> */}
 
       <div
-        class="menu"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <div
-          class="menu-left d-flex align-items-center"
-          style={{ width: "300px" }}
+          class="menu"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
-          <img
-            className="igh"
-            src="./assets/images/home/4.jpeg"
-            alt=""
-            style={{ borderRadius: "50%", width: "100px" }}
-          />
-          <div class="menu-left-right ml-3">
-            <h3>{info.fullname}</h3>
-            <p className="poi" style={{ color: "#707070" }}>
-              Member since 2024
-            </p>
+          <div
+            class="menu-left d-flex align-items-center"
+            style={{ width: "300px" }}
+          >
+            <img
+              className="igh"
+              src="./assets/images/home/4.jpeg"
+              alt=""
+              style={{ borderRadius: "50%", width: "100px" }}
+            />
+            <div class="menu-left-right ml-3">
+              <h3>{info.fullname}</h3>
+              <p className="poi" style={{ color: "#707070" }}>
+                Member since 2024
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="menu-right">
-          <Link to={`/edit-profile`}>
+          <div class="menu-right">
+            <Link to={`/edit-profile`}>
             <a>
               <button class="btn-1">Settings</button>
             </a>
-          </Link>
+            </Link>
+          </div>
         </div>
-      </div>
-      <div class="menu-bottom">
-        <p className="poi">hieudeptrai</p>
-        <p className="poi" style={{ color: "#707070" }}>
-          <i class="fa-solid fa-location-dot"></i> VietNam
-        </p>
-      </div>
-      <div class="navbar">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
-          <div class="container-fluid">
-            <div
-              class="collapse navbar-collapse nav-fill"
-              id="navbarSupportedContent"
-            >
-              <ul class="navbar-nav w-100 justify-content-between">
-                <li class="nav-item">
-                  <a
-                    style={{ color: "#000" }}
-                    class="nav-link"
-                    href="/profile"
-                  >
-                    Profile
-                  </a>
-                </li>
-                <li class="nav-item">
+        <div class="menu-bottom">
+          {/* <p className="poi">{info.fullname}</p> */}
+          <p className="poi" style={{ color: "#707070", margin:"20px 0 0 10px" }}>
+            <i class="fa-solid fa-location-dot"></i> VietNam
+          </p>
+        </div>
+        <div class="navbar">
+          <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <div class="container-fluid">
+              <div
+                class="collapse navbar-collapse nav-fill"
+                id="navbarSupportedContent"
+              >
+                <ul class="navbar-nav w-100 justify-content-between">
+                  <li class="nav-item">
+                    <a
+                      style={{ color: "#000" }}
+                      class="nav-link"
+                      href="/profile"
+                    >
+                      Profile
+                    </a>
+                  </li>
+                  <li class="nav-item">
                   <Link to={`/artwork-saves`}>
                     <a class="nav-link">
                       Saves
                     </a>
-                  </Link>
-                </li>
-                <li class="nav-item">
+                    </Link>
+                  </li>
+                  <li class="nav-item">
                   <Link to={`/artist-follow`}>
                     <a class="nav-link">
                       Follows
                     </a>
-                  </Link>
-                </li>
-                <li class="nav-item">
+                    </Link>
+                  </li>
+                  <li class="nav-item">
                   <Link to={`/setting`}>
                     <a class="nav-link">
                       Password Setting
                     </a>
-                  </Link>
-                </li>
-              </ul>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </nav>
-        <hr />
-      </div>
+          </nav>
+          <hr />
+        </div>
 
       <div class="container">
         <h1>Save Arwork</h1>
