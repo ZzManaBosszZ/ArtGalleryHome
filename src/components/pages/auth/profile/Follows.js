@@ -84,180 +84,125 @@ function Follows() {
       {/* <link rel="stylesheet" href="assets/css/follows.css" /> */}
 
       <div
-          class="menu"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
+        class="menu"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div
+          class="menu-left d-flex align-items-center"
+          style={{ width: "300px" }}
         >
-          <div
-            class="menu-left d-flex align-items-center"
-            style={{ width: "300px" }}
-          >
-            <img
-              className="igh"
-              src="./assets/images/home/4.jpeg"
-              alt=""
-              style={{ borderRadius: "50%", width: "100px" }}
-            />
-            <div class="menu-left-right ml-3">
-              <h3>{info.fullname}</h3>
-              <p className="poi" style={{ color: "#707070" }}>
-                Member since 2024
-              </p>
-            </div>
+          <img
+            className="igh"
+            src="./assets/images/home/4.jpeg"
+            alt=""
+            style={{ borderRadius: "50%", width: "100px" }}
+          />
+          <div class="menu-left-right ml-3">
+            <h3>{info.fullname}</h3>
+            <p className="poi" style={{ color: "#707070" }}>
+              Member since 2024
+            </p>
           </div>
-          <div class="menu-right">
-            <Link to={`/edit-profile`}>
+        </div>
+        <div class="menu-right">
+          <Link to={`/edit-profile`}>
             <a>
               <button class="btn-1">Settings</button>
             </a>
-            </Link>
-          </div>
+          </Link>
         </div>
-        <div class="menu-bottom">
-          {/* <p className="poi">{info.fullname}</p> */}
-          <p className="poi" style={{ color: "#707070", margin:"20px 0 0 10px" }}>
-            <i class="fa-solid fa-location-dot"></i> VietNam
-          </p>
-        </div>
-        <div class="navbar">
-          <nav class="navbar navbar-expand-lg navbar-light w-100">
-            <div class="container-fluid">
-              <div
-                class="collapse navbar-collapse nav-fill"
-                id="navbarSupportedContent"
-              >
-                <ul class="navbar-nav w-100 justify-content-between">
-                  <li class="nav-item">
-                    <a
-                      style={{ color: "#000" }}
-                      class="nav-link"
-                      href="/profile"
-                    >
-                      Profile
-                    </a>
-                  </li>
-                  <li class="nav-item">
+      </div>
+      <div class="menu-bottom">
+        {/* <p className="poi">{info.fullname}</p> */}
+        <p className="poi" style={{ color: "#707070", margin: "20px 0 0 10px" }}>
+          <i class="fa-solid fa-location-dot"></i> VietNam
+        </p>
+      </div>
+      <div class="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light w-100">
+          <div class="container-fluid">
+            <div
+              class="collapse navbar-collapse nav-fill"
+              id="navbarSupportedContent"
+            >
+              <ul class="navbar-nav w-100 justify-content-between">
+                <li class="nav-item">
+                  <a
+                    style={{ color: "#000" }}
+                    class="nav-link"
+                    href="/profile"
+                  >
+                    Profile
+                  </a>
+                </li>
+                <li class="nav-item">
                   <Link to={`/artwork-saves`}>
                     <a class="nav-link">
                       Saves
                     </a>
-                    </Link>
-                  </li>
-                  <li class="nav-item">
+                  </Link>
+                </li>
+                <li class="nav-item">
                   <Link to={`/artist-follow`}>
                     <a class="nav-link">
                       Follows
                     </a>
-                    </Link>
-                  </li>
-                  <li class="nav-item">
+                  </Link>
+                </li>
+                <li class="nav-item">
                   <Link to={`/setting`}>
                     <a class="nav-link">
                       Password Setting
                     </a>
-                    </Link>
-                  </li>
-                </ul>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <hr />
+      </div>
+      {follow.length > 0 ? (
+        follow.map((item, index) => (
+          <div class="noment">
+            <div class="headen">
+              <img
+                className="imgfollow"
+                src={item.artistImage}
+                alt="Artist Profile Picture"
+              />
+              <div>
+                <h1 className="hatflo">{item.artistName}</h1>
+                <p className="peflo">Norwegian, b. 1981</p>
+              </div>
+              <button onClick={() => handleRemoveFollowItem(item.id)} className="butfolo">Unfollow</button>
+            </div>
+            <div className="image-row">
+              <div className="image-scroll-container">
+                <img
+                  src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
+                  alt="Image 1"
+                  className="scroll-image"
+                />
               </div>
             </div>
-          </nav>
-          <hr />
-        </div>
-      {follow.length > 0 ? (
-            follow.map((item, index) => (
-      <div class="noment">
-        <div class="headen">
-          <img
-            className="imgfollow"
-            src={item.artistImage}
-            alt="Artist Profile Picture"
-          />
-          <div>
-            <h1 className="hatflo">{item.artistName}</h1>
-            <p className="peflo">Norwegian, b. 1981</p>
           </div>
-          <button onClick={() => handleRemoveFollowItem(item.id)} className="butfolo">Unfollow</button>
-        </div>
-        <div className="image-row">
-          <div className="image-scroll-container">
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 1"
-              className="scroll-image"
-            />
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 2"
-              className="scroll-image"
-            />
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 3"
-              className="scroll-image"
-            />
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 4"
-              className="scroll-image"
-            />
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 5"
-              className="scroll-image"
-            />
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 5"
-              className="scroll-image"
-            />{" "}
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 5"
-              className="scroll-image"
-            />{" "}
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 5"
-              className="scroll-image"
-            />{" "}
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 5"
-              className="scroll-image"
-            />{" "}
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 5"
-              className="scroll-image"
-            />{" "}
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 5"
-              className="scroll-image"
-            />{" "}
-            <img
-              src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-              alt="Image 5"
-              className="scroll-image"
-            />
-          </div>
-        </div>
-      </div>
-      ))
-    )
-      : (
-        <div className="favorite-not">
-          <img src="./assets/images/home/404.png" alt="Not Found" style={{ width: "100%" }} />
-          <p>You don't have any Artist in your favorites list yet.</p>
-          <a class="custom-button back-button" href="/artist">
-            <i class="far fa-reply"></i> Follow them now
-          </a>
-        </div>
+        ))
       )
-    }
+        : (
+          <div className="favorite-not">
+            <img src="./assets/images/home/404.png" alt="Not Found" style={{ width: "100%" }} />
+            <p>You don't have any Artist in your favorites list yet.</p>
+            <a class="custom-button back-button" href="/artist">
+              <i class="far fa-reply"></i> Follow them now
+            </a>
+          </div>
+        )
+      }
 
     </div>
   );

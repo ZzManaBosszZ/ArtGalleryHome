@@ -17,7 +17,7 @@ const url = {
     },
 
     ARTWORK: {
-        LIST:"ArtWorks",
+        LIST:"ArtWorks/GetAllArtWorksOffer",
         DETAIL: "ArtWorks/{}",
     },
 
