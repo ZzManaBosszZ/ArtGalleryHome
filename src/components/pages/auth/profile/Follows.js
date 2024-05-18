@@ -29,7 +29,8 @@ function Follows() {
     loadProfile();
   }, []);
 
-  const [follow, setFollow] = useState([]);
+  const [follow, setFollow] = useState({ artWorks: [] });
+  const artworks = follow.artWork || [];
 
   const userToken = getAccessToken();
 
@@ -181,15 +182,21 @@ function Follows() {
               </div>
               <button onClick={() => handleRemoveFollowItem(item.id)} className="butfolo">Unfollow</button>
             </div>
+
             <div className="image-row">
               <div className="image-scroll-container">
-                <img
-                  src="assets/images/follow/d7hftxdivxxvm.cloudfront.webp"
-                  alt="Image 1"
-                  className="scroll-image"
-                />
+                {item.artWorks.map((artwork) => (
+                  <img
+                    key={artwork.id}
+                    src={artwork.artWorkImage}
+                    alt={artwork.name}
+                    className="scroll-image"
+                  />
+                ))}
               </div>
             </div>
+
+
           </div>
         ))
       )

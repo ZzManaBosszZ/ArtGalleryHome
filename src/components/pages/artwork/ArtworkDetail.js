@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link, useLocation } from "react-router-dom";
 import { isLoggedIn } from '../../../utils/auth';
 import { getDecodedToken, removeAccessToken, getAccessToken } from "../../../utils/auth";
 import Slider from "react-slick";
@@ -21,6 +21,7 @@ function ArtworkDetail() {
   const [artistDetail, setArtistDetail] = useState({ artWork: [], schoolOfArts: [] });
   const artworks = artistDetail.artWork || [];
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleOffer = () => {
     if (!isLoggedIn()) {
@@ -30,6 +31,10 @@ function ArtworkDetail() {
       navigate(`/offer/${id}`);
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   // Config token
   const userToken = getAccessToken();
@@ -336,6 +341,7 @@ function ArtworkDetail() {
             >
               {shuffle(artworks).slice(0, 6).map((artwork, index) => {
                 return (
+                  <Link to={`http://localhost:5000/artwork/${artwork.artWorkId}`}>
                   <div className="card-art_home">
                     <a className="mlb">
                       <img className="anhgb" src={artwork.artWorkImage} alt="Image 1" />
@@ -345,6 +351,7 @@ function ArtworkDetail() {
                     </a>
                     <a className="button_add-product">Purchase</a>
                   </div>
+                  </Link>
                 );
               })}
             </Slider>
