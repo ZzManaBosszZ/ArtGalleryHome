@@ -9,6 +9,12 @@ body {
   margin: 0;
   padding: 0;
 }
+#menu-left-right{
+  margin: 2rem 0 0 8rem;
+}
+.edit .file{
+  width: 60rem;
+}
 .formedit{
   padding: 30px 90px;
 }
@@ -74,13 +80,13 @@ hr {
 .hhh {
   display: flex;
   min-height: 13vh;
-  justify-content: left;
+  justify-content: center;
   margin-left: 50px;
   align-items: center;
 }
-.container {
+/* .container {
   width: 800px;
-}
+} */
 .entryarea {
   position: relative;
   top: 0;
@@ -150,5 +156,5 @@ hr {
 #button-submit_registerPage{
   margin-top: 20px;
   padding: 15px 25px ;
-  margin-left: 45% ;
+  margin-left: 47% ;
 }

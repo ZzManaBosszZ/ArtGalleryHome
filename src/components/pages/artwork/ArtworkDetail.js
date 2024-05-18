@@ -10,6 +10,7 @@ import "../../../css/home.css"
 import api from "../../../services/api";
 import url from "../../../services/url";
 import Swal from "sweetalert2";
+import { format } from "date-fns";
 function ArtworkDetail() {
   const sliderRef1 = useRef(null);
   const [userRole, setUserRole] = useState(null);
@@ -17,7 +18,8 @@ function ArtworkDetail() {
   const [artist, setArtists] = useState([]);
   const { id } = useParams();
   const [ArtWorkDetail, setArtWorkDetail] = useState({ artists: [], schoolOfArts: [] });
-  const artworks = ArtWorkDetail.artwork || [];
+  const [artistDetail, setArtistDetail] = useState({ artWork: [], schoolOfArts: [] });
+  const artworks = artistDetail.artWork || [];
   const navigate = useNavigate();
 
   const handleOffer = () => {
@@ -87,6 +89,7 @@ function ArtworkDetail() {
       .catch((error) => {
         // console.error("Error fetching promotion details:", error);
       });
+      
   }, [id]);
 
   //hien thi thong tin artist
@@ -101,6 +104,23 @@ function ArtworkDetail() {
         // console.error("Error fetching promotion details:", error);
       });
   }, []);
+
+  useEffect(() => {
+    const fetchArtistDetail = async () => {
+      if (ArtWorkDetail.artists.length > 0) {
+        const artistId = ArtWorkDetail.artists[0].id;
+        try {
+          const response = await api.get(`${url.ARTIST.DETAIL.replace("{}", artistId)}`);
+          setArtistDetail(response.data);
+          console.log(response.data)
+        } catch (error) {
+          console.error("Error fetching artist details:", error);
+        }
+      }
+    };
+
+    fetchArtistDetail();
+  }, [ArtWorkDetail]);
 
   // Hàm shuffle mảng
   function shuffle(array) {
@@ -199,7 +219,8 @@ function ArtworkDetail() {
                           return (
                             <h1 className="name-artist">{artist.name}</h1>
                           );
-                        })}</a>
+                        })}
+                        </a>
                       <p className="fdsghj">Canadian, b. 1986</p>
                     </div>
                   </div>
@@ -294,7 +315,11 @@ function ArtworkDetail() {
         <div className="other-artwork_artPage">
           {/* other works by artist */}
           <div className="title_other-artwork">
-            <h2 className="hathainm">Other works by Rachel MacFarlane</h2>
+          {ArtWorkDetail.artists.map((artist) => {
+                return (
+                  <h2 className="hathainm">Other works by {artist.name}</h2>
+                );
+              })}
             <a className="mlb">View All</a>
           </div>
           <div className="carousel-controls">

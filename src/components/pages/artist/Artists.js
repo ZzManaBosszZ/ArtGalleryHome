@@ -54,13 +54,13 @@ function Artists() {
   // Lấy danh sách nghệ sĩ và sắp xếp ngẫu nhiên
   const shuffledArtists = shuffleArray(artists);
 
-  const filterArtistsBySchoolOfArt = (soa) => {
-    return artists.filter(artist => { 
-      const schoolOfArt = artist.schoolOfArts.map(schoolOfArt => schoolOfArt.name);
-      return schoolOfArt.includes(soa);
-    });
-  };
-  const artistsWithGivenSchoolOfArt = filterArtistsBySchoolOfArt('c');
+  // const filterArtistsBySchoolOfArt = (soa) => {
+  //   return artists.filter(artist => { 
+  //     const schoolOfArt = artist.schoolOfArts.map(schoolOfArt => schoolOfArt.name);
+  //     return schoolOfArt.includes(soa);
+  //   });
+  // };
+  // const artistsWithGivenSchoolOfArt = filterArtistsBySchoolOfArt('c');
 
 
   // Add to Follow
@@ -177,7 +177,7 @@ function Artists() {
             <a href="/artwork-list-filter" className="view-more_artist">View more</a>
           </div>
           <div className="section-content_artist">
-          {artistsWithGivenSchoolOfArt.map(artist => (
+          {/* {artistsWithGivenSchoolOfArt.map(artist => (
             <div className="card-artist">
               <Link to={`/artist/${artist.id}`} className="img-artist">
                 <img src={artist.image} alt="Image 1" />
@@ -191,7 +191,7 @@ function Artists() {
                 <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div>
               </a>
             </div>
-            ))}
+            ))} */}
           </div>
         </section>
         <section className="artists-section">

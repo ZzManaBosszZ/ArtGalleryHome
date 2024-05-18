@@ -42,7 +42,7 @@ function ArtistDetail() {
       });
   }, []);
 
-  //hien thi thong tin chi tiet artwork
+  //hien thi thong tin chi tiet artist
   useEffect(() => {
     const userToken = localStorage.getItem("access_token");
     api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;

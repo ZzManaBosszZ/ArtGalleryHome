@@ -140,11 +140,11 @@ function AccountSettings() {
     loadProfile();
   }, []);
   return (
-    <div class="ko">
+    <div class="passet-page">
       <link rel="stylesheet" href="assets/css/profile/accountsetting.css" />
 
-      <div style={{ marginTop: "20px" }} class="container">
-        <div
+      <div class="container-passet">
+      <div
           class="menu"
           style={{
             display: "flex",
@@ -171,15 +171,15 @@ function AccountSettings() {
           </div>
           <div class="menu-right">
             <Link to={`/edit-profile`}>
-              <a>
-                <button class="btn-1">Settings</button>
-              </a>
+            <a>
+              <button class="btn-1">Settings</button>
+            </a>
             </Link>
           </div>
         </div>
         <div class="menu-bottom">
-          <p className="poi">hieudeptrai</p>
-          <p className="poi" style={{ color: "#707070" }}>
+          {/* <p className="poi">{info.fullname}</p> */}
+          <p className="poi" style={{ color: "#707070", margin:"20px 0 0 10px" }}>
             <i class="fa-solid fa-location-dot"></i> VietNam
           </p>
         </div>

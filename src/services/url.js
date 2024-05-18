@@ -1,5 +1,5 @@
 const url = {
-    BASE_URL: "http://localhost:5293/api/",
+    BASE_URL: "https://localhost:7270/api/",
 
     AUTH: {
         REGISTER: "AUTH/register",
@@ -17,7 +17,7 @@ const url = {
     },
 
     ARTWORK: {
-        LIST:"ArtWorks",
+        LIST:"ArtWorks/GetAllArtWorksOffer",
         DETAIL: "ArtWorks/{}",
     },
 
@@ -32,6 +32,10 @@ const url = {
         BY_USER: "Favorites/get-by-user",
         ADD: "Favorites/addtofavorite",
         REMOVE: "Favorites/removefavorite",
+    },
+
+    REGISTER_ARTIST: {
+        CREATE: "Admin/request-artist", 
     },
 
     FOLLOW: {
