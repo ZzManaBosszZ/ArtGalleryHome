@@ -186,12 +186,14 @@ function Follows() {
             <div className="image-row">
               <div className="image-scroll-container">
                 {item.artWorks.map((artwork) => (
+                  <Link to={`http://localhost:5000/artwork/${artwork.id}`}>
                   <img
                     key={artwork.id}
                     src={artwork.artWorkImage}
                     alt={artwork.name}
                     className="scroll-image"
                   />
+                  </Link>
                 ))}
               </div>
             </div>
