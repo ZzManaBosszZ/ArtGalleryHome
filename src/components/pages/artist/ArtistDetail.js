@@ -185,7 +185,7 @@ function ArtistDetail() {
               {artistDetail.artWork.map((artwork) => {
                 return (
               <div className="card-art_home">
-                <Link to={`/artwork/${artwork.id}`}>
+                <Link to={`http://localhost:5000/artwork/${artwork.artWorkId}`}>
                   <img src={artwork.artWorkImage} alt="Image 1" />
                   <h2 className="name-artist_carousel">{artwork.name}</h2>
                   <h2 className="exhibition">Perfomer, 2024</h2>
