@@ -40,47 +40,47 @@ function ArtworkDetail() {
   const userToken = getAccessToken();
 
   const config = {
-      headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken}`,
-      },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userToken}`,
+    },
   };
 
-    // Add to Favorite
-    const handleAddFavorite = async (artworkId) => {
-      try {
-          const favoriteRequest = await api.post(url.FAVORITE.ADD, { artworkId }, config);
+  // Add to Favorite
+  const handleAddFavorite = async (artworkId) => {
+    try {
+      const favoriteRequest = await api.post(url.FAVORITE.ADD, { artworkId }, config);
 
-          setTimeout(() => {
-          }, 2000);
+      setTimeout(() => {
+      }, 2000);
 
-          if (favoriteRequest.status === 201) {
-              setTimeout(() => {
-                  Swal.fire({
-                      title: "Good job!",
-                      text: "Added Artwork to favorites list successfully.",
-                      icon: "success",
-                  });
-              }, 2000);
-          }
-      } catch (error) {
-          if (error.response && error.response.status === 400) {
-              Swal.fire({
-                  title: "Oops...",
-                  text: "The Artwork is already in your favorites list.",
-                  icon: "warning",
-              });
-          } else if (error.response && error.response.status === 401) {
-              Swal.fire({
-                  icon: "error",
-                  title: "Oops...",
-                  text: "Please log in to add Artwork to your favorites list!",
-                  footer: '<a href="/login">Log in now?</a>',
-              });
-          } else {
-              console.error("Error adding to favorites", error);
-          }
+      if (favoriteRequest.status === 201) {
+        setTimeout(() => {
+          Swal.fire({
+            title: "Good job!",
+            text: "Added Artwork to favorites list successfully.",
+            icon: "success",
+          });
+        }, 2000);
       }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        Swal.fire({
+          title: "Oops...",
+          text: "The Artwork is already in your favorites list.",
+          icon: "warning",
+        });
+      } else if (error.response && error.response.status === 401) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Please log in to add Artwork to your favorites list!",
+          footer: '<a href="/login">Log in now?</a>',
+        });
+      } else {
+        console.error("Error adding to favorites", error);
+      }
+    }
   };
 
   //hien thi thong tin chi tiet artwork
@@ -94,7 +94,7 @@ function ArtworkDetail() {
       .catch((error) => {
         // console.error("Error fetching promotion details:", error);
       });
-      
+
   }, [id]);
 
   //hien thi thong tin artist
@@ -165,7 +165,7 @@ function ArtworkDetail() {
                 <img className="anhgb" src={ArtWorkDetail.artWorkImage}></img>
               </div>
               <div className="otherServices">
-                <button className="bonhai"  onClick={() => handleAddFavorite(ArtWorkDetail.id)}>
+                <button className="bonhai" onClick={() => handleAddFavorite(ArtWorkDetail.id)}>
                   <i class="fa-regular fa-heart"></i>Save
                 </button>
                 <button className="bonhai">
@@ -225,7 +225,7 @@ function ArtworkDetail() {
                             <h1 className="name-artist">{artist.name}</h1>
                           );
                         })}
-                        </a>
+                      </a>
                       <p className="fdsghj">Canadian, b. 1986</p>
                     </div>
                   </div>
@@ -320,11 +320,11 @@ function ArtworkDetail() {
         <div className="other-artwork_artPage">
           {/* other works by artist */}
           <div className="title_other-artwork">
-          {ArtWorkDetail.artists.map((artist) => {
-                return (
-                  <h2 className="hathainm">Other works by {artist.name}</h2>
-                );
-              })}
+            {ArtWorkDetail.artists.map((artist) => {
+              return (
+                <h2 className="hathainm">Other works by {artist.name}</h2>
+              );
+            })}
             <a className="mlb">View All</a>
           </div>
           <div className="carousel-controls">
@@ -342,15 +342,15 @@ function ArtworkDetail() {
               {shuffle(artworks).slice(0, 6).map((artwork, index) => {
                 return (
                   <Link to={`http://localhost:5000/artwork/${artwork.artWorkId}`}>
-                  <div className="card-art_home">
-                    <a className="mlb">
-                      <img className="anhgb" src={artwork.artWorkImage} alt="Image 1" />
-                      <h2 className="name-artist_carousel">{artwork.name}</h2>
-                      <h2 className="exhibition">Perfomer, 2024</h2>
-                      <span className="price-art_carousel">{artwork.price}</span>
-                    </a>
-                    <a className="button_add-product">Purchase</a>
-                  </div>
+                    <div className="card-art_home">
+                      <a className="mlb">
+                        <img className="anhgb" src={artwork.artWorkImage} alt="Image 1" />
+                        <h2 className="name-artist_carousel">{artwork.name}</h2>
+                        <h2 className="exhibition">Perfomer, 2024</h2>
+                        <span className="price-art_carousel">{artwork.price}</span>
+                      </a>
+                      <a className="button_add-product">Purchase</a>
+                    </div>
                   </Link>
                 );
               })}
