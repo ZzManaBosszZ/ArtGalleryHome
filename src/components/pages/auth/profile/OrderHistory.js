@@ -117,7 +117,7 @@ function OrderHistory() {
                     regarded American self-taught artists and this work is
                     historically important as it was executed in 1970.
                   </p>
-                  <h3>${offer.offerPrice}</h3>
+                  <h3>${offer.toTal}</h3>
                 </div>
               </div>
               {offer.isPaid === 1 ? (
