@@ -10,7 +10,7 @@ import "../../../css/home.css"
 import api from "../../../services/api";
 import url from "../../../services/url";
 import Swal from "sweetalert2";
-import { format } from "date-fns";
+import Modal from 'react-modal';
 function ArtworkDetail() {
   const sliderRef1 = useRef(null);
   const [userRole, setUserRole] = useState(null);
@@ -22,6 +22,15 @@ function ArtworkDetail() {
   const artworks = artistDetail.artWork || [];
   const navigate = useNavigate();
   const location = useLocation();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   const handleOffer = () => {
     if (!isLoggedIn()) {
@@ -271,7 +280,27 @@ function ArtworkDetail() {
               <h2 className="name-exhibition">{ArtWorkDetail.name} 2024</h2>
               <p className="masterial">Oil on canvas</p>
               <p className="size">24 × 18 in | 61 × 45.7 cm</p>
-              <p className="rarity">Unique work</p>
+              <p className="rarity" onClick={openModal} style={{ cursor: 'pointer', color: 'rgb(112, 112, 112)', textDecoration: 'underline' }}>
+                Unique work
+              </p>
+              <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Rarity Classifications"
+                className="customModal"
+                overlayClassName="customOverlay"
+                shouldCloseOnOverlayClick={true}
+              >
+                <h2>Rarity classifications</h2>
+                <div className="modalContent">
+                  <p><strong>Unique</strong><br />One-of-a-kind piece.</p>
+                  <p><strong>Limited edition</strong><br />The edition run has ended; the number of works produced is known and included in the listing.</p>
+                  <p><strong>Open edition</strong><br />The edition run is ongoing. New works are still being produced, which may be numbered. This includes made-to-order works.</p>
+                  <p><strong>Unknown edition</strong><br />The edition run has ended; it is unclear how many works were produced.</p>
+                  <p className="information">Our partners are responsible for providing accurate classification information for all works.</p>
+                  <button className="closeButton" onClick={closeModal}>OK</button>
+                </div>
+              </Modal>
               <h1 className="price">${ArtWorkDetail.price}</h1>
             </div>
             <div className="button_purchase-sec">

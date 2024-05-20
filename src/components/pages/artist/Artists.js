@@ -54,13 +54,19 @@ function Artists() {
   // Lấy danh sách nghệ sĩ và sắp xếp ngẫu nhiên
   const shuffledArtists = shuffleArray(artists);
 
-  // const filterArtistsBySchoolOfArt = (soa) => {
-  //   return artists.filter(artist => { 
-  //     const schoolOfArt = artist.schoolOfArts.map(schoolOfArt => schoolOfArt.name);
-  //     return schoolOfArt.includes(soa);
-  //   });
-  // };
-  // const artistsWithGivenSchoolOfArt = filterArtistsBySchoolOfArt('c');
+  const filterArtistsBySchoolOfArt = (soa) => {
+    return artists.filter(artist => { 
+      const schoolOfArt = artist.schoolOfArts.map(schoolOfArt => schoolOfArt.name);
+      return schoolOfArt.includes(soa);
+    });
+  };
+  const artistsAbstarct = filterArtistsBySchoolOfArt('Abstract Art');
+  const artistsContemporary = filterArtistsBySchoolOfArt('Contemporary Art');
+  const artistsEmerging = filterArtistsBySchoolOfArt('Emerging Art');
+  const artistsStreet = filterArtistsBySchoolOfArt('Street Art');
+  const artistsPop = filterArtistsBySchoolOfArt('Pop Art');
+  const artistsMinimalist = filterArtistsBySchoolOfArt('Minimalist Art');
+  const artistsImpressionistModern = filterArtistsBySchoolOfArt('Impressionist and Modern Art');
 
 
   // Add to Follow
@@ -123,11 +129,10 @@ function Artists() {
       <div className="top-page">
         <h1 className="title-artist_page">Our Artists</h1>
 
-        {/* <div className="vertical-line"></div> */}
         <div className="demo-page">
           <p>
             Explore our Artists page to discover a curated selection of talented
-            creators and their captivating artworks. Join us in celebrating
+            creators and their captivating artists. Join us in celebrating
             artistic diversity and creativity from around the globe!
           </p>
         </div>
@@ -136,7 +141,7 @@ function Artists() {
         <section className="featured-artists_carousel">
           <div className="top-section">
             <h3 className="title-section">Featured Artists</h3>
-            <Link to={`/`}><a className="view-more_artist">View more</a></Link>
+            <Link><a className="view-more_artist">View more</a></Link>
           </div>
           <div className="carousel-controls">
             <i className="fa-solid fa-angle-left" onClick={goToPrev}></i>
@@ -173,11 +178,11 @@ function Artists() {
 
         <section className="artists-section">
           <div className="top-section">
-            <h3 className="title-section">Gutai</h3>
+            <h3 className="title-section">Abstract Expressionism</h3>
             <a href="/artwork-list-filter" className="view-more_artist">View more</a>
           </div>
           <div className="section-content_artist">
-          {/* {artistsWithGivenSchoolOfArt.map(artist => (
+          {artistsAbstarct.map(artist => (
             <div className="card-artist">
               <Link to={`/artist/${artist.id}`} className="img-artist">
                 <img src={artist.image} alt="Image 1" />
@@ -191,308 +196,122 @@ function Artists() {
                 <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div>
               </a>
             </div>
-            ))} */}
+            ))}
           </div>
         </section>
         <section className="artists-section">
           <div className="top-section">
-            <h3 className="title-section">Abstract Expressionism</h3>
+            <h3 className="title-section">Contemporary Art</h3>
             <a className="view-more_artist">View more</a>
           </div>
           <div className="section-content_artist">
+          {artistsContemporary.map(artist => (
             <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
+              <Link to={`/artist/${artist.id}`} className="img-artist">
+                <img src={artist.image} alt="Image 1" />
+              </Link>
+              <a  className="main-artist">
                 <div className="artist-info">
-                  Atsuko Tanaka
+                  {artist.name}
                   <br />
-                  <p>Japenese, 1932-1005</p>
+                  <p>{artist.description}</p>
                 </div>
-                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
+                <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div>
               </a>
             </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="artists-section">
-          <div className="top-section">
-            <h3 className="title-section">Color Field Painting</h3>
-            <a className="view-more_artist">View more</a>
-          </div>
-          <div className="section-content_artist">
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
+            ))}
           </div>
         </section>
         <section className="artists-section">
           <div className="top-section">
-            <h3 className="title-section">Hyperrealism</h3>
+            <h3 className="title-section">Minimalist Art</h3>
             <a className="view-more_artist">View more</a>
           </div>
           <div className="section-content_artist">
+          {artistsMinimalist.map(artist => (
             <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
+              <Link to={`/artist/${artist.id}`} className="img-artist">
+                <img src={artist.image} alt="Image 1" />
+              </Link>
+              <a  className="main-artist">
                 <div className="artist-info">
-                  Atsuko Tanaka
+                  {artist.name}
                   <br />
-                  <p>Japenese, 1932-1005</p>
+                  <p>{artist.description}</p>
                 </div>
-                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
+                <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div>
               </a>
             </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
+            ))}
           </div>
         </section>
         <section className="artists-section">
           <div className="top-section">
-            <h3 className="title-section">Light and Space Movement</h3>
+            <h3 className="title-section">Pop Art</h3>
             <a className="view-more_artist">View more</a>
           </div>
           <div className="section-content_artist">
+          {artistsPop.map(artist => (
             <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
+              <Link to={`/artist/${artist.id}`} className="img-artist">
+                <img src={artist.image} alt="Image 1" />
+              </Link>
+              <a  className="main-artist">
                 <div className="artist-info">
-                  Atsuko Tanaka
+                  {artist.name}
                   <br />
-                  <p>Japenese, 1932-1005</p>
+                  <p>{artist.description}</p>
                 </div>
-                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
+                <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div>
               </a>
             </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
+            ))}
           </div>
         </section>
         <section className="artists-section">
           <div className="top-section">
-            <h3 className="title-section">Dansaekhwa</h3>
+            <h3 className="title-section">Street Art</h3>
             <a className="view-more_artist">View more</a>
           </div>
           <div className="section-content_artist">
+          {artistsStreet.map(artist => (
             <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
+              <Link to={`/artist/${artist.id}`} className="img-artist">
+                <img src={artist.image} alt="Image 1" />
+              </Link>
+              <a  className="main-artist">
                 <div className="artist-info">
-                  Atsuko Tanaka
+                  {artist.name}
                   <br />
-                  <p>Japenese, 1932-1005</p>
+                  <p>{artist.description}</p>
                 </div>
-                {/* <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div> */}
+                <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div>
               </a>
             </div>
+            ))}
+          </div>
+        </section>
+        <section className="artists-section">
+          <div className="top-section">
+            <h3 className="title-section">Emerging Art</h3>
+            <a className="view-more_artist">View more</a>
+          </div>
+          <div className="section-content_artist">
+          {artistsEmerging.map(artist => (
             <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
+              <Link to={`/artist/${artist.id}`} className="img-artist">
+                <img src={artist.image} alt="Image 1" />
+              </Link>
+              <a  className="main-artist">
                 <div className="artist-info">
-                  Atsuko Tanaka
+                  {artist.name}
                   <br />
-                  <p>Japenese, 1932-1005</p>
+                  <p>{artist.description}</p>
                 </div>
-                <div className="button-follow">Follow</div>
+                <div onClick={() => handleAddFollow(artist.id)} className="button-follow">Follow</div>
               </a>
             </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
-            <div className="card-artist">
-              <a className="img-artist">
-                <img src="assets/images/artists/artist6.webp" alt="Image 1" />
-              </a>
-              <a className="main-artist">
-                <div className="artist-info">
-                  Atsuko Tanaka
-                  <br />
-                  <p>Japenese, 1932-1005</p>
-                </div>
-                <div className="button-follow">Follow</div>
-              </a>
-            </div>
+            ))}
           </div>
         </section>
         
