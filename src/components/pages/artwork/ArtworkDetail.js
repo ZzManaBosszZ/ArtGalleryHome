@@ -321,7 +321,7 @@ function ArtworkDetail() {
               </div>
               <div className="info-other_artist">
                 <div className="about-list_artist">
-                  {shuffle(artist).slice(0, 5).map((item, index) => {
+                  {shuffle(artist).slice(0, 4).map((item, index) => {
                     return (
                       <div className="artist-section">
                         <div className="about-artist">
