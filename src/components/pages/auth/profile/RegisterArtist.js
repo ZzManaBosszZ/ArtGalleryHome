@@ -9,6 +9,7 @@ function RegisterArtist() {
     nameArtist: "",
     biography: "",
     description: "",
+    schoolOfArt: "",
     image: null,
     image_preview: null,
   });
@@ -17,6 +18,7 @@ function RegisterArtist() {
     nameArtist: "",
     biography: "",
     description: "",
+    schoolOfArt: "",
     image: null,
     image_preview: null,
   });
@@ -59,9 +61,13 @@ function RegisterArtist() {
       try {
         const userToken = localStorage.getItem("access_token");
         api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
-        const registerRequest = await api.post(`https://localhost:7270/api/Admin/request-artist`, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
+        const registerRequest = await api.post(
+          `https://localhost:7270/api/Admin/request-artist`,
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
 
         if (registerRequest.status === 201) {
           Swal.fire({
@@ -71,14 +77,13 @@ function RegisterArtist() {
             confirmButtonText: "OK",
           });
           navigate("/profile");
-        }
-        else if (registerRequest.status === 400) {
+        } else if (registerRequest.status === 400) {
           Swal.fire({
             title: "User has already register to artist",
             text: "User has already register to artist!",
             icon: "warning",
             confirmButtonText: "OK",
-          })
+          });
         }
       } catch (error) {
         console.log("error");
@@ -128,17 +133,17 @@ function RegisterArtist() {
           <div class="file">
             <h1 className="hatmotre">Register Artist</h1>
 
-            <div class="hhh">
+            <div class="kiong">
               <div class="container">
                 <div class="entryarea">
                   <input
-                    className="inedit"
+                    className="inrs"
                     type="text"
                     name="nameArtist"
-                    // id="nameArtist"
                     value={formData.nameArtist}
                     onChange={handleChange}
-                    autoFocus />
+                    autoFocus
+                  />
                   <div class="labelline">Artist Name</div>
                 </div>
               </div>
@@ -146,58 +151,79 @@ function RegisterArtist() {
             {formErrors.nameArtist && (
               <p className="invalid-feedback">{formErrors.nameArtist}</p>
             )}
-            <div class="hhh">
+
+            <div class="kiong">
               <div class="container">
                 <div class="entryarea">
                   <input
-                    className="inedit"
+                    className="inrs"
                     type="text"
                     name="biography"
                     // id="biography"
                     value={formData.biography}
                     onChange={handleChange}
-                    autoFocus />
+                    autoFocus
+                  />
                   <div class="labelline">Biography</div>
                 </div>
-
               </div>
             </div>
             {formErrors.biography && (
               <p className="invalid-feedback">{formErrors.biography}</p>
             )}
 
-            <div class="hhh">
+            <div class="kiong">
               <div class="container">
                 <div class="entryarea">
                   <input
-                    className="inedit"
+                    className="inrs"
                     type="text"
                     name="description"
                     // id="biography"
                     value={formData.description}
                     onChange={handleChange}
-                    autoFocus />
+                    autoFocus
+                  />
                   <div class="labelline">Description</div>
                 </div>
-
               </div>
             </div>
             {formErrors.description && (
               <p className="invalid-feedback">{formErrors.description}</p>
             )}
 
+            <div className="kiong">
+              <div className="container">
+                <div className="entryarea">
+                  <input
+                    className="inrs"
+                    type="text"
+                    name="schoolOfArt"
+                    value={formData.schoolOfArt}
+                    onChange={handleChange}
+                    autoFocus
+                  />
+                  <div className="labelline">School Of Arts</div>
+                </div>
+              </div>
+              {formErrors.schoolOfArt && (
+                <p className="invalid-feedback">{formErrors.schoolOfArt}</p>
+              )}
+            </div>
+
             <div class="menu-left-right ml-3" id="menu-left-right">
               <input
-                className="upimg"
+                className="upimgs"
                 type="file"
                 name="image"
-                accept=".jpg, .png, .etc"
+                accept=".jpg, .png, .jpeg, .etc"
                 onChange={handleChange}
               />
 
-              {/* <div className="image-gallery">{incacanh()}</div> */}
             </div>
-            {formErrors.image && <div className="text-danger">{formErrors.image}</div>}
+            {formErrors.image && (
+              <div className="text-danger">{formErrors.image}</div>
+            )}
             <div className="col-lg-6 mb-2">
               <div className="mb-3">
                 <label className="text-label form-label">Preview artist photo</label>
@@ -212,9 +238,7 @@ function RegisterArtist() {
           Register
         </button>
       </form>
-
-    </div >
-
+    </div>
   );
 }
 

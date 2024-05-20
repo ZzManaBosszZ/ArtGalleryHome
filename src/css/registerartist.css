@@ -9,13 +9,13 @@ body {
   margin: 0;
   padding: 0;
 }
-#menu-left-right{
+#menu-left-right {
   margin: 2rem 0 0 8rem;
 }
-.edit .file{
+.edit .file {
   width: 60rem;
 }
-.formedit{
+.formedit {
   padding: 30px 90px;
 }
 #profile-navigation {
@@ -77,7 +77,7 @@ hr {
   color: #f2f2f2;
   background-color: #f2f2f2;
 }
-.hhh {
+.kiong {
   display: flex;
   min-height: 13vh;
   justify-content: center;
@@ -92,11 +92,11 @@ hr {
   top: 0;
   line-height: 50px;
 }
-.edit{
+.edit {
   display: flex;
   justify-content: center;
 }
-.inedit {
+.inrs {
   position: absolute;
   width: 100%;
   outline: none;
@@ -118,13 +118,13 @@ hr {
   background-color: #fff;
   transition: 0.2s ease;
 }
-.inedit:focus,
-.inedit:valid {
+.inrs:focus,
+.inrs:valid {
   color: black;
   border: 1.2px solid #8891eb;
 }
-.inedit:focus + .labelline,
-.inedit:valid + .labelline {
+.inrs:focus + .labelline,
+.inrs:valid + .labelline {
   color: #8891eb;
   height: 30px;
   line-height: 30px;
@@ -144,7 +144,7 @@ hr {
   text-align: center;
   margin: 20px 0 30px 0px;
 }
-.upimg {
+.upimgs {
   margin: 30px 0 0 50px;
 }
 .image-gallery {
@@ -153,8 +153,15 @@ hr {
   flex-wrap: wrap;
   gap: 10px;
 }
-#button-submit_registerPage{
-  margin-top: 20px;
-  padding: 15px 25px ;
-  margin-left: 47% ;
+#button-submit_registerPage {
+  margin: 20px 0 0 47%;
+  padding: 15px 35px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 99rem;
+  transition: 0.2s;
+}
+#button-submit_registerPage:hover{
+  background-color: #000;
+  color: #f2f2f2;
 }

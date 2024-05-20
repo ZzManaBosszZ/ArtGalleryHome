@@ -3,7 +3,7 @@
      font-family: "Playfair Display", serif;
 
    }
-   a{
+   #offer, #shipping, #payment, .next-offer{
     text-decoration: none;
   }
    .auction-steps {

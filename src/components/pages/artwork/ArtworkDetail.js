@@ -235,7 +235,7 @@ function ArtworkDetail() {
                           );
                         })}
                       </a>
-                      <p className="fdsghj">Canadian, b. 1986</p>
+                      <p className="fdsghj">{artistDetail.description}</p>
                     </div>
                   </div>
                   <div className="button-follow">
@@ -261,10 +261,10 @@ function ArtworkDetail() {
                         Artists at Hollis Taggart, Hollis Taggart
                       </dd>
                     </dl>
-                    <dl className="ecutre">
+                    {/* <dl className="ecutre">
                       <dt className="fosan">2022</dt>
                       <dd className="gozila">Dimensions, Hollis Taggart</dd>
-                    </dl>
+                    </dl> */}
                   </div>
                 </div>
               </div>
@@ -317,7 +317,7 @@ function ArtworkDetail() {
             <div className="other-artist">
               <div className="title_other-artist">
                 <h3 className="hatbana">Related artists</h3>
-                <a className="viewmore">ViewMore</a>
+                {/* <a className="viewmore">ViewMore</a> */}
               </div>
               <div className="info-other_artist">
                 <div className="about-list_artist">
@@ -325,9 +325,11 @@ function ArtworkDetail() {
                     return (
                       <div className="artist-section">
                         <div className="about-artist">
+                          <Link to={`/artist/${item.id}`}>
                           <div className="img-arttist">
                             <img className="anhgbc" src={item.image}></img>
                           </div>
+                          </Link>
                           <div className="info-artist">
                             <a className="name-artist">{item.name}</a>
                             <p className="fdsghj">Canadian, b. 1986</p>

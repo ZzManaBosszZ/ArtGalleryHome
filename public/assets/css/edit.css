@@ -1,4 +1,4 @@
-/* * {
+/*  {
   margin: 0;
   padding: 0;
   font-family: "poppins", sans-serif;
@@ -72,8 +72,7 @@ hr {
 .hhh {
   display: flex;
   min-height: 13vh;
-  justify-content: left;
-  margin-left: 50px;
+  margin-left: 500px;
   align-items: center;
 }
 .container {
@@ -86,7 +85,7 @@ hr {
 }
 .inedit {
   position: absolute;
-  width: 100%;
+  width: 500px;
   outline: none;
   font-size: 1.2em;
   padding: 0 30px;
@@ -120,16 +119,16 @@ hr {
   transform: translate(-15px, -16px) scale(0.88);
   z-index: 1111;
 }
-.btn-01,
-.btn-01 *,
-.btn-01 :after,
-.btn-01 :before,
-.btn-01:after,
-.btn-01:before {
+.button-save_editPage,
+.button-save_editPage *,
+.button-save_editPage :after,
+.button-save_editPage :before,
+.button-save_editPage:after,
+.button-save_editPage:before {
   border: 0 solid;
   box-sizing: border-box;
 }
-.btn-01 {
+.button-save_editPage {
   margin: 40px 0 0 40px;
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: button;
@@ -143,33 +142,38 @@ hr {
   -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
   padding: 0;
 }
-.btn-01:disabled {
+.button-save_editPage:disabled {
   cursor: default;
 }
-.btn-01:-moz-focusring {
+.button-save_editPage:-moz-focusring {
   outline: auto;
 }
-.btn-01 svg {
+.button-save_editPage svg {
   display: block;
   vertical-align: middle;
 }
-.btn-01 [hidden] {
+.button-save_editPage-01 [hidden] {
   display: none;
 }
-.btn-01 {
+.button-save_editPage-01 {
+  background-color: #fff;
+  color: #000;
   border-radius: 99rem;
+  margin: 30px 0 0 690px;
   border-width: 2px;
   padding: 0.8rem 3rem;
+  transition: 0.2s;
 }
-.btn-01:hover {
-  color: #999;
+.button-save_editPage-01:hover {
+  background-color: #000;
+  color: #f2f2f2;
 }
 .aaa {
   font-size: 13px;
   text-decoration: none;
 }
 .upimg {
-  margin: 30px 0 0 50px;
+  margin: 30px 0 0 500px;
 }
 .image-gallery {
   margin: 30px 0 0 50px;
