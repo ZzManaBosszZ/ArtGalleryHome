@@ -235,6 +235,8 @@ justify-content: center;  background: white;
   display: none; 
   border-radius: 2px;
 }
+
+
 .list-result_section{
   display: grid;
   grid-template-columns: repeat(2, 1fr);

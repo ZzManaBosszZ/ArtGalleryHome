@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { isLoggedIn, removeAccessToken } from "../../utils/auth";
 import { Link, useNavigate } from "react-router-dom";
 import _ from "lodash";
@@ -15,7 +15,9 @@ function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState({ artists: [], artworks: [] });
   const [error, setError] = useState(null);
-
+  const [showResults, setShowResults] = useState(false);
+  const searchContainerRef = useRef(null);
+  const [searchClicked, setSearchClicked] = useState(false);
   const fetchResults = async (term) => {
     if (term.trim() === "") {
       setResults({ artists: [], artworks: [] });
@@ -24,8 +26,8 @@ function Header() {
 
     try {
       const [artistsResponse, artworksResponse] = await Promise.all([
-        fetch(`http://localhost:5293/api/Artists?search=${term}`),
-        fetch(`http://localhost:5293/api/ArtWorks?search=${term}`),
+        fetch(`https://localhost:7270/api/Artists?search=${term}`),
+        fetch(`https://localhost:7270/api/ArtWorks?search=${term}`),
       ]);
 
       if (!artistsResponse.ok || !artworksResponse.ok) {
@@ -53,9 +55,33 @@ function Header() {
     };
   }, [searchTerm, debouncedFetchResults]);
 
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+    if (event.target.value.trim() !== "") {
+      setShowResults(true); // Hiển thị kết quả khi có kí tự nhập vào
+      setSearchClicked(true); // Đánh dấu rằng ô tìm kiếm đã được nhấn
+    } else {
+      setShowResults(false); // Ẩn kết quả khi không có kí tự nào nhập vào
+      setSearchClicked(false); // Đánh dấu rằng ô tìm kiếm đã không được nhấn
+    }
+    // Thêm logic tìm kiếm ở đây
   };
+
+  useEffect(() => {
+    // Bắt sự kiện click trên body để ẩn kết quả tìm kiếm
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest(".search-section")) {
+        setShowResults(false);
+        setSearchClicked(false); // Đặt lại trạng thái của ô tìm kiếm khi người dùng nhấp ra ngoài
+      }
+    };
+
+    document.body.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <div>
@@ -94,50 +120,54 @@ function Header() {
               </p>
             </div>
 
-            <div className="search-section">
+            <div className="search-section" ref={searchContainerRef}>
               <form id="search-box" onSubmit={(e) => e.preventDefault()}>
                 <input
                   type="text"
                   id="search-text"
                   value={searchTerm}
                   onChange={handleInputChange}
+                  onClick={() => setSearchClicked(true)}
                 />
                 <button type="submit" id="search-btn">
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </button>
               </form>
 
-              {error && <div className="error-message">{error}</div>}
-
-              <div
-                id="search-results"
-                className={
-                  results.artists.length > 0 || results.artworks.length > 0
-                    ? "active"
-                    : ""
-                }
-              >
-                <div className="list-result_section">
-                  <div className="search-results_section">
-                    <h2 id="artist-result_h2">Artist </h2>
-                    <ul>
-                      {results.artists.map((artist) => (
-                        <Link to={`/artist/${artist.id}`}>
-                        <li key={artist.id}>{artist.name}</li></Link>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="search-results_section">
-                    <h2 id="art-result_h2">Artwork </h2>
-                    <ul>
-                      {results.artworks.map((artwork) => (
-                       <Link to={`/artwork/${artwork.id}`}>
-                        <li key={artwork.id}>{artwork.name}</li></Link>
-                      ))}
-                    </ul>
+              {/* Phần kết quả tìm kiếm */}
+              {showResults && (
+                <div
+                  id="search-results"
+                  className={
+                    results.artists.length > 0 || results.artworks.length > 0
+                      ? "active"
+                      : ""
+                  }
+                >
+                  <div className="list-result_section">
+                    <div className="search-results_section">
+                      <h2 id="artist-result_h2">Artist </h2>
+                      <ul>
+                        {results.artists.map((artist) => (
+                          <Link to={`/artist/${artist.id}`}>
+                            <li key={artist.id}>{artist.name}</li>
+                          </Link>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="search-results_section">
+                      <h2 id="art-result_h2">Artwork </h2>
+                      <ul>
+                        {results.artworks.map((artwork) => (
+                          <Link to={`/artwork/${artwork.id}`}>
+                            <li key={artwork.id}>{artwork.name}</li>
+                          </Link>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {isLoggedIn() ? (

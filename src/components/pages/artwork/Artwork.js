@@ -9,7 +9,12 @@ import "../../../css/art.css";
 
 function Artwork() {
 
-  const [artworks, setArtworks] = useState([]);
+
+  const [artworks, setArtworks] = useState({artists: []});
+  const [filteredArtworks, setFilteredArtworks] = useState([]); // Danh sách tác phẩm đã được lọc
+  const [selectedFilter, setSelectedFilter] = useState(""); // Giá trị của filter đang được chọn
+  const [isFilterSelected, setIsFilterSelected] = useState(false); // Biến boolean để kiểm tra xem filter đã được chọn chưa
+
   useEffect(() => {
     const userToken = localStorage.getItem("access_token");
     api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`;
@@ -22,6 +27,27 @@ function Artwork() {
       });
   }, []);
 
+  // Hàm để lọc danh sách tác phẩm dựa trên giá trị của filter
+  const filterArtworks = (filterValue) => {
+    if (filterValue === "") {
+      // Nếu filter không được chọn, hiển thị tất cả tác phẩm
+      setFilteredArtworks(artworks);
+      setIsFilterSelected(false);
+    } else {
+      // Nếu filter được chọn, lọc danh sách tác phẩm dựa trên filter
+      const filtered = artworks.filter((artwork) => {
+        return artwork.rarity === filterValue;
+      });
+      setFilteredArtworks(filtered);
+      setIsFilterSelected(true);
+    }
+  };
+
+  const handleFilterChange = (event) => {
+    const { value } = event.target;
+    setSelectedFilter(value);
+    filterArtworks(value);
+  };
   // Hàm để sắp xếp mảng nghệ sĩ theo thứ tự ngẫu nhiên
   const shuffleArray = (array) => {
     let currentIndex = array.length;
@@ -46,12 +72,12 @@ function Artwork() {
   const shuffledArtists = shuffleArray(artworks);
 
   const filterArtworksBySchoolOfArt = (soa) => {
-    return artworks.filter(artwork => { 
+    return artworks.filter(artwork => {
       const schoolOfArt = artwork.schoolOfArts.map(schoolOfArt => schoolOfArt.name);
       return schoolOfArt.includes(soa);
     });
   };
-  const artworksWithGivenSchoolOfArt = filterArtworksBySchoolOfArt('a');
+  const artworksWithGivenSchoolOfArt = filterArtworksBySchoolOfArt('v');
 
   return (
     <div>
@@ -69,9 +95,9 @@ function Artwork() {
         </div>
         <div className="filter-section_home">
           <div className="list-tag-filter">
-              
+
             <div class="tag-filter">
-          
+
               <div class="tag" id="tag-rarity">
                 Rarity
                 <i class="fa-solid fa-angle-down"></i>
@@ -82,9 +108,10 @@ function Artwork() {
                         type="checkbox"
                         id="rarity-common-filter"
                         name="rarity-filter"
-                        value="Unique"
+                        value="A"
+                        onChange={handleFilterChange}
                       />
-                      <label for="rarity-common-filter">Unique</label>
+                      <label for="rarity-common-filter">C</label>
                     </div>
                     <div className="checkbox-item">
                       <input
@@ -117,51 +144,6 @@ function Artwork() {
                 </div>
               </div>
 
-              <div class="tag" id="tag-price">
-                Price
-                <i class="fa-solid fa-angle-down"></i>
-                <div class="sidebar">
-                  <div class="checkbox-container">
-                    <div className="checkbox-item">
-                      <input
-                        type="checkbox"
-                        id="price-common-filter"
-                        name="price-filter"
-                        value="Under $1,000"
-                      />
-                      <label for="rarity-common-filter">Under $1,000</label>
-                    </div>
-                    <div className="checkbox-item">
-                      <input
-                        type="checkbox"
-                        id="price-rare-filter"
-                        name="price-filter"
-                        value="Under $5,000"
-                      />
-                      <label for="rarity-rare-filter"> Under $5,000</label>
-                    </div>
-                    <div className="checkbox-item">
-                      <input
-                        type="checkbox"
-                        id="price-rare-filter"
-                        name="price-filter"
-                        value="Under $10,000"
-                      />
-                      <label for="rarity-rare-filter">Under $10,000</label>
-                    </div>
-                    <div className="checkbox-item">
-                      <input
-                        type="checkbox"
-                        id="price-rare-filter"
-                        name="price-filter"
-                        value="Over $50,000"
-                      />
-                      <label for="rarity-rare-filter">Over $50,000</label>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
               <div class="tag" id="tag-medium">
                 Medium
                 <i class="fa-solid fa-angle-down"></i>
@@ -224,310 +206,338 @@ function Artwork() {
                   </div>
                 </div>
               </div>
-              <div class="tag" id="tag-rarity">
-                Size
-                <i class="fa-solid fa-angle-down"></i>
-                
-              </div>
+
               <div class="tag" id="tag-rarity">
                 Materials
                 <i class="fa-solid fa-angle-down"></i>
-               
+
               </div>
             </div>
           </div>
           <div className="side-bar_filter"></div>
         </div>
         <div className="main-content_page">
-          <div id="Comtemporary-sec" className="art-section">
-            <div className="top-section">
-              <h3 className="title-section">Comtemporary</h3>
-              <a href="/listArt" className="view-more_art">View more</a>
-            </div>
-            <div className="content-section">
-            {artworksWithGivenSchoolOfArt.map(artwork => (
-              <div className="card-art_home">
-                <Link to={`/artwork/${artwork.id}`}>
-                <a className="mnbvc">
-                  <img src={artwork.artWorkImage} alt="Image 1" />
-                  <h2 className="name-artist_carousel">{artwork.name}</h2>
-                  <h2 className="exhibition">{artwork.series}</h2>
-                  <span className="price-art_carousel">${artwork.price}</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-                </Link>
-              </div>
-              ))}
-            </div>
-          </div>
-          <div className="art-section">
-            <div className="top-section">
-              <h3 className="title-section">Emerging</h3>
-              <a className="view-more_art">View more</a>
-            </div>
-            <div className="content-section">
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
+
+
+          {isFilterSelected ? (
+            // Nếu filter được chọn, hiển thị danh sách tác phẩm đã lọc
+            <div>
+              <div className="content-section">
+              {filteredArtworks.length > 0 ? (
+                
+                filteredArtworks.map((artwork) => (
+                  
+                  <div className="card-art_home">
+                    <a>
+                      <img src={artwork.artWorkImage} alt="Image 1" />
+                      <h2 className="name-artist_carousel"></h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>           
+                ))
+              ) : (
+                <div>No artworks found.</div>
+              )}
               </div>
             </div>
-          </div>
-          <div className="art-section">
-            <div className="top-section">
-              <h3 className="title-section">Street</h3>
-              <a className="view-more_art">View more</a>
+
+
+          ) : (
+            <div>
+              <div id="Comtemporary-sec" className="art-section">
+                <div className="top-section">
+                  <h3 className="title-section">Comtemporary</h3>
+                  <a href="/listArt" className="view-more_art">View more</a>
+                </div>
+                <div className="content-section">
+                  {artworksWithGivenSchoolOfArt.map(artwork => (
+                    <div className="card-art_home">
+                      <Link to={`/artwork/${artwork.id}`}>
+                        <a className="mnbvc">
+                          <img src={artwork.artWorkImage} alt="Image 1" />
+                          <h2 className="name-artist_carousel">{artwork.name}</h2>
+                          <h2 className="exhibition">{artwork.series}</h2>
+                          <span className="price-art_carousel">${artwork.price}</span>
+                        </a>
+                        <a className="button_add-product">Purchase</a>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="art-section">
+                <div className="top-section">
+                  <h3 className="title-section">Emerging</h3>
+                  <a className="view-more_art">View more</a>
+                </div>
+                <div className="content-section">
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                </div>
+              </div>
+              <div className="art-section">
+                <div className="top-section">
+                  <h3 className="title-section">Street</h3>
+                  <a className="view-more_art">View more</a>
+                </div>
+                <div className="content-section">
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                </div>
+              </div>{" "}
+              <div className="art-section">
+                <div className="top-section">
+                  <h3 className="title-section">Abstract</h3>
+                  <a className="view-more_art">View more</a>
+                </div>
+                <div className="content-section">
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                </div>
+              </div>{" "}
+              <div className="art-section">
+                <div className="top-section">
+                  <h3 className="title-section">Pop</h3>
+                  <a className="view-more_art">View more</a>
+                </div>
+                <div className="content-section">
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                </div>
+              </div>
+              <div className="art-section">
+                <div className="top-section">
+                  <h3 className="title-section">Minimalism</h3>
+                  <a className="view-more_art">View more</a>
+                </div>
+                <div className="content-section">
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a>
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                </div>
+              </div>
+              <div className="art-section">
+                <div className="top-section">
+                  <h3 className="title-section">Impressionist and Modern </h3>
+                  <a className="view-more_art">View more</a>
+                </div>
+                <div className="content-section">
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                  <div className="card-art_home">
+                    <a className="mnbvc">
+                      <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
+                      <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
+                      <h2 className="exhibition">Perfomer, 2024</h2>
+                      <span className="price-art_carousel">$10,000-$35,000</span>
+                    </a>
+                    <a className="button_add-product">Purchase</a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="content-section">
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-            </div>
-          </div>{" "}
-          <div className="art-section">
-            <div className="top-section">
-              <h3 className="title-section">Abstract</h3>
-              <a className="view-more_art">View more</a>
-            </div>
-            <div className="content-section">
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-            </div>
-          </div>{" "}
-          <div className="art-section">
-            <div className="top-section">
-              <h3 className="title-section">Pop</h3>
-              <a className="view-more_art">View more</a>
-            </div>
-            <div className="content-section">
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-            </div>
-          </div>
-          <div className="art-section">
-            <div className="top-section">
-              <h3 className="title-section">Minimalism</h3>
-              <a className="view-more_art">View more</a>
-            </div>
-            <div className="content-section">
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a>
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-            </div>
-          </div>
-          <div className="art-section">
-            <div className="top-section">
-              <h3 className="title-section">Impressionist and Modern </h3>
-              <a className="view-more_art">View more</a>
-            </div>
-            <div className="content-section">
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-              <div className="card-art_home">
-                <a className="mnbvc">
-                  <img src="assets/images/arts/art2.jpeg" alt="Image 1" />
-                  <h2 className="name-artist_carousel">Gordian Knot Wood</h2>
-                  <h2 className="exhibition">Perfomer, 2024</h2>
-                  <span className="price-art_carousel">$10,000-$35,000</span>
-                </a>
-                <a className="button_add-product">Purchase</a>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
   );
+
 }
 
 export default Artwork;

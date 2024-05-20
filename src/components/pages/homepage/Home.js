@@ -179,9 +179,11 @@ function Home() {
           >
             {artwork.map((item, index) => {
               return (
-                <div className="card-art_home">
+                <div className="item-card-art_home">
                   <Link to={`/artwork/${item.id}`}><a>
+                    <div className="item-card-art_img">
                     <img src={item.artWorkImage} alt="Image 1" />
+                    </div>
                     <h2 className="name-artist_carousel">{item.name}</h2>
                     <h2 id="exhibition-home">{item.series}</h2>
                     <span className="price-art_carousel">${item.price}</span>
@@ -220,7 +222,7 @@ function Home() {
               return (
             <div className="card-artist">
               <Link to={`/artist/${item.id}`}>
-              <a className="img-artist">
+              <a className="item_img-artist">
                 <img src={item.image} alt="Image 1" />
               </a>
               </Link>

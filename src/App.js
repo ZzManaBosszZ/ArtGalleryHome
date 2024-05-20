@@ -30,6 +30,7 @@ import Follows from "./components/pages/auth/profile/Follows.js";
 import Saves from "./components/pages/auth/profile/Saves.js";
 import EventDetail from "./components/pages/events/EventDetail.js";
 import OrderHistory from "./components/pages/auth/profile/OrderHistory.js";
+import ListArtWork from "./components/pages/artwork/ListArt.js";
 function App() {
 
   const ProtectedRoute = authMiddleware(({ element }) => element);
@@ -82,7 +83,7 @@ function App() {
           {/* Artwork */}
 
           <Route path="/artwork" element={<Artwork />} />
-          <Route path="/artwork-list-filter" element={<ListArt />} />
+          <Route path="/artwork-list-filter" element={<ListArtWork />} />
           <Route path="/artwork/:id" element={<ArtworkDetail />} />
 
           {/* End Artwork */}

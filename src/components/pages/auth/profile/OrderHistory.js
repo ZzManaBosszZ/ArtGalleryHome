@@ -105,11 +105,13 @@ function OrderHistory() {
             <div className="nmbj" key={offer.id}>
               <p>Offer Code: #{offer.offerCode}</p>
               <div class="card-body">
+                <div className="card-body_image-product">
                 <img
                   src={offer.artWorkImages}
                   alt="Product Image"
                   class="product-image"
                 />
+                </div>
                 <div class="product-details">
                   <h2>{offer.artWorkNames}</h2>
                   <p>
@@ -126,9 +128,11 @@ function OrderHistory() {
                 </div>
               ) : offer.status === 1 ? (
                 <div class="card-footer">
-                  <Link to={`/payment/${offer.offerCode}`} className="btn">
+                
+                  <Link to={`/payment/${offer.offerCode}`} className="card-footer_button-payment">
                     Payment
                   </Link>
+                 
                 </div>
               ) : (
                 <div class="card-footer">
