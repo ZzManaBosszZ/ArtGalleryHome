@@ -17,6 +17,7 @@
 .card-body {
   display: flex;
   align-items: center;
+  column-gap: 30px;
 }
 
 .product-image {
@@ -127,4 +128,20 @@
 .page-link:hover {
   background-color: #f0f0f0;
 }
-
+.card-footer_button-payment{
+  background-color: #000;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 30px;
+}
+.card-footer_button-payment:hover{
+  background-color: #2a2a2a;
+}
+.card-body_image-product{
+  width: 170px;
+    height: 100px;
+}
+.card-body_image-product img{
+  width: 100%;
+  height: 100%;
+}

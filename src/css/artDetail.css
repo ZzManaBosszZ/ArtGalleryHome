@@ -301,3 +301,68 @@ a {
    .title_other-artwork a:hover{
      color: #b89d4f;
    }
+
+
+   .customOverlay {
+    background-color: rgb(112, 112, 112);
+  }
+  
+  .customModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 500px;
+    max-width: 90%;
+    border-radius: 10px;
+    outline: none;
+  }
+  
+  .customModal h2 {
+    margin-top: 0;
+    font-size: 24px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .modalContent {
+    font-family: Arial, sans-serif;
+  }
+  
+  .modalContent p {
+    margin: 10px 0;
+    line-height: 1.5;
+  }
+  
+  .modalContent p strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .information {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .closeButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 35px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .closeButton:hover {
+    background-color: #333;
+  }

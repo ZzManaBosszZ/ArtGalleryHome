@@ -1,6 +1,6 @@
 import React from "react";
 
-function ListArt() {
+function ListArtWork() {
   return (
     <div>
       <link rel="stylesheet" href="assets/css/art.css" />
@@ -125,4 +125,4 @@ function ListArt() {
   );
 }
 
-export default ListArt;
+export default ListArtWork;
