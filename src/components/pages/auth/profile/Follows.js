@@ -194,9 +194,7 @@ function Follows() {
                     alt={artwork.name}
                     className="scroll-image"
                   />
-                  <p className="pedetail">hieu</p>
-                  <h5 className="hatnamfl">Sleep2, 2023</h5>
-                  <p className="destiry">Hieudeptrai</p>
+                  <p className="destiry">{artwork.name}</p>
                   <p className="giatien">US${artwork.price}</p>
                   </Link>
                 ))}

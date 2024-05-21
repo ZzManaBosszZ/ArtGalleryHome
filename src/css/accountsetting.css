@@ -38,4 +38,12 @@
   background-color: #1023d7;
   color: #fff;
 }
-
+.button-edit_pass2{
+  background-color: rgb(0, 0, 0); 
+    color: rgb(255, 255, 255);
+    padding: 15px 25px !important;
+    border-radius: 22px;
+}
+.button-edit_pass2:hover{
+  background-color: #5f5e5e;
+}

@@ -17,7 +17,7 @@ function ArtworkDetail() {
   const [error, setError] = useState(null);
   const [artist, setArtists] = useState([]);
   const { id } = useParams();
-  const [ArtWorkDetail, setArtWorkDetail] = useState({ artists: [], schoolOfArts: [] });
+  const [ArtWorkDetail, setArtWorkDetail] = useState({ artists: [], offers:[], schoolOfArts: [] });
   const [artistDetail, setArtistDetail] = useState({ artWork: [], schoolOfArts: [] });
   const artworks = artistDetail.artWork || [];
   const navigate = useNavigate();
@@ -162,6 +162,7 @@ function ArtworkDetail() {
     sliderRef1.current.slickPrev();
   };
 
+  const isAnyOfferPaid = ArtWorkDetail.offers.some(offer => offer.isPaid === 1);
 
 
   return (
@@ -304,7 +305,15 @@ function ArtworkDetail() {
               <h1 className="price">${ArtWorkDetail.price}</h1>
             </div>
             <div className="button_purchase-sec">
-              <a className="mlb" onClick={handleOffer} id="offer-button"> Make An Offer</a>
+            {isAnyOfferPaid ? (
+                <button className="mlb" id="offer-button" disabled>
+                  Sold
+                </button>
+              ) : (
+                <a className="mlb" onClick={handleOffer} id="offer-button">
+                  Make An Offer
+                </a>
+              )}
             </div>
             <div className="shipping-info">
               <h4>Shipping and Taxes</h4>
@@ -326,9 +335,9 @@ function ArtworkDetail() {
                       <div className="artist-section">
                         <div className="about-artist">
                           <Link to={`/artist/${item.id}`}>
-                          <div className="img-arttist">
-                            <img className="anhgbc" src={item.image}></img>
-                          </div>
+                            <div className="img-arttist">
+                              <img className="anhgbc" src={item.image}></img>
+                            </div>
                           </Link>
                           <div className="info-artist">
                             <a className="name-artist">{item.name}</a>

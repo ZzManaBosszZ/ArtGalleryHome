@@ -222,7 +222,7 @@ function Header() {
                       <Link to="/artwork">
                         Artworks<i className="fa-solid fa-angle-down"></i>
                       </Link>
-                      <ul className="sub-menu" id="sub-menu_artworks">
+                      {/* <ul className="sub-menu" id="sub-menu_artworks">
                         <div className="sub-menu_item">
                           Price
                           <a href="#">Find Under $1,000</a>
@@ -256,7 +256,7 @@ function Header() {
                           <a href="#">Design</a>
                           <a href="#">NFTs</a>
                         </div>
-                      </ul>
+                      </ul> */}
                     </li>
                     <li
                       className="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"
