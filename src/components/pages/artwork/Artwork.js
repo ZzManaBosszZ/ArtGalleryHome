@@ -56,34 +56,40 @@ function Artwork() {
     document.querySelectorAll('input[name="rarity-filter"]').forEach(input => input.checked = false);
   };
   // Hàm để sắp xếp mảng nghệ sĩ theo thứ tự ngẫu nhiên
-  const shuffleArray = (array) => {
+  const shuffleArray = (array, maxItems) => {
     let currentIndex = array.length;
     let temporaryValue, randomIndex;
 
-    // While there remain elements to shuffle...
-    while (currentIndex !== 0) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
+    // Giới hạn số phần tử cần lấy
+    let numberOfItemsToShuffle = Math.min(maxItems, currentIndex);
 
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
+    // While there remain elements to shuffle...
+    while (numberOfItemsToShuffle !== 0) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+
+        numberOfItemsToShuffle -= 1;
     }
 
-    return array;
-  };
+    // Trả về mảng đã xáo trộn với số lượng phần tử tối đa
+    return array.slice(0, maxItems);
+};
 
-  // Lấy danh sách nghệ sĩ và sắp xếp ngẫu nhiên
-  const shuffledArtWorks = shuffleArray(artworks);
+// Lấy danh sách nghệ sĩ và sắp xếp ngẫu nhiên
+const shuffledArtWorks = shuffleArray(artworks, 4);
 
-  const filterArtworksBySchoolOfArt = (soa) => {
-    return artworks.filter(artwork => {
-      const schoolOfArt = artwork.schoolOfArts.map(schoolOfArt => schoolOfArt.name);
-      return schoolOfArt.includes(soa);
-    });
-  };
+const filterArtworksBySchoolOfArt = (soa) => {
+  return artworks.filter(artwork => {
+    const schoolOfArt = artwork.schoolOfArts.map(schoolOfArt => schoolOfArt.name);
+    return schoolOfArt.includes(soa);
+  }).slice(0, 4);
+};
   const artworksAbstarct = filterArtworksBySchoolOfArt('Abstract Art');
   const artworksContemporary = filterArtworksBySchoolOfArt('Contemporary Art');
   const artworksEmerging = filterArtworksBySchoolOfArt('Emerging Art');
@@ -130,7 +136,7 @@ function Artwork() {
                         type="checkbox"
                         id="rarity-rare-filter"
                         name="rarity-filter"
-                        value="Limited Edition"
+                        value="Limited edition"
                         onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Limited Edition</label>
@@ -140,7 +146,7 @@ function Artwork() {
                         type="checkbox"
                         id="rarity-rare-filter"
                         name="rarity-filter"
-                        value="Open Edition"
+                        value="Open edition"
                         onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Open Edition</label>
@@ -150,7 +156,7 @@ function Artwork() {
                         type="checkbox"
                         id="rarity-rare-filter"
                         name="rarity-filter"
-                        value="Unknown Edition"
+                        value="Unknown edition"
                         onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Unknown Edition</label>
@@ -170,6 +176,7 @@ function Artwork() {
                         id="medium-common-filter"
                         name="medium-filter"
                         value="Painting"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-common-filter">Painting</label>
                     </div>
@@ -179,6 +186,7 @@ function Artwork() {
                         id="medium-rare-filter"
                         name="medium-filter"
                         value="Photography"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Photography</label>
                     </div>
@@ -187,7 +195,8 @@ function Artwork() {
                         type="checkbox"
                         id="medium-rare-filter"
                         name="medium-filter"
-                        value="Prints"
+                        value="Works on Paper"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Works on Paper</label>
                     </div>
@@ -196,7 +205,8 @@ function Artwork() {
                         type="checkbox"
                         id="medium-rare-filter"
                         name="medium-filter"
-                        value="NFP"
+                        value="Sculpture"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Sculpture</label>
                     </div>
@@ -205,7 +215,8 @@ function Artwork() {
                         type="checkbox"
                         id="medium-rare-filter"
                         name="medium-filter"
-                        value="Drawing"
+                        value="Mixed Media"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Mixed Media</label>
                     </div>
@@ -214,7 +225,8 @@ function Artwork() {
                         type="checkbox"
                         id="medium-rare-filter"
                         name="medium-filter"
-                        value="Sculpture"
+                        value="Ceramics"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Ceramics</label>
                     </div>
@@ -223,7 +235,8 @@ function Artwork() {
                         type="checkbox"
                         id="medium-rare-filter"
                         name="medium-filter"
-                        value="Sculpture"
+                        value="Graphic Art"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Graphic Art</label>
                     </div>
@@ -241,36 +254,40 @@ function Artwork() {
                         type="checkbox"
                         id="medium-common-filter"
                         name="medium-filter"
-                        value="Painting"
+                        value="Glazed ceramic"
+                        onChange={handleFilterChange}
                       />
-                      <label for="rarity-common-filter">Metal</label>
+                      <label for="rarity-common-filter">Glazed ceramic</label>
                     </div>
                     <div className="checkbox-item">
                       <input
                         type="checkbox"
                         id="medium-rare-filter"
                         name="medium-filter"
-                        value="Photography"
+                        value="Oil on canvas"
+                        onChange={handleFilterChange}
                       />
-                      <label for="rarity-rare-filter">Clay</label>
+                      <label for="rarity-rare-filter">Oil on canvas</label>
                     </div>
                     <div className="checkbox-item">
                       <input
                         type="checkbox"
                         id="medium-rare-filter"
                         name="medium-filter"
-                        value="Prints"
+                        value="Oil on panel"
+                        onChange={handleFilterChange}
                       />
-                      <label for="rarity-rare-filter">Paints and Paper</label>
+                      <label for="rarity-rare-filter">Oil on panel</label>
                     </div>
                     <div className="checkbox-item">
                       <input
                         type="checkbox"
                         id="medium-rare-filter"
                         name="medium-filter"
-                        value="NFP"
+                        value="Inkjet print"
+                        onChange={handleFilterChange}
                       />
-                      <label for="rarity-rare-filter">Stone</label>
+                      <label for="rarity-rare-filter">Inkjet print</label>
                     </div>
                     <div className="checkbox-item">
                       <input
@@ -278,6 +295,7 @@ function Artwork() {
                         id="medium-rare-filter"
                         name="medium-filter"
                         value="Drawing"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Fabric</label>
                     </div>
@@ -287,6 +305,7 @@ function Artwork() {
                         id="medium-rare-filter"
                         name="medium-filter"
                         value="Sculpture"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Wood</label>
                     </div>
@@ -296,6 +315,7 @@ function Artwork() {
                         id="medium-rare-filter"
                         name="medium-filter"
                         value="Sculpture"
+                        onChange={handleFilterChange}
                       />
                       <label for="rarity-rare-filter">Glass </label>
                     </div>
@@ -324,7 +344,7 @@ function Artwork() {
               {filteredArtworks.length > 0 ? (
                 
                 filteredArtworks.map((artwork) => (
-                  
+                  <Link to={`/artwork/${artwork.id}`}>
                   <div className="card-art_home">
                     <a>
                       <img src={artwork.artWorkImage} alt="Image 1" />
@@ -333,7 +353,8 @@ function Artwork() {
                       <span className="price-art_carousel">${artwork.price}</span>
                     </a>
                     <a className="button_add-product">Purchase</a>
-                  </div>           
+                  </div>    
+                  </Link>       
                 ))
               ) : (
                 <div>No artworks found.</div>
@@ -347,7 +368,7 @@ function Artwork() {
               <div id="Comtemporary-sec" className="art-section">
                 <div className="top-section">
                   <h3 className="title-section">Featured Artworks</h3>
-                  <a href="/listArt" className="view-more_art">View more</a>
+                  <a href="" className="view-more_art">View more</a>
                 </div>
                 <div className="content-section">
                   {shuffledArtWorks.map(artwork => (

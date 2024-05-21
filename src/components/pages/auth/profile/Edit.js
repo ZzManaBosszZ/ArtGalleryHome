@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { getAccessToken, removeAccessToken } from "../../../../utils/auth";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../../../../services/api"
-import url from "../../../../services/url"
+import api from "../../../../services/api";
+import url from "../../../../services/url";
 import Swal from "sweetalert2";
 import { format } from "date-fns";
-import "../../../../css/edit.css"
+import "../../../../css/edit.css";
 
 function Edit() {
   const [anhs, setAnhs] = useState([]);
@@ -16,7 +16,10 @@ function Edit() {
   const incacanh = () =>
     [...anhs].map((anh) => (
       <div>
-        <img src={URL.createObjectURL(anh)} width="200px" />
+        <img
+          style={{ borderRadius: "50%", width: "100px", height: "100px", marginLeft:"450px" }}
+          src={URL.createObjectURL(anh)}
+        />
       </div>
     ));
 
@@ -48,7 +51,11 @@ function Edit() {
       });
 
       if (isConfirmed.isConfirmed) {
-        const updateResponse = await api.put(url.AUTH.UPDATE_PROFILE, formData, config);
+        const updateResponse = await api.put(
+          url.AUTH.UPDATE_PROFILE,
+          formData,
+          config
+        );
 
         if (updateResponse.status === 204) {
           console.log("Successfully updated");
@@ -59,7 +66,7 @@ function Edit() {
       // Update the local state with edited information
       setInfo(editedInfo);
       setIsEditing(false);
-    } catch (error) { }
+    } catch (error) {}
   };
 
   const loadProfile = async () => {
@@ -75,7 +82,7 @@ function Edit() {
 
       const profileResponse = await api.get(url.AUTH.PROFILE, config);
       setInfo(profileResponse.data);
-    } catch (error) { }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -115,8 +122,8 @@ function Edit() {
         </ul>
       </nav>
       <hr className="hrdev" style={{ marginTop: "10px" }} />
-      <div style={{ display: "flex" }} class="edit-section">
-      <div class="edit-section_file">
+      <div class="edit-section">
+        <div class="edit-section_file">
           <div class="menu-left-right ml-3">
             <input
               className="upimg"
@@ -124,32 +131,49 @@ function Edit() {
               accept="image/*"
               onChange={onFileUploadHandler}
             />
-            {/* <div className="image-gallery">{incacanh()}</div> */}
+            <div className="image-gallery">{incacanh()}</div>
           </div>
-          
+
           <div class="hhh">
             <div class="containeredit-editPage">
               <div class="entryarea">
-                <input className="inedit" type="text" value={editedInfo.fullname || ""}
-                  onChange={(e) => setEditedInfo({ ...editedInfo, fullname: e.target.value })} required />
+                <input
+                  className="inedit"
+                  type="text"
+                  value={editedInfo.fullname || ""}
+                  onChange={(e) =>
+                    setEditedInfo({ ...editedInfo, fullname: e.target.value })
+                  }
+                  required
+                />
                 <div class="labelline">Name</div>
               </div>
             </div>
           </div>
-          
+
           <div class="hhh">
             <div class="containeredit-editPage">
               <div class="entryarea">
-                <input className="inedit" type="tel" value={editedInfo.phone || ""}
-                  onChange={(e) => setEditedInfo({ ...editedInfo, phone: e.target.value })} required />
+                <input
+                  className="inedit"
+                  type="tel"
+                  value={editedInfo.phone || ""}
+                  onChange={(e) =>
+                    setEditedInfo({ ...editedInfo, phone: e.target.value })
+                  }
+                  required
+                />
                 <div class="labelline">Phone</div>
               </div>
             </div>
           </div>
-          
         </div>
       </div>
-      <button type="submit" onClick={handleSaveClick} class="button-save_editPage">
+      <button
+        type="submit"
+        onClick={handleSaveClick}
+        class="button-save_editPage-01"
+      >
         Save
       </button>
     </div>

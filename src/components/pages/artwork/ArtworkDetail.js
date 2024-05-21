@@ -17,7 +17,7 @@ function ArtworkDetail() {
   const [error, setError] = useState(null);
   const [artist, setArtists] = useState([]);
   const { id } = useParams();
-  const [ArtWorkDetail, setArtWorkDetail] = useState({ artists: [], schoolOfArts: [] });
+  const [ArtWorkDetail, setArtWorkDetail] = useState({ artists: [], offers:[], schoolOfArts: [] });
   const [artistDetail, setArtistDetail] = useState({ artWork: [], schoolOfArts: [] });
   const artworks = artistDetail.artWork || [];
   const navigate = useNavigate();
@@ -162,6 +162,7 @@ function ArtworkDetail() {
     sliderRef1.current.slickPrev();
   };
 
+  const isAnyOfferPaid = ArtWorkDetail.offers.some(offer => offer.isPaid === 1);
 
 
   return (
@@ -235,7 +236,7 @@ function ArtworkDetail() {
                           );
                         })}
                       </a>
-                      <p className="fdsghj">Canadian, b. 1986</p>
+                      <p className="fdsghj">{artistDetail.description}</p>
                     </div>
                   </div>
                   <div className="button-follow">
@@ -261,10 +262,10 @@ function ArtworkDetail() {
                         Artists at Hollis Taggart, Hollis Taggart
                       </dd>
                     </dl>
-                    <dl className="ecutre">
+                    {/* <dl className="ecutre">
                       <dt className="fosan">2022</dt>
                       <dd className="gozila">Dimensions, Hollis Taggart</dd>
-                    </dl>
+                    </dl> */}
                   </div>
                 </div>
               </div>
@@ -304,7 +305,15 @@ function ArtworkDetail() {
               <h1 className="price">${ArtWorkDetail.price}</h1>
             </div>
             <div className="button_purchase-sec">
-              <a className="mlb" onClick={handleOffer} id="offer-button"> Make An Offer</a>
+            {isAnyOfferPaid ? (
+                <button className="mlb" id="offer-button" disabled>
+                  Sold
+                </button>
+              ) : (
+                <a className="mlb" onClick={handleOffer} id="offer-button">
+                  Make An Offer
+                </a>
+              )}
             </div>
             <div className="shipping-info">
               <h4>Shipping and Taxes</h4>
@@ -317,17 +326,19 @@ function ArtworkDetail() {
             <div className="other-artist">
               <div className="title_other-artist">
                 <h3 className="hatbana">Related artists</h3>
-                <a className="viewmore">ViewMore</a>
+                {/* <a className="viewmore">ViewMore</a> */}
               </div>
               <div className="info-other_artist">
                 <div className="about-list_artist">
-                  {shuffle(artist).slice(0, 5).map((item, index) => {
+                  {shuffle(artist).slice(0, 4).map((item, index) => {
                     return (
                       <div className="artist-section">
                         <div className="about-artist">
-                          <div className="img-arttist">
-                            <img className="anhgbc" src={item.image}></img>
-                          </div>
+                          <Link to={`/artist/${item.id}`}>
+                            <div className="img-arttist">
+                              <img className="anhgbc" src={item.image}></img>
+                            </div>
+                          </Link>
                           <div className="info-artist">
                             <a className="name-artist">{item.name}</a>
                             <p className="fdsghj">Canadian, b. 1986</p>

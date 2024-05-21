@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import "../../../../css/orderhistory.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getAccessToken } from "../../../../utils/auth";
 import api from "../../../../services/api";
 import url from "../../../../services/url";
@@ -9,6 +9,7 @@ import { format } from "date-fns";
 function OrderHistory() {
   const [myOffer, setMyOffer] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const location = useLocation();
   const [offersPerPage] = useState(1);
   const [hasOffer, setHasOffer] = useState(false); // Thêm state mới
 
@@ -30,6 +31,10 @@ function OrderHistory() {
   useEffect(() => {
     loadOffer();
   }, [loadOffer]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   // Group offers by creation date
   const groupOffersByDate = () => {
@@ -90,7 +95,7 @@ function OrderHistory() {
         <div className="no-offers">
           <p>
             No offers found.{" "}
-            <Link to="/" className="link-to-place-order">
+            <Link to="/artwork" className="link-to-place-order">
               Place an order
             </Link>
           </p>
@@ -136,7 +141,7 @@ function OrderHistory() {
                 </div>
               ) : (
                 <div class="card-footer">
-                  <p>Đang chờ admin duyệt</p>
+                  <p>Wait for artist accpet offer</p>
                 </div>
               )}
             </div>

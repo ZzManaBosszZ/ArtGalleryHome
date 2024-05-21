@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,6 +12,7 @@ function ArtistDetail() {
   const sliderRef1 = useRef(null);
   const [artists, setArtists] = useState([])
   const { id } = useParams();
+  const location = useLocation();
   const [artistDetail, setArtistDetail] = useState({ artWork: [], schoolOfArts: [] });
   useEffect(() => {
     if (sliderRef1.current) {
@@ -20,6 +21,10 @@ function ArtistDetail() {
 
     }
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const goToNext1 = () => {
     sliderRef1.current.slickNext();
@@ -129,26 +134,26 @@ function ArtistDetail() {
         <div className="artist-biography">
           <h2>BIOGRAPHY</h2>
           <div>
-            Atsuko Tanaka, a visionary artist from Japan, has made
+          {artistDetail.name}, a visionary artist from Japan, has made
             groundbreaking contributions to contemporary art. Drawing
             inspiration from her rich cultural heritage, she redefines artistic
             expression with innovative techniques. From iconic wire sculptures
-            to captivating performances, Tanaka's versatility pushes the
+            to captivating performances, {artistDetail.name} versatility pushes the
             boundaries of creativity. Her works, imbued with profound symbolism,
             invite viewers to contemplate identity and spirituality. With a
-            distinguished career spanning decades, Tanaka remains a trailblazer,
+            distinguished career spanning decades, {artistDetail.name} remains a trailblazer,
             inspiring audiences worldwide.
           </div>
           <div>
-            Throughout her career, Atsuko Tanaka has demonstrated an
+            Throughout her career, {artistDetail.name} has demonstrated an
             unparalleled versatility, experimenting with a diverse range of
             mediums and techniques. From her iconic electric wire sculptures to
             her mesmerizing performances, she has continually pushed the
             boundaries of artistic innovation.
           </div>
-          <div>
+          <div> 
             {" "}
-            Atsuko Tanaka's works are imbued with profound symbolism and a deep
+            {artistDetail.name} works are imbued with profound symbolism and a deep
             understanding of the human condition. Through her art, she explores
             themes of identity, spirituality, and the interconnectedness of all
             things, inviting viewers to contemplate the complexities of
@@ -167,7 +172,7 @@ function ArtistDetail() {
         <div className="other-artwork">
           {/* other works by artist */}
           <div className="title_other-artwork">
-            <h2 >Artworks by Atsuko Tanaka</h2>
+            <h2 >Artworks by {artistDetail.name}</h2>
             <a href="/byArtist">View All</a>
           </div>
           <div className="carousel-controls">

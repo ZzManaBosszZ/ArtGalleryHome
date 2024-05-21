@@ -105,7 +105,7 @@ function Offer() {
   return (
     <div>
       <div className="Offer-page">
-        <div className="auction-steps" id="auction-steps">
+        {/* <div className="auction-steps" id="auction-steps">
           <a id="offer" className="offer-section">
             <h3>Offer</h3>
             <i className="fa-solid fa-angle-right"></i>
@@ -118,7 +118,7 @@ function Offer() {
             <h3>Payment</h3>
             <i className="fa-solid fa-angle-right"></i>
           </a>
-        </div>
+        </div> */}
         <div className="main-offer_page">
           <div className="auction-content">
             <h2>Select an option</h2>
@@ -215,7 +215,7 @@ function Offer() {
               </div>
             </div>
 
-            <a onClick={handleCreateOffer} className="next-offer">Continue</a>
+            <a onClick={handleCreateOffer} className="next-offer">Make Offer</a>
 
           </div>
           <div className="offer-order">

@@ -183,7 +183,8 @@ function Follows() {
               <button onClick={() => handleRemoveFollowItem(item.id)} className="butfolo">Unfollow</button>
             </div>
 
-            <div className="image-row">
+            
+            <div style={{display:"flex"}} className="image-row">
               <div className="image-scroll-container">
                 {item.artWorks.map((artwork) => (
                   <Link to={`http://localhost:5000/artwork/${artwork.id}`}>
@@ -193,13 +194,18 @@ function Follows() {
                     alt={artwork.name}
                     className="scroll-image"
                   />
+                  <p className="destiry">{artwork.name}</p>
+                  <p className="giatien">US${artwork.price}</p>
                   </Link>
                 ))}
               </div>
             </div>
+            </div>
+           
+              
+          
 
-
-          </div>
+          
         ))
       )
         : (

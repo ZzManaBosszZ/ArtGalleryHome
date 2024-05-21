@@ -49,10 +49,10 @@ function ContactUs() {
               <label for="email">Email:</label>
               <input type="email" id="email" name="email" required />
             </div>
-            <div class="form-group">
+            {/* <div class="form-group">
               <label for="subject">Subject:</label>
               <input type="text" id="subject" name="subject" required />
-            </div>
+            </div> */}
             <div class="form-group">
               <label for="message">Message:</label>
               <textarea

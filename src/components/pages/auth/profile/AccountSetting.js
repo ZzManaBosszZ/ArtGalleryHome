@@ -270,7 +270,7 @@ function AccountSettings() {
               <button
                 style={{ backgroundColor: "#000", color: "#fff" }}
                 type="submit"
-                class="button-edit_pass1"
+                class="button-edit_pass2"
                 value="Change Password"
               >
                 Save Changes
